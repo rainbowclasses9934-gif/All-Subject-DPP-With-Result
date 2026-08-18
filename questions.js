@@ -3,6 +3,7 @@ window.validStudentIDs = [
   "Cm2007",
   "Omi2009",
   "pk2010",
+  "skroy",
   "Nc 2009",
   "1234",
   "Prity.rc2010.classes",
