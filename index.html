@@ -479,8 +479,8 @@
 
         function loadQuestion() {
             let q = currentQuestions[currentQIndex];
-            document.getElementById("q-counter").innerText = `प्रश्न ${currentQIndex + 1} / ${currentQuestions.length}`;
-            document.getElementById("q-text").innerText = `${currentQIndex + 1}. ${q.question}`;
+            document.getElementById("q-counter").innerHTML = `प्रश्न ${currentQIndex + 1} / ${currentQuestions.length}`;
+            document.getElementById("q-text").innerHTML = `${currentQIndex + 1}. ${q.question}`;
 
             let optsContainer = document.getElementById("options-container");
             optsContainer.innerHTML = "";
