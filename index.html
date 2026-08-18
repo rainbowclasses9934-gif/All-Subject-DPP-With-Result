@@ -114,8 +114,32 @@
 
     <!-- टॉप हेडर पट्टी हटा दी गई है, सीधे कंटेनर लोड होगा -->
     <div class="container">
-        
-        <div id="login-screen" class="card">
+
+        <!-- ========================================== -->
+        <!-- नया जोड़ा गया INSTRUCTION SCREEN -->
+        <!-- ========================================== -->
+        <div id="instruction-screen" class="card">
+            <h2 style="margin-bottom: 20px; text-align: center; color: #fbbf24; font-size: 1.6rem; letter-spacing: 0.5px;">📋 Instruction</h2>
+            <div style="font-size: 1.05rem; color: #ffffff; line-height: 1.7; margin-bottom: 25px; background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="margin-bottom: 12px;"><strong>📌 महत्वपूर्ण निर्देश:</strong></p>
+                <p style="margin-bottom: 15px; color: #cbd5e1;">जिस विषय (Subject) का DPP दिया गया है और उसके अंदर जो अध्याय (Chapter) दिया गया है, कृपया <strong>वही अध्याय सेलेक्ट करें</strong> और तब DPP बनाएँ। <strong>अन्य विषय या अन्य अध्याय सेलेक्ट करने पर DPP आपको नहीं दिखेगा।</strong></p>
+                
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
+                
+                <p style="color: #38bdf8; margin-bottom: 8px;"><strong>छात्र ध्यान दें:</strong></p>
+                <p style="color: #cbd5e1;">अपना <strong>नाम</strong> और <strong>आईडी (ID)</strong> एंटर करके आगे बढ़ें और DPP सेटअप पर कुछ इस प्रकार से DPP सेटअप करें:</p>
+                <ul style="margin-left: 25px; margin-top: 10px; color: #cbd5e1; list-style-type: disc;">
+                    <li style="margin-bottom: 5px;">दिए गए <strong>विषय</strong> को चुनें।</li>
+                    <li style="margin-bottom: 5px;">दिए गए <strong>अध्याय</strong> को चुनें।</li>
+                    <li>अपना <strong>DPP</strong> चुनें और टेस्ट शुरू करें।</li>
+                </ul>
+            </div>
+            <button class="btn btn-success" onclick="proceedToLogin()">मैंने निर्देश पढ़ लिए हैं (Next)</button>
+        </div>
+        <!-- ========================================== -->
+
+        <!-- लॉगिन स्क्रीन को बाय-डिफ़ॉल्ट hidden कर दिया गया है -->
+        <div id="login-screen" class="card hidden">
             <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;">Student's identification</h2>
             <div class="input-group">
                 <label>Student Name(विद्यार्थी का नाम):</label>
@@ -231,8 +255,9 @@
         let timerInterval;
         let timeLeft = 600;
 
+        // शुरुआत में इंस्ट्रक्शन स्क्रीन सेट किया गया 
         window.onload = function() {
-            history.replaceState({ screen: 'login' }, '');
+            history.replaceState({ screen: 'instruction' }, '');
         };
 
         window.addEventListener('popstate', function(event) {
@@ -241,14 +266,17 @@
             document.getElementById("options-modal").classList.add("hidden");
 
             if (!state) {
-                showScreen('login-screen');
+                showScreen('instruction-screen');
                 return;
             }
 
             if (state.modal) document.getElementById("custom-modal").classList.remove("hidden");
             if (state.optionsModal) document.getElementById("options-modal").classList.remove("hidden");
 
-            if (state.screen === 'login') {
+            if (state.screen === 'instruction') {
+                showScreen('instruction-screen');
+                clearInterval(timerInterval);
+            } else if (state.screen === 'login') {
                 showScreen('login-screen');
                 clearInterval(timerInterval);
             } else if (state.screen === 'selection') {
@@ -261,12 +289,21 @@
             }
         });
 
+        // स्क्रीन को show/hide करने का फंक्शन अपडेट किया गया 
         function showScreen(screenId) {
+            document.getElementById("instruction-screen").classList.add("hidden");
             document.getElementById("login-screen").classList.add("hidden");
             document.getElementById("selection-screen").classList.add("hidden");
             document.getElementById("quiz-screen").classList.add("hidden");
             document.getElementById("result-screen").classList.add("hidden");
+            
             document.getElementById(screenId).classList.remove("hidden");
+        }
+
+        // इंस्ट्रक्शन से लॉगिन स्क्रीन पर जाने का नया फंक्शन 
+        function proceedToLogin() {
+            history.pushState({ screen: 'login' }, '');
+            showScreen('login-screen');
         }
 
         function verifyStudent() {
