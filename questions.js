@@ -66,359 +66,236 @@ window.quizDatabase = {
 // =========================================================
 // 👇👇 यहाँ से नीचे अपना AI द्वारा जनरेट किया गया क्वेश्चन कोड पेस्ट करते जाएँ 👇👇
 // =========================================================
-window.quizDatabase[1].ch_3 = window.quizDatabase[1].ch_3 || {};
-window.quizDatabase[1].ch_3.dpp_1 = [
+window.quizDatabase[1].ch_3 = window.quizDatabase[1].ch_3 || {}; 
+window.quizDatabase[1].ch_3.dpp_2 = [
   {
-    question: "चालक में विद्युत आवेश वाहक कौन होते हैं?",
-    options: ["मुक्त इलेक्ट्रॉन", "धन आयन", "ऋण आयन", "छिद्र"],
-    correct: 0
-  },
-  {
-    question: "विद्युत अपघट्य में आवेश वाहक निम्नलिखित में से कौन होते हैं?",
-    options: ["केवल मुक्त इलेक्ट्रॉन", "केवल छिद्र", "धन आयन और ऋण आयन", "केवल न्यूट्रॉन"],
-    correct: 2
-  },
-  {
-    question: "अर्द्धचालक में आवेश वाहक कौन होते हैं?",
-    options: ["केवल धन आयन", "इलेक्ट्रॉन व छिद्र", "केवल ऋण आयन", "केवल प्रोटॉन"],
+    question: "36. चालक पर एकांक विद्युत क्षेत्र आरोपित करने से उत्पन्न संवहन वेग (अपवाह वेग) को क्या कहते हैं?",
+    options: [
+      "विद्युत धारा",
+      "गतिशीलता",
+      "विश्रांति काल",
+      "इलेक्ट्रॉन घनत्व"
+    ],
     correct: 1
   },
   {
-    question: "किसी चालक तार के अनुप्रस्थ काट से प्रति सेकेण्ड प्रवाहित कुल आवेश के परिमाण को क्या कहते हैं?",
-    options: ["विद्युत विभव", "विभवांतर", "विद्युत धारा", "प्रतिरोध"],
-    correct: 2
+    question: "37. गतिशीलता का SI मात्रक निम्नलिखित में से कौन-सा होता है?",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C.s</span><span style='border-top:1px solid; display:block;'>kg</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C.kg</span><span style='border-top:1px solid; display:block;'>s</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>kg.s</span><span style='border-top:1px solid; display:block;'>C</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C</span><span style='border-top:1px solid; display:block;'>kg</span></span>"
+    ],
+    correct: 0
   },
   {
-    question: "विद्युत धारा को प्रदर्शित करने के लिए किस प्रतीक का उपयोग किया जाता है?",
-    options: ["q", "t", "e", "I"],
+    question: "38. गतिशीलता का SI मात्रक के अतिरिक्त निम्नलिखित में से कौन-सा है?",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C</span><span style='border-top:1px solid; display:block;'>kgs</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>m²</span><span style='border-top:1px solid; display:block;'>Vs</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>m²s</span><span style='border-top:1px solid; display:block;'>V</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>kg</span><span style='border-top:1px solid; display:block;'>C.s</span></span>"
+    ],
+    correct: 1
+  },
+  {
+    question: "39. किसी चालक में गतिशीलता और विश्रांति काल के बीच क्या संबंध होता है?",
+    options: [
+      "गतिशीलता, विश्रांति काल के व्युत्क्रमानुपाती होती है",
+      "गतिशीलता, विश्रांति काल के समानुपाती होती है",
+      "गतिशीलता, विश्रांति काल के वर्ग के समानुपाती होती है",
+      "दोनों के बीच कोई संबंध नहीं होता है"
+    ],
+    correct: 1
+  },
+  {
+    question: "40. किसी चालक पर विद्युत क्षेत्र आरोपित करने पर इलेक्ट्रॉन किस दिशा में अपवाह वेग (Vd) से गति करने लगते हैं?",
+    options: [
+      "विद्युत क्षेत्र की दिशा में",
+      "विद्युत क्षेत्र की विपरीत दिशा में",
+      "लंबवत दिशा में",
+      "किसी भी यादृच्छिक दिशा में"
+    ],
+    correct: 1
+  },
+  {
+    question: "41. किसी चालक में बहने वाली विद्युत धारा (I), इलेक्ट्रॉन घनत्व (n), अनुप्रस्थ काट का क्षेत्रफल (A) और अपवाह वेग (Vd) के बीच सही संबंध क्या है?",
+    options: [
+      "I = AneVd",
+      "I = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Ane</span><span style='border-top:1px solid; display:block;'>Vd</span></span>",
+      "I = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Vd</span><span style='border-top:1px solid; display:block;'>Ane</span></span>",
+      "I = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>An</span><span style='border-top:1px solid; display:block;'>eVd</span></span>"
+    ],
+    correct: 0
+  },
+  {
+    question: "42. विद्युत धारा (I) और अपवाह वेग (Vd) के बीच संबंध के आधार पर विद्युत धारा किस राशि के समानुपाती होती है?",
+    options: [
+      "केवल इलेक्ट्रॉन घनत्व (n) के",
+      "केवल अनुप्रस्थ काट के क्षेत्रफल (A) के",
+      "केवल अपवाह वेग (Vd) के",
+      "इन सभी के (n, A और Vd)"
+    ],
     correct: 3
   },
   {
-    question: "यदि चालक से t समय में q आवेश प्रवाहित हो, तो विद्युत धारा (I) का सही सूत्र क्या है?",
-    options: ["I = q × t", "I = q/t", "I = t/q", "I = q² × t"],
-    correct: 1
-  },
-  {
-    question: "नियत समय में किसी चालक से प्रवाहित विद्युत धारा (I) और प्रवाहित आवेश (q) के बीच क्या संबंध होता है?",
-    options: ["धारा, आवेश के समानुपाती (I ∝ q) होती है", "धारा, आवेश के व्युत्क्रमानुपाती (I ∝ 1/q) होती है", "धारा, आवेश के वर्ग के समानुपाती (I ∝ q²) होती है", "धारा और आवेश में कोई संबंध नहीं होता"],
+    question: "43. किसी चालक में धारा घनत्व (J) और संवहन वेग (Vd) के बीच संबंध दर्शाने वाला सही सूत्र कौन-सा है?",
+    options: [
+      "J = neVd",
+      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>ne</span><span style='border-top:1px solid; display:block;'>Vd</span></span>",
+      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Vd</span><span style='border-top:1px solid; display:block;'>ne</span></span>",
+      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>n</span><span style='border-top:1px solid; display:block;'>eVd</span></span>"
+    ],
     correct: 0
   },
   {
-    question: "निश्चित आवेश प्रवाह के लिए विद्युत धारा (I) और समय (t) के बीच क्या संबंध होता है?",
-    options: ["धारा, समय के समानुपाती (I ∝ t) होती है", "धारा, समय के व्युत्क्रमानुपाती (I ∝ 1/t) होती है", "धारा, समय के वर्ग के समानुपाती (I ∝ t²) होती है", "धारा, समय से स्वतंत्र होती है"],
+    question: "44. ओम का नियम किन राशियों के बीच संबंध स्थापित करता है?",
+    options: [
+      "विद्युत धारा और विभवांतर",
+      "आवेश और समय",
+      "प्रतिरोध और लंबाई",
+      "विद्युत क्षेत्र और क्षेत्रफल"
+    ],
+    correct: 0
+  },
+  {
+    question: "45. ओम के नियम के अनुसार यदि किसी चालक की भौतिक अवस्थाओं (जैसे- ताप, लंबाई, अनुप्रस्थ काट का क्षेत्रफल) को नियत रखा जाए, तो चालक के सिरों पर आरोपित विभवांतर प्रवाहित धारा के कैसा होता है?",
+    options: [
+      "व्युत्क्रमानुपाती",
+      "समानुपाती",
+      "वर्ग के समानुपाती",
+      "अपरिवर्तित"
+    ],
     correct: 1
   },
   {
-    question: "यदि n इलेक्ट्रॉनों की संख्या, e इलेक्ट्रॉन का आवेश और t समय हो, तो विद्युत धारा (I) का सूत्र क्या होगा?",
-    options: ["I = n × e × t", "I = (n × t)/e", "I = ne/t", "I = t/(ne)"],
+    question: "46. यदि किसी चालक के सिरों पर आरोपित विभवांतर V तथा उससे बहने वाली विद्युत धारा I हो, तो ओम के नियम का सही गणितीय व्यंजक क्या होगा?",
+    options: [
+      "V ∝ I (या V = RI)",
+      "V ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>I</span></span> (या V = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>R</span><span style='border-top:1px solid; display:block;'>I</span></span>)",
+      "V ∝ I² (या V = RI²)",
+      "I ∝ V² (या I = RV²)"
+    ],
+    correct: 0
+  },
+  {
+    question: "47. ओम के नियम में प्रयुक्त नियतांक R को चालक का क्या कहते हैं?",
+    options: [
+      "विभवांतर",
+      "चालकता",
+      "प्रतिरोध",
+      "विशिष्ट धारा"
+    ],
     correct: 2
   },
   {
-    question: "विद्युत धारा का एसआई (SI) मात्रक क्या होता है?",
-    options: ["वोल्ट", "एम्पियर", "कूलॉम", "ओम"],
+    question: "48. विभवांतर (V) और विद्युत धारा (I) के मध्य खींचा गया ग्राफ किस प्रकार की रेखा होता है?",
+    options: [
+      "वक्र रेखा",
+      "सरल रेखा",
+      "वृत्ताकार रेखा",
+      "परवलयाकार रेखा"
+    ],
     correct: 1
   },
   {
-    question: "विद्युत धारा का विमीय सूत्र निम्नलिखित में से कौन सा है?",
-    options: ["[A¹]", "[M¹L⁰T⁰]", "[T¹]", "[M¹L¹T⁻²]"],
+    question: "49. विभवांतर (V) को Y-अक्ष और विद्युत धारा (I) को X-अक्ष पर रखकर खींचे गए ग्राफ की ढाल (Slope = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>V</span><span style='border-top:1px solid; display:block;'>I</span></span>) किसके तुल्य होती है?",
+    options: [
+      "चालकता (σ)",
+      "प्रतिरोध (R)",
+      "धारा घनत्व (J)",
+      "अपवाह वेग (Vd)"
+    ],
+    correct: 1
+  },
+  {
+    question: "50. यदि Y-अक्ष पर विद्युत धारा (I) और X-अक्ष पर विभवांतर (V) हो, तो धारा-विभवांतर ग्राफ की ढाल (Slope = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I</span><span style='border-top:1px solid; display:block;'>V</span></span>) का मान किसके बराबर होता है?",
+    options: [
+      "R",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>R</span></span>",
+      "R²",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>R²</span></span>"
+    ],
+    correct: 1
+  },
+  {
+    question: "51. ओम के नियम के सूक्ष्म रूप का सही व्यंजक निम्नलिखित में से कौन-सा है?",
+    options: [
+      "J = σE",
+      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>σ</span><span style='border-top:1px solid; display:block;'>E</span></span>",
+      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E</span><span style='border-top:1px solid; display:block;'>σ</span></span>",
+      "J = σ²E"
+    ],
     correct: 0
   },
   {
-    question: "यदि किसी चालक से 1 सेकेण्ड में 1 कूलॉम आवेश प्रवाहित हो, तो विद्युत धारा का मान कितना होता है?",
-    options: ["1 वोल्ट", "1 ओम", "1 वाट", "1 एम्पियर"],
+    question: "52. किसी चालक का वह गुण जिसके कारण वह अपने से होकर प्रवाहित होने वाली धारा में रुकावट डालता है, क्या कहलाता है?",
+    options: [
+      "चालकता",
+      "प्रतिरोध",
+      "विभवांतर",
+      "धारा घनत्व"
+    ],
+    correct: 1
+  },
+  {
+    question: "53. विभवांतर (V) और विद्युत धारा (I) के पदों में प्रतिरोध (R) का सही सूत्र क्या होता है?",
+    options: [
+      "R = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>V</span><span style='border-top:1px solid; display:block;'>I</span></span>",
+      "R = V.I",
+      "R = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I</span><span style='border-top:1px solid; display:block;'>V</span></span>",
+      "R = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>V.I</span></span>"
+    ],
+    correct: 0
+  },
+  {
+    question: "54. किसी चालक के प्रतिरोध का SI मात्रक निम्नलिखित में से कौन-सा होता है?",
+    options: [
+      "वोल्ट.एम्पियर",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>वोल्ट</span><span style='border-top:1px solid; display:block;'>एम्पियर</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>एम्पियर</span><span style='border-top:1px solid; display:block;'>वोल्ट</span></span>",
+      "ओम-मीटर"
+    ],
+    correct: 1
+  },
+  {
+    question: "55. प्रतिरोध का SI मात्रक क्या होता है?",
+    options: [
+      "ओम (Ω)",
+      "फैराड (F)",
+      "हेनरी (H)",
+      "टेसला (T)"
+    ],
+    correct: 0
+  },
+  {
+    question: "56. किसी चालक का प्रतिरोध निम्नलिखित में से किन कारकों पर निर्भर करता है?",
+    options: [
+      "केवल पदार्थ की प्रकृति पर",
+      "केवल लंबाई और अनुप्रस्थ काट क्षेत्रफल पर",
+      "केवल भौतिक अवस्थाओं (जैसे- ताप) पर",
+      "पदार्थ की प्रकृति, लंबाई, अनुप्रस्थ काट क्षेत्रफल तथा भौतिक अवस्थाओं पर"
+    ],
     correct: 3
   },
   {
-    question: "1 एम्पियर का मान निम्नलिखित में से किस व्यंजक के बराबर होता है?",
-    options: ["1 कूलॉम × 1 सेकेण्ड", "1 सेकेण्ड / 1 कूलॉम", "1 कूलॉम / 1 सेकेण्ड", "1 कूलॉम² / 1 सेकेण्ड"],
-    correct: 2
-  },
-  {
-    question: "विद्युत धारा की दिशा इलेक्ट्रॉन के प्रवाह की दिशा के संदर्भ में किस प्रकार होती है?",
-    options: ["विपरीत दिशा में", "समान दिशा में", "लंबवत दिशा में", "अनिश्चित दिशा में"],
+    question: "57. 1 ओम (Ω) का सही मान किसके तुल्य होता है?",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1 वोल्ट</span><span style='border-top:1px solid; display:block;'>1 एम्पियर</span></span> (1 VA⁻¹)",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1 एम्पियर</span><span style='border-top:1px solid; display:block;'>1 वोल्ट</span></span> (1 AV⁻¹)",
+      "1 वोल्ट × 1 एम्पियर (1 VA)",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1 एम्पियर²</span><span style='border-top:1px solid; display:block;'>1 वोल्ट</span></span>"
+    ],
     correct: 0
   },
   {
-    question: "परिमाण और दिशा दोनों होने के बावजूद भी विद्युत धारा को एक अदिश राशि क्यों माना जाता है?",
-    options: ["क्योंकि यह परिमाण बदलती है", "क्योंकि यह चालक में प्रवाहित होती है", "क्योंकि यह केवल उच्च विभव की ओर बहती है", "क्योंकि यह सदिश संयोजन के नियम का पालन नहीं करती है"],
-    correct: 3
-  },
-  {
-    question: "औसत विद्युत धारा (Iऔसत) को दर्शाने वाला सही सूत्र कौन सा है?",
-    options: ["Δt / ΔQ", "ΔQ / Δt", "ΔQ × Δt", "(ΔQ)² / Δt"],
-    correct: 1
-  },
-  {
-    question: "तात्क्षणिक विद्युत धारा (Iतात्क्षणिक) का सही गणितीय सूत्र क्या है?",
-    options: ["dt / dq", "dq × dt", "dq / dt", "d²q / dt²"],
-    correct: 2
-  },
-  {
-    question: "किसी चालक के प्रति एकांक अनुप्रस्थ काट क्षेत्रफल (धारा की दिशा में) से गुजरने वाली धारा को क्या कहते हैं?",
-    options: ["धारा घनत्व", "विद्युत विभव", "प्रतिरोध", "विद्युत धारा"],
-    correct: 0
-  },
-  {
-    question: "धारा घनत्व को किस प्रतीक द्वारा निर्दिष्ट किया जाता है?",
-    options: ["I", "A", "θ", "J"],
-    correct: 3
-  },
-  {
-    question: "धारा घनत्व की दिशा किस दिशा में होती है?",
-    options: ["विद्युत धारा के विपरीत दिशा में", "विद्युत धारा की दिशा में", "क्षेत्रफल के लंबवत", "अनिश्चित दिशा में"],
-    correct: 1
-  },
-  {
-    question: "यदि A क्षेत्रफल के काट से I धारा प्रवाहित हो तथा क्षेत्रफल सदिश A एवं धारा I के बीच θ कोण हो, तो धारा घनत्व का सही सूत्र क्या होगा?",
-    options: ["J = I × A cosθ", "J = (A cosθ)/I", "J = I/(A cosθ)", "J = I/(A sinθ)"],
-    correct: 2
-  },
-  {
-    question: "यदि धारा I और क्षेत्रफल A दोनों एक ही दिशा में हों, तो धारा घनत्व J का सही सूत्र क्या होगा?",
-    options: ["J = I × A", "J = I/A", "J = A/I", "J = I/A²"],
-    correct: 1
-  },
-  {
-    question: "नियत धारा के लिए धारा घनत्व (J) और अनुप्रस्थ काट क्षेत्रफल (A) के बीच क्या संबंध होता है?",
-    options: ["धारा घनत्व, क्षेत्रफल के व्युत्क्रमानुपाती (J ∝ 1/A) होता है", "धारा घनत्व, क्षेत्रफल के समानुपाती (J ∝ A) होता है", "धारा घनत्व, क्षेत्रफल के वर्ग के समानुपाती (J ∝ A²) होता है", "धारा घनत्व, क्षेत्रफल पर निर्भर नहीं करता है"],
-    correct: 0
-  },
-  {
-    question: "नियत अनुप्रस्थ काट क्षेत्रफल के लिए धारा घनत्व (J) और प्रवाहित धारा (I) के बीच क्या संबंध होता है?",
-    options: ["धारा घनत्व, धारा के व्युत्क्रमानुपाती (J ∝ 1/I) होता है", "धारा घनत्व, धारा के वर्ग के समानुपाती (J ∝ I²) होता है", "धारा घनत्व, धारा के समानुपाती (J ∝ I) होता है", "इनमें से कोई नहीं"],
-    correct: 2
-  },
-  {
-    question: "धारा घनत्व निम्नलिखित में से किस प्रकार की भौतिक राशि है?",
-    options: ["अदिश राशि", "सदिश राशि", "विमाहीन राशि", "इनमें से कोई नहीं"],
-    correct: 1
-  },
-  {
-    question: "धारा घनत्व का एसआई (SI) मात्रक क्या होता है?",
-    options: ["A/m", "A/m²", "A·m²", "A/m³"],
-    correct: 1
-  },
-  {
-    question: "चालक के भीतर बाह्य विद्युत क्षेत्र के प्रभाव में इलेक्ट्रॉनों के औसत न्यूनतम वेग को क्या कहते हैं?",
-    options: ["अनुगमन वेग (अपवाह वेग)", "धारा घनत्व", "विद्युत विभव", "गतिशीलता"],
-    correct: 0
-  },
-  {
-    question: "चालक के भीतर मुक्त इलेक्ट्रॉनों के अपवाह वेग (अनुगमन वेग) की दिशा विद्युत क्षेत्र की दिशा के संदर्भ में किस प्रकार होती है?",
-    options: ["विद्युत क्षेत्र की दिशा में", "विद्युत क्षेत्र के विपरीत दिशा में", "विद्युत क्षेत्र के लंबवत", "किसी भी दिशा में"],
-    correct: 1
-  },
-  {
-    question: "चालक पर आरोपित विद्युत क्षेत्र की तीव्रता बढ़ाने पर अपवाह वेग (v₀) के मान पर क्या प्रभाव पड़ता है?",
-    options: ["घटता है", "बढ़ता है", "अपरिवर्तित रहता है", "शून्य हो जाता है"],
-    correct: 1
-  },
-  {
-    question: "अपवाह वेग (v₀) और विद्युत क्षेत्र की तीव्रता (E) के बीच सही संबंध क्या होता है?",
-    options: ["v₀ ∝ 1/E", "v₀ ∝ E²", "v₀ ∝ E", "v₀ ∝ 1/E²"],
-    correct: 2
-  },
-  {
-    question: "अपवाह वेग (v₀), गतिशीलता (μ) और विद्युत क्षेत्र (E) के बीच सही गणितीय संबंध कौन सा है?",
-    options: ["v₀ = μ/E", "v₀ = E/μ", "v₀ = μ × E", "v₀ = μ × E²"],
-    correct: 2
-  },
-  {
-    question: "व्यंजक v₀ = μ E में μ क्या दर्शाने वाला स्थिरांक है?",
-    options: ["विद्युत धारा", "गतिशीलता", "धारा घनत्व", "प्रतिरोध"],
-    correct: 1
-  },
-  {
-    question: "अपवाह वेग (v₀) और विद्युत क्षेत्र (E) के पदों में गतिशीलता (μ) का सही सूत्र क्या है?",
-    options: ["μ = v₀ / E", "μ = E / v₀", "μ = v₀ × E", "μ = 1 / (v₀ × E)"],
-    correct: 0
-  },
-  {
-    question: "विश्रांति काल (τ) बढ़ाने पर इलेक्ट्रॉनों की गतिशीलता (μ) पर क्या प्रभाव पड़ता है?",
-    options: ["गतिशीलता समानुपाती (μ ∝ τ) रूप से बढ़ती है", "गतिशीलता व्युत्क्रमानुपाती (μ ∝ 1/τ) रूप से घटती है", "गतिशीलता पर कोई प्रभाव नहीं पड़ता", "गतिशीलता शून्य हो जाती है"],
-    correct: 0
-  },
-  {
-    question: "गतिशीलता (μ) और इलेक्ट्रॉन के द्रव्यमान (mₑ) के बीच क्या संबंध होता है?",
-    options: ["गतिशीलता द्रव्यमान के समानुपाती (μ ∝ mₑ) होती है", "गतिशीलता द्रव्यमान के व्युत्क्रमानुपाती (μ ∝ 1/mₑ) होती है", "गतिशीलता द्रव्यमान के वर्ग के समानुपाती (μ ∝ mₑ²) होती है", "गतिशीलता द्रव्यमान पर निर्भर नहीं करती"],
+    question: "58. प्रतिरोध किस प्रकार की भौतिक राशि है?",
+    options: [
+      "सदिश राशि",
+      "अदिश राशि",
+      "प्रदेश (टेन्सर) राशि",
+      "इनमें से कोई नहीं"
+    ],
     correct: 1
   }
 ];
-window.quizDatabase[2].ch_3 = window.quizDatabase[2].ch_3 || {};
-window.quizDatabase[2].ch_3.dpp_1 = [
-  {
-    question: "वैद्युत रसायन के अंतर्गत मुख्य रूप से किन दो ऊर्जाओं के पारस्परिक संबंधों का अध्ययन किया जाता है?",
-    options: ["यांत्रिक ऊर्जा और ऊष्मीय ऊर्जा", "विद्युत ऊर्जा और रासायनिक ऊर्जा", "प्रकाश ऊर्जा और ध्वनि ऊर्जा", "नाभिकीय ऊर्जा और सौर ऊर्जा"],
-    correct: 1
-  },
-  {
-    question: "भौतिक रसायन की वह शाखा जिसके अंतर्गत विद्युत ऊर्जा और रासायनिक ऊर्जा का अध्ययन किया जाता है, उसे क्या कहते हैं?",
-    options: ["वैद्युत रसायन", "पृष्ठ रसायन", "रासायनिक बलगतिकी", "ऊष्मागतिकी"],
-    correct: 0
-  },
-  {
-    question: "वे यौगिक जो द्रवित अवस्था या जलीय विलयन की अवस्था में विद्युत धारा के कुचालक होते हैं, क्या कहलाते हैं?",
-    options: ["प्रबल वैद्युत अपघट्य", "दुर्बल वैद्युत अपघट्य", "वैद्युत अनअपघट्य", "वैद्युत अपघट्य"],
-    correct: 2
-  },
-  {
-    question: "निम्नलिखित में से कौन-सा पदार्थ वैद्युत अनअपघट्य का उदाहरण है?",
-    options: ["नमक", "यूरिया", "सोडियम हाइड्रोक्साइड", "सल्फ्यूरिक अम्ल"],
-    correct: 1
-  },
-  {
-    question: "वे यौगिक जो द्रवित अवस्था या जलीय विलयन की अवस्था में विद्युत के सुचालक होते हैं, क्या कहलाते हैं?",
-    options: ["वैद्युत अनअपघट्य", "कुचालक", "अक्रिय पदार्थ", "वैद्युत अपघट्य"],
-    correct: 3
-  },
-  {
-    question: "निम्नलिखित में से कौन-सा यौगिक वैद्युत अपघट्य है?",
-    options: ["चीनी", "यूरिया", "क्लोरोफॉर्म", "जिंक सल्फेट"],
-    correct: 3
-  },
-  {
-    question: "वैद्युत अपघट्य कितने प्रकार के होते हैं?",
-    options: ["एक", "दो", "तीन", "चार"],
-    correct: 1
-  },
-  {
-    question: "ऐसे वैद्युत अपघट्य जो जलीय विलयन में पूर्णतः अपने आयनों में टूट जाते हैं, क्या कहलाते हैं?",
-    options: ["दुर्बल वैद्युत अपघट्य", "वैद्युत अनअपघट्य", "प्रबल वैद्युत अपघट्य", "उदासीन यौगिक"],
-    correct: 2
-  },
-  {
-    question: "निम्नलिखित में से कौन-सा प्रबल वैद्युत अपघट्य का उदाहरण है?",
-    options: ["चीनी", "यूरिया", "कैल्शियम क्लोराइड", "क्लोरोफॉर्म"],
-    correct: 2
-  },
-  {
-    question: "ऐसे वैद्युत अपघट्य जो विलयन में अंशतः आयनित होते हैं, क्या कहलाते हैं?",
-    options: ["प्रबल वैद्युत अपघट्य", "दुर्बल वैद्युत अपघट्य", "वैद्युत अनअपघट्य", "अक्रिय यौगिक"],
-    correct: 1
-  },
-  {
-    question: "निम्नलिखित में से कौन-सा दुर्बल वैद्युत अपघट्य का उदाहरण है?",
-    options: ["CH₃COOH", "NaCl", "HCl", "NaOH"],
-    correct: 0
-  },
-  {
-    question: "किसी यौगिक की द्रवित अवस्था या विलयन की अवस्था में विद्युत धारा प्रवाहित कर उस यौगिक को अपघटित करने की क्रिया को क्या कहते हैं?",
-    options: ["वैद्युत अपघट्य", "वैद्युत अपघटनी सेल", "वैद्युत अनअपघट्य", "वैद्युत अपघटन"],
-    correct: 3
-  },
-  {
-    question: "वैद्युत अपघटन की क्रिया जिस बर्तन में कराई जाती है, उसे क्या कहते हैं?",
-    options: ["प्राथमिक सेल", "अक्रिय पात्र", "वैद्युत अपघटनी सेल", "ऊष्मीय सेल"],
-    correct: 2
-  },
-  {
-    question: "द्रवित सोडियम क्लोराइड के वैद्युत अपघटन में कैथोड पर कौन-सी अभिक्रिया होती है?",
-    options: ["2Na⁺ + 2e⁻ → 2Na", "2Cl⁻ → Cl₂ + 2e⁻", "NaCl → Na⁺ + Cl⁻", "H₂O → H⁺ + OH⁻"],
-    correct: 0
-  },
-  {
-    question: "द्रवित सोडियम क्लोराइड के वैद्युत अपघटन के दौरान कैथोड पर कौन-सी प्रक्रिया संपन्न होती है?",
-    options: ["ऑक्सीकरण", "अवकरण", "अपघटन", "उदासीनीकरण"],
-    correct: 1
-  },
-  {
-    question: "द्रवित सोडियम क्लोराइड के वैद्युत अपघटन में ऐनोड पर होने वाली अभिक्रिया को निरूपित करने वाला समीकरण कौन-सा है?",
-    options: ["2Na⁺ + 2e⁻ → 2Na", "NaCl → Na⁺ + Cl⁻", "2Cl⁻ → Cl₂ + 2e⁻", "H₂O → H⁺ + OH⁻"],
-    correct: 2
-  },
-  {
-    question: "द्रवित सोडियम क्लोराइड के वैद्युत अपघटन में ऐनोड पर होने वाली क्रिया को क्या कहा जाता है?",
-    options: ["अवकरण", "संयोजन", "विस्थापन", "ऑक्सीकरण"],
-    correct: 3
-  },
-  {
-    question: "सोडियम क्लोराइड के जलीय विलयन के वैद्युत अपघटन के दौरान सोडियम क्लोराइड के वियोजन को दर्शाने वाला सही समीकरण कौन-सा है?",
-    options: ["2Cl⁻ → Cl₂ + 2e⁻", "NaCl → Na⁺ + Cl⁻", "2Na⁺ + 2e⁻ → 2Na", "H₂O → H⁺ + OH⁻"],
-    correct: 1
-  },
-  {
-    question: "सोडियम क्लोराइड के जलीय विलयन के वैद्युत अपघटन में कैथोड पर होने वाली अवकरण अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["H⁺ + e⁻ → 1/2 H₂", "Cl⁻ → 1/2 Cl₂ + e⁻", "NaOH → Na⁺ + OH⁻", "H₂O → H⁺ + OH⁻"],
-    correct: 0
-  },
-  {
-    question: "सोडियम क्लोराइड के जलीय विलयन के वैद्युत अपघटन में ऐनोड पर होने वाली ऑक्सीकरण अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["H⁺ + e⁻ → 1/2 H₂", "Cl⁻ → 1/2 Cl₂ + e⁻", "2OH⁻ → 1/2 O₂ + H₂O + 2e⁻", "H₂SO₄ → 2H⁺ + SO₄²⁻"],
-    correct: 1
-  },
-  {
-    question: "सोडियम क्लोराइड के जलीय विलयन के वैद्युत अपघटन में कैथोड तथा ऐनोड पर क्रमशः कौन-सी गैसें मुक्त होती हैं?",
-    options: ["Cl₂ तथा H₂", "O₂ तथा H₂", "H₂ तथा Cl₂", "H₂ तथा O₂"],
-    correct: 2
-  },
-  {
-    question: "सोडियम हाइड्रोक्साइड (NaOH) के जलीय विलयन के वियोजन को दर्शाने वाला सही समीकरण कौन-सा है?",
-    options: ["NaOH → Na⁺ + OH⁻", "H₂O → H⁺ + OH⁻", "H⁺ + e⁻ → 1/2 H₂", "H₂SO₄ → 2H⁺ + SO₄²⁻"],
-    correct: 0
-  },
-  {
-    question: "सोडियम हाइड्रोक्साइड (NaOH) के जलीय वैद्युत अपघटन में ऐनोड पर होने वाली अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["H⁺ + e⁻ → 1/2 H₂", "2OH⁻ → 1/2 O₂ + H₂O + 2e⁻", "Cl⁻ → 1/2 Cl₂ + e⁻", "4OH⁻ → O₂ + 2H₂O + 4e⁻"],
-    correct: 1
-  },
-  {
-    question: "सोडियम हाइड्रोक्साइड (NaOH) के जलीय वैद्युत अपघटन में कैथोड तथा ऐनोड पर क्रमशः कौन-सी गैसें मुक्त होती हैं?",
-    options: ["H₂ तथा Cl₂", "Cl₂ तथा O₂", "O₂ तथा H₂", "H₂ तथा O₂"],
-    correct: 3
-  },
-  {
-    question: "सल्फ्यूरिक अम्ल (H₂SO₄) के जलीय विलयन में सल्फ्यूरिक अम्ल के आयनन को दर्शाने वाला सही समीकरण कौन-सा है?",
-    options: ["H₂SO₄ → 2H⁺ + SO₄²⁻", "H₂O → H⁺ + OH⁻", "NaOH → Na⁺ + OH⁻", "4OH⁻ → O₂ + 2H₂O + 4e⁻"],
-    correct: 0
-  },
-  {
-    question: "सल्फ्यूरिक अम्ल (H₂SO₄) के जलीय विलयन के वैद्युत अपघटन में ऐनोड पर होने वाली अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["H⁺ + e⁻ → 1/2 H₂", "2OH⁻ → 1/2 O₂ + H₂O + 2e⁻", "4OH⁻ → O₂ + 2H₂O + 4e⁻", "Cl⁻ → 1/2 Cl₂ + e⁻"],
-    correct: 2
-  },
-  {
-    question: "सल्फ्यूरिक अम्ल (H₂SO₄) के जलीय विलयन के वैद्युत अपघटन में कैथोड तथा ऐनोड पर क्रमशः कौन-सी गैसें मुक्त होती हैं?",
-    options: ["H₂ तथा O₂", "O₂ तथा H₂", "H₂ तथा Cl₂", "Cl₂ तथा O₂"],
-    correct: 0
-  },
-  {
-    question: "सोडियम सल्फेट (Na₂SO₄) के जलीय विलयन के वैद्युत अपघटन में सोडियम सल्फेट के आयनन का सही समीकरण कौन-सा है?",
-    options: ["Na₂SO₄ → 2Na⁺ + SO₄²⁻", "AgNO₃ → Ag⁺ + NO₃⁻", "H₂O → H⁺ + OH⁻", "Na₂SO₄ → Na⁺ + SO₄⁻"],
-    correct: 0
-  },
-  {
-    question: "Na₂SO₄ के जलीय विलयन के वैद्युत अपघटन में कैथोड पर होने वाली अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["2OH⁻ → 1/2 O₂ + H₂O + 2e⁻", "H⁺ + e⁻ → 1/2 H₂", "Ag⁺ + e⁻ → Ag", "Na₂SO₄ → 2Na⁺ + SO₄²⁻"],
-    correct: 1
-  },
-  {
-    question: "Na₂SO₄ के जलीय विलयन के वैद्युत अपघटन में ऐनोड पर होने वाली अभिक्रिया को निरूपित करने वाला समीकरण कौन-सा है?",
-    options: ["H⁺ + e⁻ → 1/2 H₂", "AgNO₃ → Ag⁺ + NO₃⁻", "4OH⁻ → O₂ + 2H₂O + 4e⁻", "Ag⁺ + e⁻ → Ag"],
-    correct: 2
-  },
-  {
-    question: "सोडियम सल्फेट (Na₂SO₄) के जलीय विलयन का वैद्युत अपघटन करने पर कैथोड तथा ऐनोड पर क्रमशः कौन-सी गैसें मुक्त होती हैं?",
-    options: ["O₂ तथा H₂", "H₂ तथा O₂", "H₂ तथा Cl₂", "Ag तथा O₂"],
-    correct: 1
-  },
-  {
-    question: "सिल्वर नाइट्रेट (AgNO₃) के जलीय विलयन में सिल्वर नाइट्रेट के आयनन को प्रदर्शित करने वाला सही समीकरण कौन-सा है?",
-    options: ["AgNO₃ → Ag⁺ + NO₃⁻", "Na₂SO₄ → 2Na⁺ + SO₄²⁻", "H₂O → H⁺ + OH⁻", "Ag⁺ + e⁻ → Ag"],
-    correct: 0
-  },
-  {
-    question: "AgNO₃ के जलीय विलयन के वैद्युत अपघटन के दौरान कैथोड पर होने वाली अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["2OH⁻ → 1/2 O₂ + H₂O + 2e⁻", "H⁺ + e⁻ → 1/2 H₂", "Ag⁺ + e⁻ → Ag", "AgNO₃ → Ag⁺ + NO₃⁻"],
-    correct: 2
-  },
-  {
-    question: "AgNO₃ के जलीय विलयन के वैद्युत अपघटन में ऐनोड पर होने वाली अभिक्रिया का सही समीकरण कौन-सा है?",
-    options: ["4OH⁻ → O₂ + 2H₂O + 4e⁻", "Ag⁺ + e⁻ → Ag", "H⁺ + e⁻ → 1/2 H₂", "AgNO₃ → Ag⁺ + NO₃⁻"],
-    correct: 0
-  },
-  {
-    question: "सिल्वर नाइट्रेट (AgNO₃) के जलीय विलयन का वैद्युत अपघटन करने पर कैथोड और ऐनोड पर क्रमशः क्या मुक्त होते हैं?",
-    options: ["H₂ तथा O₂", "O₂ तथा Ag", "H₂ तथा Ag", "Ag तथा O₂"],
-    correct: 3
-  },
-]
