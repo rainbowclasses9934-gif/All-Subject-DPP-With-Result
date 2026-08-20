@@ -9,11 +9,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; user-select: none; }
         input { user-select: auto; }
         
+        /* स्मूथ 2 सेकंड ट्रांजिशन के लिए (थीम बदलने पर काम आएगा) */
+        body, .card, .dock-card, .question-text, .option-item, .timer-box, input, .glass-select-box, p, label, h2, h3, .summary-glass, .modal-glass {
+            transition: background 2s ease-in-out, color 2s ease-in-out, border-color 2s ease-in-out, box-shadow 2s ease-in-out !important;
+        }
+
         /* 1. बैकग्राउंड: डार्क ब्लू-ग्रे ग्रेडिएंट */
         body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; background-attachment: fixed; }
         
-        /* टॉप में फिट करने के लिए margin-top: 0 किया गया है */
-        .container { width: 100%; max-width: 600px; padding: 15px 15px 20px 15px; margin-top: 0; }
+        /* z-index 10 हटा दिया गया है ताकि डॉक और पॉप-अप ब्लर ओवरले के ऊपर आ सकें */
+        .container { width: 100%; max-width: 600px; padding: 15px 15px 20px 15px; margin-top: 0; position: relative; }
         
         /* 2. मेन कंटेनर (Glass Panel): सेमी-ट्रांसपेरेंट डार्क ब्लू विद हल्का वाइट बॉर्डर */
         .card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 25px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); margin-bottom: 20px; animation: fadeIn 0.4s ease-out; position: relative; }
@@ -58,11 +63,11 @@
             background: rgba(255, 76, 76, 0.15) !important;
         }
 
-        .question-text { font-size: 1.15rem; font-weight: 500; margin-top: 45px; margin-bottom: 25px; clear: both; line-height: 1.7; color: #ffffff; transition: color 1.2s ease; }
+        .question-text { font-size: 1.15rem; font-weight: 500; margin-top: 45px; margin-bottom: 25px; clear: both; line-height: 1.7; color: #ffffff; }
         
         /* 5. क्विज़ ऑप्शंस: ट्रांसपेरेंट डार्क -> सेलेक्ट होने पर ब्लू */
-        .option-item { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 18px; border-radius: 12px; margin-bottom: 14px; cursor: pointer; font-size: 1rem; color: #ffffff; transition: all 0.3s ease; backdrop-filter: blur(8px); }
-        .option-item:hover { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; transform: translateX(5px); }
+        .option-item { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 18px; border-radius: 12px; margin-bottom: 14px; cursor: pointer; font-size: 1rem; color: #ffffff; backdrop-filter: blur(8px); }
+        .option-item:hover { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; transform: translateX(5px); transition: transform 0.3s ease; }
         
         .option-item.selected { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); font-weight: 600; color: #ffffff; transform: scale(1.01); }
         
@@ -90,7 +95,7 @@
         .options-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
         
         /* लिस्ट ऑप्शन कार्ड्स (मोडल के अंदर) */
-        .option-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px 18px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; font-size: 0.95rem; color: #ffffff; transition: all 0.25s ease; }
+        .option-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px 18px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; font-size: 0.95rem; color: #ffffff; transition: transform 0.25s ease; }
         .option-card:hover { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; color: #ffffff; transform: translateX(5px); }
         
         .modal-icon { font-size: 2.8rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
@@ -174,6 +179,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 10px 25px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); margin-bottom: 20px; animation: fadeIn 0.4s ease-out;
             display: flex; justify-content: space-between; align-items: center; height: 65px; 
+            position: relative; z-index: 200; /* Z-index 200 keeps it above the 150 overlay */
         }
         
         .bell-wrapper {
@@ -191,55 +197,108 @@
             30% { transform: rotate(10deg); } 40% { transform: rotate(-10deg); } 50%, 100% { transform: rotate(0); }
         }
 
-        /* ========================================================= */
-        /* NEW FEATURES CSS (Light Mode & Quiz Dock)                 */
-        /* ========================================================= */
-        
         /* Glass Buttons for Dock */
         .glass-btn-dock {
             background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff; padding: 8px 16px; border-radius: 15px; cursor: pointer;
-            backdrop-filter: blur(10px); transition: all 0.3s ease; font-weight: 600; font-size: 0.9rem;
+            backdrop-filter: blur(10px); transition: transform 0.3s ease; font-weight: 600; font-size: 0.9rem;
         }
         .glass-btn-dock:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
         
-        /* Theme Selection Popup */
+        /* Theme Selection Popup (Now opens Downward) */
         .theme-popup-box {
-            position: absolute; bottom: 120%; left: 0; background: rgba(30, 40, 50, 0.95);
+            position: absolute; top: 120%; left: 0; background: rgba(30, 40, 50, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 6px;
             display: flex; flex-direction: column; gap: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            z-index: 200; transform-origin: bottom; animation: popUpAnim 0.3s ease-out; min-width: 120px;
+            z-index: 210; transform-origin: top; animation: dropDownAnim 0.3s ease-out; min-width: 120px;
         }
-        @keyframes popUpAnim { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+        @keyframes dropDownAnim { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
         
         .theme-opt {
             padding: 8px 12px; cursor: pointer; border-radius: 8px; color: #fff; font-size: 0.9rem; font-weight: 500; transition: 0.2s; text-align: center;
         }
         .theme-opt:hover { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
 
-        /* Light Mode Specifics - एनिमेटेड 1.5 सेकंड ट्रांजिशन के साथ */
-        #quiz-screen { transition: background 1.5s ease-in-out, border-color 1.5s ease-in-out; }
-        #quiz-screen.light-mode-active {
-            background: rgba(248, 250, 252, 0.95) !important;
-            border-color: rgba(0, 0, 0, 0.1);
+        /* ========================================================= */
+        /* GLOBAL PROFESSIONAL LIGHT MODE CSS                        */
+        /* ========================================================= */
+        body.light-mode-active {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+            color: #0f172a !important;
         }
-        #quiz-screen.light-mode-active .question-text { color: #0f172a; transition: color 1.5s ease-in-out; font-weight: 600; }
-        #quiz-screen.light-mode-active #q-counter { color: #2563eb; transition: color 1.5s ease-in-out;}
-        #quiz-screen.light-mode-active .timer-box { 
-            background: rgba(37, 99, 235, 0.1); color: #2563eb; border-color: rgba(37, 99, 235, 0.3);
+        body.light-mode-active .card, body.light-mode-active .dock-card, body.light-mode-active .summary-glass, body.light-mode-active .modal-glass {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08) !important;
         }
-        #quiz-screen.light-mode-active .option-item {
-            background: #ffffff; border-color: #cbd5e1; color: #1e293b; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 1.5s ease-in-out;
+        body.light-mode-active .card::before, body.light-mode-active .modal-glass::before {
+            background: #ffffff !important;
+            color: #2563eb !important;
+            border-color: rgba(37, 99, 235, 0.3) !important;
         }
-        #quiz-screen.light-mode-active .option-item:hover {
-            background: #f1f5f9; border-color: #3b82f6; transform: translateX(5px);
+        /* सभी टेक्स्ट को ब्लैक/डार्क ग्रे करना */
+        body.light-mode-active p, body.light-mode-active label, body.light-mode-active h2, body.light-mode-active h3, body.light-mode-active .question-text, body.light-mode-active strong, body.light-mode-active div:not(.theme-popup-box):not(.option-item) {
+            color: #1e293b !important;
         }
-        #quiz-screen.light-mode-active .option-item.selected {
-            background: rgba(59, 130, 246, 0.15); border-color: #2563eb; color: #000; font-weight: 600;
+        /* Inputs & Dropdowns */
+        body.light-mode-active .input-group input, body.light-mode-active .glass-select-box {
+            background: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
         }
+        body.light-mode-active .input-group input:focus {
+            border-color: #2563eb !important;
+            background: #ffffff !important;
+            box-shadow: 0 0 10px rgba(37,99,235,0.1) !important;
+        }
+        body.light-mode-active .input-group input::placeholder { color: #94a3b8 !important; }
+        body.light-mode-active .glass-select-box .select-icon { color: #0f172a !important; }
+        
+        /* Options Card in Light Mode */
+        body.light-mode-active .option-item, body.light-mode-active .option-card {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            color: #1e293b !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02) !important;
+        }
+        body.light-mode-active .option-item:hover, body.light-mode-active .option-card:hover {
+            background: #f8fafc !important;
+            border-color: #3b82f6 !important;
+        }
+        body.light-mode-active .option-item.selected {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-color: #2563eb !important;
+            color: #0f172a !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Dock Buttons in Light Mode */
+        body.light-mode-active .glass-btn-dock {
+            background: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+            color: #1e293b !important;
+        }
+        body.light-mode-active .glass-btn-dock:hover { background: #e2e8f0 !important; }
+        
+        /* Timer & Counters */
+        body.light-mode-active .timer-box { 
+            background: rgba(37, 99, 235, 0.1) !important; color: #2563eb !important; border-color: rgba(37, 99, 235, 0.3) !important; 
+        }
+        body.light-mode-active #q-counter { color: #2563eb !important; font-weight: 600; }
+        
+        /* Theme Popup internal colors in Light mode */
+        body.light-mode-active .theme-popup-box {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+        body.light-mode-active .theme-opt { color: #1e293b !important; }
+        body.light-mode-active .theme-opt:hover { background: #f1f5f9 !important; color: #2563eb !important; }
     </style>
 </head>
 <body>
+
+    <!-- बैकग्राउंड ब्लर ओव्हरले (50% कम ब्लरनेस के साथ) -->
+    <div id="theme-overlay" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.15); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 150;" onclick="toggleThemePopup()"></div>
 
     <div class="container">
 
@@ -250,16 +309,11 @@
                 <p style="margin-bottom: 15px; color: #cbd5e1; text-align: justify;">
                     प्रिय छात्रों, आज केमिस्ट्री का DPP नहीं दिया गया है आज सिर्फ आपको फिजिक्स का DPP भी बनाना है।
                 </p>
-                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
-                <p style="color: #38bdf8; margin-bottom: 8px;"><strong>आपसे आग्रह और निर्देश:</strong></p>
-                <ul style="margin-left: 25px; margin-top: 10px; color: #cbd5e1; list-style-type: disc;">
-                    <li style="margin-bottom: 8px;">पढ़ाई पर पूरा ध्यान केंद्रित करें। आपके शिक्षक द्वारा दिए गए निर्देशों का पालन 100% करें। शिक्षक टेस्ट देने के लिए कहते है तो समय से टेस्ट दीजिये </li>
-                    <li style="margin-bottom: 8px;">प्रतिदिन के <strong>DPP और और होने वाले Tests</strong> में अनिवार्य रूप से भाग लें। इन्हें नजरअंदाज न करें।</li>
-                    <li style="margin-bottom: 8px;">DPP मे दिए जाने वाले टॉपिक को घर पर अच्छे से याद करे।</li>
-                    <li style="margin-bottom: 8px;">शिक्षक आपको राह दिखा सकते हैं, लेकिन उस राह पर चलकर मंजिल पाना आपकी जिम्मेदारी है। एग्जाम अब आपका निकट आ रहा है। आप ईमानदारी से हमारे साथ सारा वर्क कीजिए वरना बाद में पछतावा होगा कि कास हम पढ़ लिए होते और ईमानदारी और मेहनत से पढ़ने वाले बच्चो से मेरा स्पेशल रिक्वेस्ट 🙏 है की please आप सीरियस होकर पढ़िए अभी आपको पता नहीं चलेगा की इतने सारे चीजों को करने से क्या होगा,लेकिन जब বাধ में एग्जाम दीजियेगा तब पता चलेगा की मैंने सही समय पर सही कदम उठाया👍।</li>
-                </ul>
             </div>
-            <button class="btn btn-success" onclick="proceedToLogin()">Yes, मै अब मेहनत करूँगा🥺(Next)</button>
+            
+            <div style="display: flex; justify-content: center;">
+                <button class="btn btn-success" style="width: auto; padding: 12px 40px; border-radius: 25px;" onclick="proceedToLogin()">Next</button>
+            </div>
         </div>
 
         <!-- लॉगिन स्क्रीन -->
@@ -306,9 +360,20 @@
             <button class="btn" onclick="startQuiz()">Start DPP</button>
         </div>
 
-        <!-- DOCK CONTAINER (Shows with Setup) -->
+        <!-- DOCK CONTAINER (Shows with Setup) - NOW CONTAINS SCREEN MODE -->
         <div id="dock-container" class="dock-card hidden">
-            <div style="flex-grow: 1; color: rgba(255,255,255,0.4); font-size: 0.8rem; font-weight: 500;">
+            <!-- Left Side: Screen Mode -->
+            <div style="display: flex; justify-content: flex-start; position: relative;">
+                <button id="btn-screen-mode" class="glass-btn-dock" onclick="toggleThemePopup()">स्क्रीन मोड 🌗</button>
+                
+                <!-- Theme Popup -->
+                <div id="theme-popup" class="theme-popup-box hidden">
+                    <div class="theme-opt" onclick="applyLightMode()">Light Mode ☀️</div>
+                    <div class="theme-opt" onclick="applyDarkMode()">Dark Mode 🌙</div>
+                </div>
+            </div>
+
+            <div style="flex-grow: 1;">
                 <!-- खाली जगह ताकि बेल राइट साइड में रहे -->
             </div>
             
@@ -341,23 +406,10 @@
             <button class="btn btn-success" id="btn-submit" style="margin-top: 15px; display: none;" onclick="submitQuiz()">Submit🧐</button>
         </div>
 
-        <!-- NEW: QUIZ SCREEN DOCK -->
-        <div id="quiz-dock-container" class="dock-card hidden" style="margin-top: 5px;">
-            <!-- Left Side: Screen Mode -->
-            <div style="width: 50%; display: flex; justify-content: flex-start; position: relative;">
-                <button id="btn-screen-mode" class="glass-btn-dock" onclick="toggleThemePopup()">स्क्रीन मोड 🌗</button>
-                
-                <!-- Theme Popup -->
-                <div id="theme-popup" class="theme-popup-box hidden">
-                    <div class="theme-opt" onclick="applyLightMode()">Light Mode ☀️</div>
-                    <div class="theme-opt" onclick="applyDarkMode()">Dark Mode 🌙</div>
-                </div>
-            </div>
-            
-            <!-- Right Side: Full Screen Mode -->
-            <div style="width: 50%; display: flex; justify-content: flex-end;">
-                <button id="btn-fullscreen" class="glass-btn-dock" onclick="toggleFullScreen()">फुल स्क्रीन मोड 🔲</button>
-            </div>
+        <!-- QUIZ SCREEN DOCK (Only Full Screen left here) -->
+        <div id="quiz-dock-container" class="dock-card hidden" style="margin-top: 5px; justify-content: center;">
+            <!-- Full Screen Mode -->
+            <button id="btn-fullscreen" class="glass-btn-dock" onclick="toggleFullScreen()">फुल स्क्रीन मोड 🔲</button>
         </div>
 
         <!-- प्री-सबमिट स्क्रीन -->
@@ -379,7 +431,6 @@
         <div id="result-screen" class="card score-card hidden">
             <h2 style="color: #38bdf8; font-size: 1.6rem; letter-spacing: 0.5px;">🧾Your Result🫣</h2>
             <p id="res-name" style="margin-top: 15px; color: #ffffff; font-weight: 500; font-size: 1.15rem;"></p>
-            <p id="res-id-display" style="color: #ffffff; font-size: 0.95rem; margin-top: 5px;"></p>
             <div class="score-badge" id="res-score">0 / 0</div>
             <p id="res-percent" style="font-size: 1.3rem; font-weight: 600; color: #10b981;"></p>
             <br>
@@ -460,7 +511,6 @@
         let timeLeft = 1800; // 30 minutes in seconds
         window.currentQuizFinished = false;
 
-        // NEW FUNCTION: क्विज़ सेटअप को रिसेट करने के लिए
         function resetSetupScreen() {
             document.getElementById("subject-select").value = "";
             document.getElementById("subject-text").innerText = "-- विषय चुनें --";
@@ -471,11 +521,9 @@
         }
 
         window.onload = function() {
-            // यह कोड रिफ्रेश होते ही नाम और आईडी के बॉक्स को खाली कर देगा
             document.getElementById('student-name').value = '';
             document.getElementById('student-id').value = '';
             
-            // हमेशा शुरुआत (Instruction Screen) से ही पोर्टल खुलेगा
             history.replaceState({ screen: 'instruction' }, '');
             showScreen('instruction-screen');
         };
@@ -497,11 +545,10 @@
             if (state.summaryModal) document.getElementById("summary-modal").classList.remove("hidden");
             if (state.notifModal) document.getElementById("notification-modal").classList.remove("hidden");
 
-            // UPDATE: अगर रिजल्ट/क्विज/प्री-सबमिट स्क्रीन से वापस आता है तो सेटअप रिसेट हो जाएगा
             if (state.screen === 'quiz' || state.screen === 'pre-submit') {
                 if (window.currentQuizFinished) {
                     resetSetupScreen();
-                    window.currentQuizFinished = false; // स्टेट को पुनः नार्मल करें
+                    window.currentQuizFinished = false; 
                     history.replaceState({ screen: 'selection' }, '');
                     showScreen('selection-screen');
                     return;
@@ -536,30 +583,26 @@
             }
         }
 
-        // UPDATE: 10 घंटे का लोकल स्टोरेज लॉजिक ऐड किया गया और स्पेस/कैपिटल इग्नोर किया गया
         function checkAndShowNotification(studentId) {
             let bell = document.getElementById("notification-bell");
-            // सारा स्पेस हटा कर और लोअरकेस करके आईडी को क्लीन करना
             let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, '');
             let foundMessage = null;
 
-            // 10 घंटे के Cooldown का चेक
             let cooldownKey = 'bell_cooldown_' + enteredIdClean;
             let savedTime = localStorage.getItem(cooldownKey);
             
             if (savedTime) {
                 let elapsed = Date.now() - parseInt(savedTime);
-                if (elapsed < 10 * 60 * 60 * 1000) { // 10 Hours
+                if (elapsed < 10 * 60 * 60 * 1000) { 
                     bell.style.display = "none";
-                    return; // अगले 10 घंटे तक बेल नहीं दिखेगा
+                    return; 
                 } else {
-                    localStorage.removeItem(cooldownKey); // 10 घंटे पूरे हो गए, टाइमर डिलीट
+                    localStorage.removeItem(cooldownKey); 
                 }
             }
 
             if (window.studentMessages) {
                 for (let savedId in window.studentMessages) {
-                    // सेव की हुई आईडी का भी स्पेस हटा कर और लोअरकेस करके मिलान करना
                     if (savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean) {
                         foundMessage = window.studentMessages[savedId];
                         break;
@@ -570,22 +613,19 @@
             if (foundMessage) {
                 bell.style.display = "block";
                 bell.dataset.message = foundMessage;
-                bell.dataset.clicks = "0"; // क्लिक काउंटर सेट
+                bell.dataset.clicks = "0"; 
                 
                 let dot = document.getElementById("bell-dot");
-                if(dot) dot.style.display = "block"; // सुनिश्चित करें कि नया मैसेज आने पर डॉट दिखे
+                if(dot) dot.style.display = "block"; 
             } else {
                 bell.style.display = "none";
             }
         }
 
-        // UPDATE: पहली बार और दूसरी बार क्लिक करने का लॉजिक
         function openNotificationModal() {
             let bell = document.getElementById("notification-bell");
-            // नोटिफिकेशन के लिए भी क्लीन आईडी का उपयोग
             let studentId = document.getElementById("student-id").value.trim().toLowerCase().replace(/\s+/g, '');
             
-            // क्लिक की गिनती बढ़ाएं
             let currentClicks = parseInt(bell.dataset.clicks || "0");
             currentClicks++;
             bell.dataset.clicks = currentClicks.toString();
@@ -593,10 +633,8 @@
             let dot = document.getElementById("bell-dot");
             
             if (currentClicks === 1) {
-                // पहली बार क्लिक: सिर्फ रेड डॉट हटेगा
                 if(dot) dot.style.display = "none";
             } else if (currentClicks >= 2) {
-                // दूसरी बार (या अधिक) क्लिक: बेल पूरी तरह गायब और 10 घंटे का टाइमर सेव
                 bell.style.display = "none";
                 localStorage.setItem('bell_cooldown_' + studentId, Date.now().toString());
             }
@@ -630,12 +668,10 @@
             if (!studentId) { showModal("Please, 👉 Enter Your id "); return; }
 
             let isIdValid = false;
-            // सारा स्पेस हटा कर और लोअरकेस करके आईडी को क्लीन करना
             let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, ''); 
 
             if (window.validStudentIDs) {
                 isIdValid = window.validStudentIDs.some(function(savedId) {
-                    // सेव की हुई आईडी का भी स्पेस हटा कर और लोअरकेस करके मिलान करना
                     return savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean;
                 });
             }
@@ -806,21 +842,24 @@
         }
 
         /* ========================================================== */
-        /* NEW FEATURES LOGIC: Screen Mode & Full Screen Mode         */
+        /* GLOBAL SCREEN MODE & FULL SCREEN MODE LOGIC                */
         /* ========================================================== */
 
         function toggleThemePopup() {
             document.getElementById('theme-popup').classList.toggle('hidden');
+            document.getElementById('theme-overlay').classList.toggle('hidden');
         }
 
         function applyLightMode() {
-            document.getElementById('quiz-screen').classList.add('light-mode-active');
+            document.body.classList.add('light-mode-active');
             document.getElementById('theme-popup').classList.add('hidden');
+            document.getElementById('theme-overlay').classList.add('hidden');
         }
 
         function applyDarkMode() {
-            document.getElementById('quiz-screen').classList.remove('light-mode-active');
+            document.body.classList.remove('light-mode-active');
             document.getElementById('theme-popup').classList.add('hidden');
+            document.getElementById('theme-overlay').classList.add('hidden');
         }
 
         function toggleFullScreen() {
@@ -841,7 +880,6 @@
             }
         }
 
-        // Full Screen Event Listener - अगर छात्र Esc बटन दबा कर फुल स्क्रीन से बाहर आये
         document.addEventListener('fullscreenchange', (event) => {
             let btn = document.getElementById("btn-fullscreen");
             if (!document.fullscreenElement) {
@@ -867,9 +905,6 @@
                 userAnswers = new Array(currentQuestions.length).fill(null);
                 currentQIndex = 0;
                 window.currentQuizFinished = false;
-
-                // Ensure Dark mode is default on start
-                applyDarkMode();
 
                 history.pushState({ screen: 'quiz' }, '');
                 showScreen('quiz-screen');
@@ -958,11 +993,7 @@
         function submitQuiz() {
             clearInterval(timerInterval);
             
-            // Remove Light Theme so that Result Screen displays in Dark Mode correctly
-            applyDarkMode(); 
-
             let studentName = document.getElementById("student-name").value;
-            let studentId = document.getElementById("student-id").value;
             let total = currentQuestions.length;
             let attempted = userAnswers.filter(ans => ans !== null).length;
             
@@ -973,7 +1004,6 @@
 
             document.getElementById("pre-submit-details").innerHTML = `
                 <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">नाम:</strong> ${studentName}</div>
-                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">ID:</strong> ${studentId}</div>
                 <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">इस DPP में कुल प्रश्न:</strong> ${total}</div>
                 <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">आपने अटेम्प्ट किये:</strong> <span style="color:#38bdf8; font-weight:bold;">${attempted}</span></div>
                 <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">कुल लिया गया समय:</strong> ${timeTakenStr}</div>
@@ -1049,17 +1079,15 @@
             showScreen('result-screen');
 
             document.getElementById("res-name").innerText = `विद्यार्थी: ${studentName}`;
-            document.getElementById("res-id-display").innerText = `ID: ${studentId}`;
             document.getElementById("res-score").innerText = `${score} / ${total}`;
             document.getElementById("res-percent").innerText = `कुल प्राप्तांक: ${percent}%`;
 
             generateSummary();
         }
 
-        // UPDATE: Home बटन दबाने पर अब सेटअप रिसेट हो जाएगा
         function goHome() {
             resetSetupScreen();
-            window.currentQuizFinished = false; // स्टेट को पुनः नार्मल करें
+            window.currentQuizFinished = false; 
             history.pushState({ screen: 'selection' }, '');
             showScreen('selection-screen');
         }
@@ -1083,13 +1111,13 @@
                 let isAttempted = userAnsIdx !== null;
                 let isCorrect = isAttempted && userAnsIdx === q.correct;
                 
-                let mark = isCorrect ? "✔️ सही" : "❌ गलत";
+                let mark = isCorrect ? "✅ सही" : "❌ गलत";
                 let markClass = isCorrect ? "ans-correct" : "ans-wrong";
                 
                 let userAnsText = isAttempted ? String.fromCharCode(65+userAnsIdx) + ") " + q.options[userAnsIdx] : "उत्तर नहीं दिया गया";
                 let correctAnsText = String.fromCharCode(65+q.correct) + ") " + q.options[q.correct];
 
-                let optionsHtml = `<div style="margin: 10px 0; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">`;
+                let optionsHtml = `<div style="margin: 10px 0; font-size: 0.95rem; line-height: 1.6; opacity: 0.8;">`;
                 q.options.forEach((opt, oIdx) => {
                     optionsHtml += `<div>${String.fromCharCode(65+oIdx)}) ${opt}</div>`;
                 });
@@ -1097,17 +1125,17 @@
 
                 let html = `
                     <div class="summary-item">
-                        <div style="margin-bottom: 5px; color: #ffffff; font-size: 1.05rem;">
+                        <div style="margin-bottom: 5px; font-size: 1.05rem;">
                             <strong>प्रश्न ${idx + 1}:</strong> ${q.question} <span class="${markClass}">(${mark})</span>
                         </div>
                         ${optionsHtml}
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div style="background: rgba(0,0,0,0.1); border: 1px solid rgba(150,150,150,0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
                             <div style="font-size: 0.95rem; margin-bottom: 5px;">
-                                <strong style="color: #cbd5e1;">छात्र द्वारा दिया गया उत्तर:</strong> 
+                                <strong style="opacity: 0.8;">आपका उत्तर 👉</strong> 
                                 <span style="${!isCorrect ? 'color:#ef4444; font-weight:600;' : 'color:#10b981; font-weight:600;'}">${userAnsText}</span>
                             </div>
                             <div style="color: #10b981; font-size: 0.95rem;">
-                                <strong>असली उत्तर:</strong> <span style="font-weight:600;">${correctAnsText}</span>
+                                <strong>असली उत्तर 👉</strong> <span style="font-weight:600;">${correctAnsText}</span>
                             </div>
                         </div>
                     </div>
