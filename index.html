@@ -536,14 +536,15 @@
             }
         }
 
-        // UPDATE: 10 घंटे का लोकल स्टोरेज लॉजिक ऐड किया गया
+        // UPDATE: 10 घंटे का लोकल स्टोरेज लॉजिक ऐड किया गया और स्पेस/कैपिटल इग्नोर किया गया
         function checkAndShowNotification(studentId) {
             let bell = document.getElementById("notification-bell");
-            let enteredIdLower = studentId.toLowerCase();
+            // सारा स्पेस हटा कर और लोअरकेस करके आईडी को क्लीन करना
+            let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, '');
             let foundMessage = null;
 
             // 10 घंटे के Cooldown का चेक
-            let cooldownKey = 'bell_cooldown_' + enteredIdLower;
+            let cooldownKey = 'bell_cooldown_' + enteredIdClean;
             let savedTime = localStorage.getItem(cooldownKey);
             
             if (savedTime) {
@@ -558,7 +559,8 @@
 
             if (window.studentMessages) {
                 for (let savedId in window.studentMessages) {
-                    if (savedId.toLowerCase() === enteredIdLower) {
+                    // सेव की हुई आईडी का भी स्पेस हटा कर और लोअरकेस करके मिलान करना
+                    if (savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean) {
                         foundMessage = window.studentMessages[savedId];
                         break;
                     }
@@ -580,7 +582,8 @@
         // UPDATE: पहली बार और दूसरी बार क्लिक करने का लॉजिक
         function openNotificationModal() {
             let bell = document.getElementById("notification-bell");
-            let studentId = document.getElementById("student-id").value.trim().toLowerCase();
+            // नोटिफिकेशन के लिए भी क्लीन आईडी का उपयोग
+            let studentId = document.getElementById("student-id").value.trim().toLowerCase().replace(/\s+/g, '');
             
             // क्लिक की गिनती बढ़ाएं
             let currentClicks = parseInt(bell.dataset.clicks || "0");
@@ -627,11 +630,13 @@
             if (!studentId) { showModal("Please, 👉 Enter Your id "); return; }
 
             let isIdValid = false;
-            let enteredIdLower = studentId.toLowerCase(); 
+            // सारा स्पेस हटा कर और लोअरकेस करके आईडी को क्लीन करना
+            let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, ''); 
 
             if (window.validStudentIDs) {
                 isIdValid = window.validStudentIDs.some(function(savedId) {
-                    return savedId.toLowerCase() === enteredIdLower;
+                    // सेव की हुई आईडी का भी स्पेस हटा कर और लोअरकेस करके मिलान करना
+                    return savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean;
                 });
             }
 
