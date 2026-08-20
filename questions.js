@@ -1,694 +1,1120 @@
-// यह उन छात्रों की पंजीकृत आईडी (IDs) की लिस्ट है जो DPP दे सकते हैं
-window.validStudentIDs = [
-  "Cm2007",
-  "Omi2009",
-  "234051190003",
-  "pk2010",
-  "skroy",
-  "Nc 2009",
-  "1234",
-  "Prity.rc2010.classes",
-  "29/05/2009",
-  "Le beta",
-  "N Roy 99991",
-  "2026 -27",
-  "amanraosahab",
-  "9561",
-  "J245",
-  "Sharma pritee 8210",
-  "3763",
-  "Ut8406",
-  "Juli123",
-  "@neha roy12345",
-  "1234 Tanya",
-  "Khushbu 1234",
-  "22/08/....",
-  "2009",
-  "123456",
-  "Yadav123",
-  "Ahiran 302",
-  "sak1234",
-  "8210",
-  "848506",
-  "Lakshmi @10",
-  "rcprince",
-  "Ankush kumar",
-  "4-2-2009",
-  "123456",
-  "62060",
-  "Pujak92",
-  "Sk8485",
-  "62060",
-  "Anjali",
-  "123456"
-];
-// --- नया फीचर: पर्सनल मैसेज लिस्ट ---
-window.studentMessages = {
-    "omi2009": " बनिया रिजल्ट जे न अलो त बुझ जाइहे 🫨",
-    "pk2010" : " एकदम ज्यादा से ज्यादा सही होए के चाहिएयइ 🤨"
-    // जिसके सामने कुछ नहीं लिखना है, उसकी ID यहाँ डालने की जरूरत नहीं है।
-};
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAINBOW CLASSES - DPP Portal</title>
+    <style>
+        /* CSS: न्यू डार्क ब्लू-ग्रे थीम (Rainbow Classes Custom Theme) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; user-select: none; }
+        input { user-select: auto; }
+        
+        /* 1. बैकग्राउंड: डार्क ब्लू-ग्रे ग्रेडिएंट */
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; background-attachment: fixed; }
+        
+        /* टॉप में फिट करने के लिए margin-top: 0 किया गया है */
+        .container { width: 100%; max-width: 600px; padding: 15px 15px 20px 15px; margin-top: 0; }
+        
+        /* 2. मेन कंटेनर (Glass Panel): सेमी-ट्रांसपेरेंट डार्क ब्लू विद हल्का वाइट बॉर्डर */
+        .card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 25px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); margin-bottom: 20px; animation: fadeIn 0.4s ease-out; position: relative; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-weight: 500; margin-bottom: 10px; color: #ffffff; font-size: 0.95rem; }
+        
+        /* 3. इनपुट फील्ड्स: पारदर्शी काला */
+        .input-group input { width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; font-size: 1rem; color: #ffffff; outline: none; backdrop-filter: blur(8px); transition: all 0.3s ease; }
+        .input-group input::placeholder { color: rgba(255, 255, 255, 0.6); }
+        .input-group input:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); background: rgba(0, 0, 0, 0.5); }
+        
+        /* डार्क ग्लास सेलेक्ट बॉक्स */
+        .glass-select-box { width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; font-size: 1rem; color: #ffffff; cursor: pointer; backdrop-filter: blur(8px); transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; }
+        .glass-select-box:hover { border-color: #38bdf8; background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 12px rgba(56, 189, 248, 0.2); }
+        .select-icon { font-size: 0.8rem; color: #ffffff; }
+        
+        /* 4. बटन्स: प्राइमरी (ब्लू), सक्सेस (ग्रीन), सेकेंडरी (ग्रे) */
+        .btn { width: 100%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #ffffff; border: none; padding: 15px; border-radius: 12px; font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5); filter: brightness(1.1); }
+        .btn:active { transform: scale(0.92); box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3); }
 
-// ---------------------------------------------------------
-// DPP QUESTION DATABASE (विषय कोड के अनुसार)
-// 1 = Physics, 2 = Chemistry, 3 = Mathematics, 
-// 4 = Biology, 5 = Hindi, 6 = English
-// ---------------------------------------------------------
-window.quizDatabase = {
-    1: {}, 
-    2: {}, 
-    3: {}, 
-    4: {}, 
-    5: {}, 
-    6: {}  
-};
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35); }
+        .btn-success:hover { box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5); }
 
-// =========================================================
-// 👇👇 यहाँ से नीचे अपना AI द्वारा जनरेट किया गया क्वेश्चन कोड पेस्ट करते जाएँ 👇👇
-// ============================================
-window.quizDatabase[2].ch_3 = window.quizDatabase[2].ch_3 || {}; 
-window.quizDatabase[2].ch_3.dpp_2 = [
-  {
-    question: "फैराडे के अनुसार 1 मोल इलेक्ट्रॉन का आवेश परिकलित करने का सही व्यंजक कौन-सा है?",
-    options: [
-      "1.6 × 10⁻¹⁹ C × 6.022 × 10²³",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1.6 × 10⁻¹⁹ C</span><span style='border-top:1px solid; display:block;'>6.022 × 10²³</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6.022 × 10²³</span><span style='border-top:1px solid; display:block;'>1.6 × 10⁻¹⁹ C</span></span>",
-      "1.6 × 10⁻¹⁹ C + 6.022 × 10²³"
-    ],
-    correct: 0
-  },
-  {
-    question: "1 मोल इलेक्ट्रॉन का यथार्थ (सटीक) आवेश कितना कूलॉम होता है?",
-    options: [
-      "96500 C",
-      "96494 C",
-      "96000 C",
-      "95494 C"
-    ],
-    correct: 1
-  },
-  {
-    question: "1 मोल इलेक्ट्रॉन का लगभग आवेश कितना कूलॉम (C) माना जाता है?",
-    options: [
-      "95500 C",
-      "96000 C",
-      "96500 C",
-      "97500 C"
-    ],
-    correct: 2
-  },
-  {
-    question: "1 मोल इलेक्ट्रॉन का आवेश कितने फैराडे (F) के बराबर होता है?",
-    options: [
-      "0.5 F",
-      "2 F",
-      "1.5 F",
-      "1 F"
-    ],
-    correct: 3
-  },
-  {
-    question: "1 फैराडे (F) का मान निम्नलिखित में से कितने कूलॉम के बराबर होता है?",
-    options: [
-      "96500 C",
-      "96494 F",
-      "1.6 × 10⁻¹⁹ C",
-      "6.022 × 10²³ C"
-    ],
-    correct: 0
-  },
-  {
-    question: "माइकल फैराडे ने विद्युत अपघटन के संबंध में कुल कितने नियम दिए?",
-    options: [
-      "एक",
-      "तीन",
-      "दो",
-      "चार"
-    ],
-    correct: 2
-  },
-  {
-    question: "फैराडे के प्रथम नियमानुसार, विद्युत अपघटन के दौरान इलेक्ट्रोड पर मुक्त होने वाले पदार्थ की मात्रा किसके समानुपाती होती है?",
-    options: [
-      "विलयन के आयतन के",
-      "प्रवाहित विद्युत आवेश की मात्रा के",
-      "इलेक्ट्रोड के क्षेत्रफल के",
-      "विलयन के ताप के"
-    ],
-    correct: 1
-  },
-  {
-    question: "फैराडे के प्रथम नियम के अनुसार मुक्त पदार्थ की मात्रा (W) तथा प्रवाहित आवेश (Q) के बीच सही संबंध कौन-सा है?",
-    options: [
-      "W ∝ Q",
-      "W ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>Q</span></span>",
-      "W ∝ Q²",
-      "W ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>Q²</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "फैराडे के प्रथम नियम के सूत्र W = Z Q में प्रतीक Z किसे निरूपित करता है?",
-    options: [
-      "प्रवाहित धारा",
-      "समय",
-      "विद्युत रासायनिक तुल्यांक",
-      "विद्युत आवेश"
-    ],
-    correct: 2
-  },
-  {
-    question: "फैराडे के प्रथम नियम को व्यक्त करने वाला मुख्य सूत्र कौन-सा है?",
-    options: [
-      "W = Z × <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I</span><span style='border-top:1px solid; display:block;'>t</span></span>",
-      "W = Z × I × t",
-      "W = Z × <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>t</span><span style='border-top:1px solid; display:block;'>I</span></span>",
-      "W = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I × t</span><span style='border-top:1px solid; display:block;'>Z</span></span>"
-    ],
-    correct: 1
-  },
-  {
-    question: "सूत्र W = Z I t के अनुसार, इलेक्ट्रोड पर मुक्त पदार्थ की मात्रा (W) प्रवाहित धारा (I) के किस प्रकार संबंधित होती है?",
-    options: [
-      "व्युत्क्रमानुपाती",
-      "समानुपाती",
-      "वर्ग के समानुपाती",
-      "स्वतंत्र"
-    ],
-    correct: 1
-  },
-  {
-    question: "यदि किसी विद्युत अपघट्य के विलयन में 1 एम्पीयर की धारा 1 सेकंड तक प्रवाहित की जाए, तो मुक्त पदार्थ की मात्रा (W) किसके बराबर होती है?",
-    options: [
-      "विद्युत आवेश (Q)",
-      "प्रवाहित धारा (I)",
-      "समय (t)",
-      "विद्युत रासायनिक तुल्यांक (Z)"
-    ],
-    correct: 3
-  },
-  {
-    question: "किसी पदार्थ का विद्युत रासायनिक तुल्यांक उसकी वह मात्रा है जो कितने एम्पीयर की धारा 1 सेकंड तक प्रवाहित करने पर प्राप्त होती है?",
-    options: [
-      "2 एम्पीयर",
-      "10 एम्पीयर",
-      "1 एम्पीयर",
-      "0.5 एम्पीयर"
-    ],
-    correct: 2
-  },
-  {
-    question: "1 एम्पीयर की धारा कितने समय तक प्रवाहित करने पर प्राप्त पदार्थ की मात्रा विद्युत रासायनिक तुल्यांक (Z) के बराबर होती है?",
-    options: [
-      "1 सेकंड",
-      "60 सेकंड",
-      "10 सेकंड",
-      "100 सेकंड"
-    ],
-    correct: 0
-  },
-  {
-    question: "फैराडे के द्वितीय नियम के अनुसार, विभिन्न विद्युत अपघट्य के विलयनों को किस क्रम में जोड़ा जाता है?",
-    options: [
-      "समानांतर क्रम में",
-      "श्रेणीक्रम में",
-      "मिश्रित क्रम में",
-      "किसी भी क्रम में"
-    ],
-    correct: 1
-  },
-  {
-    question: "फैराडे के द्वितीय नियम के अनुसार, समान मात्रा में विद्युत आवेश प्रवाहित करने पर इलेक्ट्रोड पर मुक्त होने वाले पदार्थ की मात्रा (W) किसके समानुपाती होती है?",
-    options: [
-      "परमाणु संख्या के",
-      "अणु भार के",
-      "तुल्यांकी भार (E) के",
-      "प्रवाहित धारा के समय के"
-    ],
-    correct: 2
-  },
-  {
-    question: "फैराडे के द्वितीय नियम को व्यक्त करने वाला मुख्य गणितीय संबंध कौन-सा है?(E- तुल्यांकी भार, W- पदार्थ की मात्रा)",
-    options: [
-      "W ∝ E",
-      "W ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>E</span></span>",
-      "W ∝ E²",
-      "W ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>E²</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "यदि दो भिन्न विद्युत अपघट्यों के विलयन से समान विद्युत धारा प्रवाहित की जाए तथा मुक्त पदार्थों की मात्राएँ W₁ और W₂ एवं उनके तुल्यांकी भार E₁ और E₂ हों, तो सही अनुपात कौन-सा है?",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>E₁</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₂</span><span style='border-top:1px solid; display:block;'>W₂</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₂</span><span style='border-top:1px solid; display:block;'>E₁</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₁</span><span style='border-top:1px solid; display:block;'>E₂</span></span>",
-      "W₁ × W₂ = E₁ × E₂"
-    ],
-    correct: 2
-  },
-  {
-    question: "किसी पदार्थ का विद्युत-रासायनिक तुल्यांक (Z) और उसका तुल्यांकी भार (E) आपस में किस सूत्र द्वारा संबंधित होते हैं?",
-    options: [
-      "Z ∝ E",
-      "Z ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>E</span></span>",
-      "Z ∝ E²",
-      "Z ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>E²</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "विद्युत अपघट्य के विलयनों में समान विद्युत आवेश प्रवाहित करने पर <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span>, <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Z₁</span><span style='border-top:1px solid; display:block;'>Z₂</span></span> और <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₁</span><span style='border-top:1px solid; display:block;'>E₂</span></span> के बीच सही संबंध कौन-सा है?",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Z₂</span><span style='border-top:1px solid; display:block;'>Z₁</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₁</span><span style='border-top:1px solid; display:block;'>E₂</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Z₁</span><span style='border-top:1px solid; display:block;'>Z₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₁</span><span style='border-top:1px solid; display:block;'>E₂</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Z₁</span><span style='border-top:1px solid; display:block;'>Z₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₂</span><span style='border-top:1px solid; display:block;'>E₁</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Z₂</span><span style='border-top:1px solid; display:block;'>Z₁</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₂</span><span style='border-top:1px solid; display:block;'>E₁</span></span>"
-    ],
-    correct: 1
-  },
-  {
-    question: "किसी पदार्थ का विद्युत-रासायनिक तुल्यांक (Z) उसके तुल्यांकी भार (E) के क्या होता है?",
-    options: [
-      "व्युत्क्रमानुपाती",
-      "वर्ग के व्युत्क्रमानुपाती",
-      "समानुपाती",
-      "अपरिवर्तित"
-    ],
-    correct: 2
-  },
-  {
-    question: "वह सेल जो रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलता है, क्या कहलाता है?",
-    options: [
-      "विद्युत अपघटनी सेल",
-      "विद्युत रासायनिक सेल",
-      "प्राथमिक सेल",
-      "द्वितीयक सेल"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल का मुख्य कार्य क्या है?",
-    options: [
-      "विद्युत ऊर्जा को रासायनिक ऊर्जा में बदलना",
-      "ऊष्मा ऊर्जा को विद्युत ऊर्जा में बदलना",
-      "रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलना",
-      "यांत्रिक ऊर्जा को विद्युत ऊर्जा में बदलना"
-    ],
-    correct: 2
-  },
-  {
-    question: "विद्युत रासायनिक सेल के निर्माण में जिंक (Zn) की छड़ को किस विलयन में डुबोया जाता है?",
-    options: [
-      "1 मोल CuSO₄",
-      "1 मोल ZnSO₄",
-      "1 मोल KCl",
-      "1 मोल KNO₃"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल में कॉपर (Cu) की छड़ को किस विलयन में डुबोया जाता है?",
-    options: [
-      "1 मोल CuSO₄",
-      "1 मोल ZnSO₄",
-      "1 मोल NaCl",
-      "1 मोल KCl"
-    ],
-    correct: 0
-  },
-  {
-    question: "विद्युत रासायनिक सेल में प्रयोग होने वाला प्रत्येक बीकर क्या कहलाता है?",
-    options: [
-      "पूर्ण सेल",
-      "अर्धसेल",
-      "सांद्रण सेल",
-      "मानकीकृत सेल"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल में दोनों छड़ों को आपस में किससे जोड़ा जाता है?",
-    options: [
-      "तांबे के तार और वोल्टमीटर से",
-      "लवण सेतु से",
-      "प्लैटिनम के तार से",
-      "केवल कुंजी से"
-    ],
-    correct: 0
-  },
-  {
-    question: "विद्युत रासायनिक सेल में दो बीकरों के बीच संबंध स्थापित करने के लिए किसका प्रयोग किया जाता है?",
-    options: [
-      "वोल्टमीटर",
-      "तांबे का तार",
-      "लवण सेतु",
-      "एमीटर"
-    ],
-    correct: 2
-  },
-  {
-    question: "विद्युत रासायनिक सेल में लवण सेतु का मुख्य कार्य क्या है?",
-    options: [
-      "केवल इलेक्ट्रॉनों का प्रवाह करना",
-      "दोनों विलयनों के बीच विद्युत संपर्क कायम करना",
-      "छड़ों का भार बढ़ाना",
-      "धारा के मान को शून्य करना"
-    ],
-    correct: 1
-  },
-  {
-    question: "लवण सेतु किस प्रकार की नलिका होती है?",
-    options: [
-      "V-आकार की",
-      "U-आकार की",
-      "L-आकार की",
-      "सीधी नलिका"
-    ],
-    correct: 1
-  },
-  {
-    question: "लवण सेतु बनाने के लिए निम्नलिखित में से किस लवण का उपयोग किया जाता है?",
-    options: [
-      "KNO₃",
-      "ZnSO₄",
-      "CuSO₄",
-      "H₂SO₄"
-    ],
-    correct: 0
-  },
-  {
-    question: "निम्नलिखित में से कौन-सा लवण, KNO₃ या NaCl के साथ मिलकर लवण सेतु के रूप में प्रयुक्त होता है?",
-    options: [
-      "ZnSO₄",
-      "CuSO₄",
-      "KCl",
-      "CaSO₄"
-    ],
-    correct: 2
-  },
-  {
-    question: "विद्युत रासायनिक सेल में जिंक इलेक्ट्रोड पर प्रत्येक जिंक परमाणु कितने इलेक्ट्रॉन त्यागकर जिंक आयन (Zn²⁺) में परिवर्तित होता है?",
-    options: [
-      "1 इलेक्ट्रॉन",
-      "2 इलेक्ट्रॉन",
-      "3 इलेक्ट्रॉन",
-      "4 इलेक्ट्रॉन"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल के जिंक इलेक्ट्रोड पर होने वाली ऑक्सीकरण अभिक्रिया का सही समीकरण निम्नलिखित में से कौन-सा है?",
-    options: [
-      "Zn(s) → Zn²⁺(aq) + 2e⁻",
-      "Zn²⁺(aq) + 2e⁻ → Zn(s)",
-      "Cu²⁺(aq) + 2e⁻ → Cu(s)",
-      "Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)"
-    ],
-    correct: 0
-  },
-  {
-    question: "विद्युत रासायनिक सेल में जिंक इलेक्ट्रोड द्वारा त्यागे गए इलेक्ट्रॉन चालक तार से होते हुए किस इलेक्ट्रोड की छड़ पर चले जाते हैं?",
-    options: [
-      "जस्ते (Zn) की छड़ पर",
-      "तांबे (Cu) की छड़ पर",
-      "लोहे (Fe) की छड़ पर",
-      "प्लैटिनम (Pt) की छड़ पर"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल की जिंक इलेक्ट्रोड अभिक्रिया के दौरान निर्मित जिंक आयन (Zn²⁺) किस विलयन में चले जाते हैं?",
-    options: [
-      "CuSO₄ के विलयन में",
-      "ZnSO₄ के विलयन में",
-      "NaCl के विलयन में",
-      "KCl के विलयन में"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल में कॉपर इलेक्ट्रोड की ओर Cu²⁺ आयन कॉपर छड़ पर पहुँचकर कितने इलेक्ट्रॉन ग्रहण करते हैं?",
-    options: [
-      "1 इलेक्ट्रॉन",
-      "2 इलेक्ट्रॉन",
-      "3 इलेक्ट्रॉन",
-      "4 इलेक्ट्रॉन"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल के कॉपर इलेक्ट्रोड पर होने वाली अपचयन अभिक्रिया का सही निरूपण कौन-सा है?",
-    options: [
-      "Cu(s) → Cu²⁺(aq) + 2e⁻",
-      "Cu²⁺(aq) + 2e⁻ → Cu(s)",
-      "Zn(s) → Zn²⁺(aq) + 2e⁻",
-      "Cu²⁺(aq) → Cu(s) + 2e⁻"
-    ],
-    correct: 1
-  },
-  {
-    question: "विद्युत रासायनिक सेल में कॉपर आयन (Cu²⁺) इलेक्ट्रॉन ग्रहण करके कॉपर (Cu) के रूप में कहाँ जमा होते हैं?",
-    options: [
-      "जिंक की छड़ पर",
-      "कॉपर की छड़ पर",
-      "लवण सेतु में",
-      "बीकर के पेंदे में"
-    ],
-    correct: 1
-  }
-];
-window.quizDatabase[1].ch_3 = window.quizDatabase[1].ch_3 || {}; 
-window.quizDatabase[1].ch_3.dpp_2 = [
-  {
-    question: "चालक पर एकांक विद्युत क्षेत्र आरोपित करने से उत्पन्न संवहन वेग (अपवाह वेग) को क्या कहते हैं?",
-    options: [
-      "विद्युत धारा",
-      "गतिशीलता",
-      "विश्रांति काल",
-      "इलेक्ट्रॉन घनत्व"
-    ],
-    correct: 1
-  },
-  {
-    question: "गतिशीलता का SI मात्रक निम्नलिखित में से कौन-सा होता है?",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C.s</span><span style='border-top:1px solid; display:block;'>kg</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C.kg</span><span style='border-top:1px solid; display:block;'>s</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>kg.s</span><span style='border-top:1px solid; display:block;'>C</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C</span><span style='border-top:1px solid; display:block;'>kg</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "गतिशीलता का SI मात्रक के अतिरिक्त निम्नलिखित में से कौन-सा है?",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>C</span><span style='border-top:1px solid; display:block;'>kgs</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>m²</span><span style='border-top:1px solid; display:block;'>Vs</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>m²s</span><span style='border-top:1px solid; display:block;'>V</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>kg</span><span style='border-top:1px solid; display:block;'>C.s</span></span>"
-    ],
-    correct: 1
-  },
-  {
-    question: "किसी चालक में गतिशीलता और विश्रांति काल के बीच क्या संबंध होता है?",
-    options: [
-      "गतिशीलता, विश्रांति काल के व्युत्क्रमानुपाती होती है",
-      "गतिशीलता, विश्रांति काल के समानुपाती होती है",
-      "गतिशीलता, विश्रांति काल के वर्ग के समानुपाती होती है",
-      "दोनों के बीच कोई संबंध नहीं होता है"
-    ],
-    correct: 1
-  },
-  {
-    question: "किसी चालक पर विद्युत क्षेत्र आरोपित करने पर इलेक्ट्रॉन किस दिशा में अपवाह वेग (Vd) से गति करने लगते हैं?",
-    options: [
-      "विद्युत क्षेत्र की दिशा में",
-      "विद्युत क्षेत्र की विपरीत दिशा में",
-      "लंबवत दिशा में",
-      "किसी भी यादृच्छिक दिशा में"
-    ],
-    correct: 1
-  },
-  {
-    question: "किसी चालक में बहने वाली विद्युत धारा (I), इलेक्ट्रॉन घनत्व (n), अनुप्रस्थ काट का क्षेत्रफल (A) और अपवाह वेग (Vd) के बीच सही संबंध क्या है?",
-    options: [
-      "I = AneVd",
-      "I = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Ane</span><span style='border-top:1px solid; display:block;'>Vd</span></span>",
-      "I = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Vd</span><span style='border-top:1px solid; display:block;'>Ane</span></span>",
-      "I = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>An</span><span style='border-top:1px solid; display:block;'>eVd</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "विद्युत धारा (I) और अपवाह वेग (Vd) के बीच संबंध के आधार पर विद्युत धारा किस राशि के समानुपाती होती है?",
-    options: [
-      "केवल इलेक्ट्रॉन घनत्व (n) के",
-      "केवल अनुप्रस्थ काट के क्षेत्रफल (A) के",
-      "केवल अपवाह वेग (Vd) के",
-      "इन सभी के (n, A और Vd)"
-    ],
-    correct: 3
-  },
-  {
-    question: "किसी चालक में धारा घनत्व (J) और संवहन वेग (Vd) के बीच संबंध दर्शाने वाला सही सूत्र कौन-सा है?",
-    options: [
-      "J = neVd",
-      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>ne</span><span style='border-top:1px solid; display:block;'>Vd</span></span>",
-      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>Vd</span><span style='border-top:1px solid; display:block;'>ne</span></span>",
-      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>n</span><span style='border-top:1px solid; display:block;'>eVd</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "ओम का नियम किन राशियों के बीच संबंध स्थापित करता है?",
-    options: [
-      "विद्युत धारा और विभवांतर",
-      "आवेश और समय",
-      "प्रतिरोध और लंबाई",
-      "विद्युत क्षेत्र और क्षेत्रफल"
-    ],
-    correct: 0
-  },
-  {
-    question: "ओम के नियम के अनुसार यदि किसी चालक की भौतिक अवस्थाओं (जैसे- ताप, लंबाई, अनुप्रस्थ काट का क्षेत्रफल) को नियत रखा जाए, तो चालक के सिरों पर आरोपित विभवांतर प्रवाहित धारा के कैसा होता है?",
-    options: [
-      "व्युत्क्रमानुपाती",
-      "समानुपाती",
-      "वर्ग के समानुपाती",
-      "अपरिवर्तित"
-    ],
-    correct: 1
-  },
-  {
-    question: "यदि किसी चालक के सिरों पर आरोपित विभवांतर V तथा उससे बहने वाली विद्युत धारा I हो, तो ओम के नियम का सही गणितीय व्यंजक क्या होगा?",
-    options: [
-      "V ∝ I (या V = RI)",
-      "V ∝ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>I</span></span> (या V = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>R</span><span style='border-top:1px solid; display:block;'>I</span></span>)",
-      "V ∝ I² (या V = RI²)",
-      "I ∝ V² (या I = RV²)"
-    ],
-    correct: 0
-  },
-  {
-    question: "ओम के नियम में प्रयुक्त नियतांक R को चालक का क्या कहते हैं?",
-    options: [
-      "विभवांतर",
-      "चालकता",
-      "प्रतिरोध",
-      "विशिष्ट धारा"
-    ],
-    correct: 2
-  },
-  {
-    question: "विभवांतर (V) और विद्युत धारा (I) के मध्य खींचा गया ग्राफ किस प्रकार की रेखा होता है?",
-    options: [
-      "वक्र रेखा",
-      "सरल रेखा",
-      "वृत्ताकार रेखा",
-      "परवलयाकार रेखा"
-    ],
-    correct: 1
-  },
-  {
-    question: "विभवांतर (V) को Y-अक्ष और विद्युत धारा (I) को X-अक्ष पर रखकर खींचे गए ग्राफ की ढाल (Slope = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>V</span><span style='border-top:1px solid; display:block;'>I</span></span>) किसके तुल्य होती है?",
-    options: [
-      "चालकता (σ)",
-      "प्रतिरोध (R)",
-      "धारा घनत्व (J)",
-      "अपवाह वेग (Vd)"
-    ],
-    correct: 1
-  },
-  {
-    question: "यदि Y-अक्ष पर विद्युत धारा (I) और X-अक्ष पर विभवांतर (V) हो, तो धारा-विभवांतर ग्राफ की ढाल (Slope = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I</span><span style='border-top:1px solid; display:block;'>V</span></span>) का मान किसके बराबर होता है?",
-    options: [
-      "R",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>R</span></span>",
-      "R²",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>R²</span></span>"
-    ],
-    correct: 1
-  },
-  {
-    question: "ओम के नियम के सूक्ष्म रूप का सही व्यंजक निम्नलिखित में से कौन-सा है?",
-    options: [
-      "J = σE",
-      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>σ</span><span style='border-top:1px solid; display:block;'>E</span></span>",
-      "J = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E</span><span style='border-top:1px solid; display:block;'>σ</span></span>",
-      "J = σ²E"
-    ],
-    correct: 0
-  },
-  {
-    question: "किसी चालक का वह गुण जिसके कारण वह अपने से होकर प्रवाहित होने वाली धारा में रुकावट डालता है, क्या कहलाता है?",
-    options: [
-      "चालकता",
-      "प्रतिरोध",
-      "विभवांतर",
-      "धारा घनत्व"
-    ],
-    correct: 1
-  },
-  {
-    question: "विभवांतर (V) और विद्युत धारा (I) के पदों में प्रतिरोध (R) का सही सूत्र क्या होता है?",
-    options: [
-      "R = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>V</span><span style='border-top:1px solid; display:block;'>I</span></span>",
-      "R = V.I",
-      "R = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I</span><span style='border-top:1px solid; display:block;'>V</span></span>",
-      "R = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>V.I</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "किसी चालक के प्रतिरोध का SI मात्रक निम्नलिखित में से कौन-सा होता है?",
-    options: [
-      "वोल्ट.एम्पियर",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>वोल्ट</span><span style='border-top:1px solid; display:block;'>एम्पियर</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>एम्पियर</span><span style='border-top:1px solid; display:block;'>वोल्ट</span></span>",
-      "ओम-मीटर"
-    ],
-    correct: 1
-  },
-  {
-    question: "प्रतिरोध का SI मात्रक क्या होता है?",
-    options: [
-      "ओम (Ω)",
-      "फैराड (F)",
-      "हेनरी (H)",
-      "टेसला (T)"
-    ],
-    correct: 0
-  },
-  {
-    question: "किसी चालक का प्रतिरोध निम्नलिखित में से किन कारकों पर निर्भर करता है?",
-    options: [
-      "केवल पदार्थ की प्रकृति पर",
-      "केवल लंबाई और अनुप्रस्थ काट क्षेत्रफल पर",
-      "केवल भौतिक अवस्थाओं (जैसे- ताप) पर",
-      "पदार्थ की प्रकृति, लंबाई, अनुप्रस्थ काट क्षेत्रफल तथा भौतिक अवस्थाओं पर"
-    ],
-    correct: 3
-  },
-  {
-    question: "1 ओम (Ω) का सही मान किसके तुल्य होता है?",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1 वोल्ट</span><span style='border-top:1px solid; display:block;'>1 एम्पियर</span></span> (1 VA⁻¹)",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1 एम्पियर</span><span style='border-top:1px solid; display:block;'>1 वोल्ट</span></span> (1 AV⁻¹)",
-      "1 वोल्ट × 1 एम्पियर (1 VA)",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1 एम्पियर²</span><span style='border-top:1px solid; display:block;'>1 वोल्ट</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "प्रतिरोध किस प्रकार की भौतिक राशि है?",
-    options: [
-      "सदिश राशि",
-      "अदिश राशि",
-      "प्रदेश (टेन्सर) राशि",
-      "इनमें से कोई नहीं"
-    ],
-    correct: 1
-  }
-];
+        .btn-secondary { background: linear-gradient(135deg, #475569, #334155); box-shadow: 0 6px 20px rgba(71, 85, 105, 0.35); }
+        .btn-secondary:hover { box-shadow: 0 8px 25px rgba(71, 85, 105, 0.5); }
+        
+        /* टाइमर बॉक्स: हल्का नीला */
+        .timer-box { font-size: 1rem; font-weight: 600; color: #38bdf8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.25); padding: 6px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; float: right; backdrop-filter: blur(8px); box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); transition: all 0.3s ease; }
+        
+        /* टाइमर का 10 मिनट वाला वार्निंग इफेक्ट */
+        @keyframes alertPulse {
+            0% { box-shadow: 0 0 8px rgba(255, 76, 76, 0.4); border-color: rgba(255, 76, 76, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(255, 76, 76, 0.8); border-color: rgba(255, 76, 76, 1); }
+            100% { box-shadow: 0 0 8px rgba(255, 76, 76, 0.4); border-color: rgba(255, 76, 76, 0.4); }
+        }
+        .timer-warning {
+            animation: alertPulse 1s infinite !important;
+            color: #ff4c4c !important;
+            background: rgba(255, 76, 76, 0.15) !important;
+        }
+
+        .question-text { font-size: 1.15rem; font-weight: 500; margin-top: 45px; margin-bottom: 25px; clear: both; line-height: 1.7; color: #ffffff; transition: color 1.2s ease; }
+        
+        /* 5. क्विज़ ऑप्शंस: ट्रांसपेरेंट डार्क -> सेलेक्ट होने पर ब्लू */
+        .option-item { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 18px; border-radius: 12px; margin-bottom: 14px; cursor: pointer; font-size: 1rem; color: #ffffff; transition: all 0.3s ease; backdrop-filter: blur(8px); }
+        .option-item:hover { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; transform: translateX(5px); }
+        
+        .option-item.selected { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); font-weight: 600; color: #ffffff; transform: scale(1.01); }
+        
+        .nav-btns { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
+        .nav-btns button { width: 48%; }
+        
+        .hidden { display: none !important; }
+        .score-card { text-align: center; }
+        
+        /* 6. स्कोर बैज (पीला/गोल्डन) */
+        .score-badge { font-size: 3.5rem; font-weight: 800; color: #fbbf24; margin: 25px 0; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        /* 7. मोडल बैकग्राउंड ओवरले (डार्क) और ग्लास (स्लेट ग्रे) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 1000; animation: modalFade 0.3s ease-out; }
+        
+        .modal-glass { background: rgba(30, 40, 50, 0.95); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 35px; max-width: 400px; width: 88%; text-align: center; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8); animation: modalScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; position: relative; }
+        
+        .options-glass { padding: 25px !important; max-height: 80vh; }
+        .options-list { overflow-y: auto; max-height: 55vh; text-align: left; padding-right: 8px; margin-bottom: 15px; }
+        
+        /* स्क्रॉलबार */
+        .options-list::-webkit-scrollbar { width: 5px; }
+        .options-list::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+        .options-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
+        .options-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
+        
+        /* लिस्ट ऑप्शन कार्ड्स (मोडल के अंदर) */
+        .option-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px 18px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; font-size: 0.95rem; color: #ffffff; transition: all 0.25s ease; }
+        .option-card:hover { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; color: #ffffff; transform: translateX(5px); }
+        
+        .modal-icon { font-size: 2.8rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
+        .modal-glass p { font-size: 1.05rem; color: #ffffff; margin-bottom: 25px; line-height: 1.6; }
+        
+        @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modalScale { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* RAINBOW CLASSES टॉप सेंटर बैज (एनवेलप स्टाइल) */
+        .card::before, .modal-glass::before {
+            content: "RAINBOW CLASSES";
+            position: absolute;
+            top: -12px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0f172a; 
+            color: #38bdf8; 
+            font-size: 0.65rem; 
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border: 1px solid rgba(56, 189, 248, 0.5); 
+            border-radius: 6px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        /* Summary Box & Modal */
+        @keyframes slideUpPop {
+            0% { transform: translateY(50px) scale(0.9); opacity: 0; }
+            70% { transform: translateY(-10px) scale(1.02); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        
+        .summary-glass {
+            animation: slideUpPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-width: 550px; width: 90%; max-height: 85vh; overflow: hidden; padding: 25px; display: flex;
+            flex-direction: column; background: rgba(30, 40, 50, 0.98); backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+        }
+        
+        .summary-content-scroll { overflow-y: auto; max-height: 65vh; padding-right: 8px; text-align: left; }
+        .summary-content-scroll::-webkit-scrollbar { width: 5px; }
+        .summary-content-scroll::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+        .summary-content-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
+        .summary-content-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
+
+        .summary-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; }
+        .summary-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .ans-correct { color: #10b981; font-weight: bold; }
+        .ans-wrong { color: #ef4444; font-weight: bold; }
+        
+        /* Reminder Card Animation */
+        @keyframes wigglePulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            10% { transform: scale(1.02) rotate(-2deg); }
+            20% { transform: scale(1.02) rotate(2deg); }
+            30% { transform: scale(1.02) rotate(-2deg); }
+            40% { transform: scale(1.02) rotate(2deg); }
+            50% { transform: scale(1) rotate(0deg); }
+        }
+        .reminder-card {
+            background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; padding: 15px 20px;
+            border-radius: 12px; margin-top: 25px; font-size: 1rem; font-weight: bold; text-align: center;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); animation: wigglePulse 2.5s infinite;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .timer-anim { animation: pulseTimer 1s infinite ease-in-out; }
+        @keyframes pulseTimer {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.8; color: #38bdf8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* APPLE DOCK & BELL ICON */
+        .dock-card {
+            background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 10px 25px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); margin-bottom: 20px; animation: fadeIn 0.4s ease-out;
+            display: flex; justify-content: space-between; align-items: center; height: 65px; 
+        }
+        
+        .bell-wrapper {
+            font-size: 1.8rem; position: relative; cursor: pointer; animation: bellRing 2.5s infinite ease-in-out;
+            display: none; transition: transform 0.2s;
+        }
+        .bell-wrapper:hover { transform: scale(1.1); }
+        .red-dot {
+            position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; background: #ef4444;
+            border-radius: 50%; box-shadow: 0 0 8px #ef4444; border: 2px solid #0f172a;
+        }
+
+        @keyframes bellRing {
+            0% { transform: rotate(0); } 10% { transform: rotate(15deg); } 20% { transform: rotate(-15deg); }
+            30% { transform: rotate(10deg); } 40% { transform: rotate(-10deg); } 50%, 100% { transform: rotate(0); }
+        }
+
+        /* ========================================================= */
+        /* NEW FEATURES CSS (Light Mode & Quiz Dock)                 */
+        /* ========================================================= */
+        
+        /* Glass Buttons for Dock */
+        .glass-btn-dock {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff; padding: 8px 16px; border-radius: 15px; cursor: pointer;
+            backdrop-filter: blur(10px); transition: all 0.3s ease; font-weight: 600; font-size: 0.9rem;
+        }
+        .glass-btn-dock:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+        
+        /* Theme Selection Popup */
+        .theme-popup-box {
+            position: absolute; bottom: 120%; left: 0; background: rgba(30, 40, 50, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 6px;
+            display: flex; flex-direction: column; gap: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            z-index: 200; transform-origin: bottom; animation: popUpAnim 0.3s ease-out; min-width: 120px;
+        }
+        @keyframes popUpAnim { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+        
+        .theme-opt {
+            padding: 8px 12px; cursor: pointer; border-radius: 8px; color: #fff; font-size: 0.9rem; font-weight: 500; transition: 0.2s; text-align: center;
+        }
+        .theme-opt:hover { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+
+        /* Light Mode Specifics - एनिमेटेड 1.5 सेकंड ट्रांजिशन के साथ */
+        #quiz-screen { transition: background 1.5s ease-in-out, border-color 1.5s ease-in-out; }
+        #quiz-screen.light-mode-active {
+            background: rgba(248, 250, 252, 0.95) !important;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+        #quiz-screen.light-mode-active .question-text { color: #0f172a; transition: color 1.5s ease-in-out; font-weight: 600; }
+        #quiz-screen.light-mode-active #q-counter { color: #2563eb; transition: color 1.5s ease-in-out;}
+        #quiz-screen.light-mode-active .timer-box { 
+            background: rgba(37, 99, 235, 0.1); color: #2563eb; border-color: rgba(37, 99, 235, 0.3);
+        }
+        #quiz-screen.light-mode-active .option-item {
+            background: #ffffff; border-color: #cbd5e1; color: #1e293b; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 1.5s ease-in-out;
+        }
+        #quiz-screen.light-mode-active .option-item:hover {
+            background: #f1f5f9; border-color: #3b82f6; transform: translateX(5px);
+        }
+        #quiz-screen.light-mode-active .option-item.selected {
+            background: rgba(59, 130, 246, 0.15); border-color: #2563eb; color: #000; font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- INSTRUCTION SCREEN -->
+        <div id="instruction-screen" class="card hidden">
+            <h2 style="margin-bottom: 20px; text-align: center; color: #ef4444; font-size: 1.6rem; letter-spacing: 0.5px; font-weight: bold;">🚨 पढ़ने वाले छात्र ध्यान दें 🚨</h2>
+            <div style="font-size: 1.05rem; color: #ffffff; line-height: 1.7; margin-bottom: 25px; background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="margin-bottom: 15px; color: #cbd5e1; text-align: justify;">
+                    प्रिय छात्रों, आपके शिक्षक आपके उज्ज्वल भविष्य के लिए निरंतर प्रयासरत हैं। आपको प्रतिदिन पढ़ाने, हमारे द्वारा यह <strong>DPP (Daily Practice Problem)</strong> तैयार करने और महत्वपूर्ण प्रश्नों को संकलित करने में बहुत समय और मेहनत लगता है। यह सब केवल आपकी सफलता के लिए किया जा रहा है और आप अच्छे मार्क्स लाये इसके लिए किया जा रहा है।
+                </p>
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
+                <p style="color: #38bdf8; margin-bottom: 8px;"><strong>आपसे आग्रह और निर्देश:</strong></p>
+                <ul style="margin-left: 25px; margin-top: 10px; color: #cbd5e1; list-style-type: disc;">
+                    <li style="margin-bottom: 8px;">पढ़ाई पर पूरा ध्यान केंद्रित करें। आपके शिक्षक द्वारा दिए गए निर्देशों का पालन 100% करें। शिक्षक टेस्ट देने के लिए कहते है तो समय से टेस्ट दीजिये </li>
+                    <li style="margin-bottom: 8px;">प्रतिदिन के <strong>DPP और और होने वाले Tests</strong> में अनिवार्य रूप से भाग लें। इन्हें नजरअंदाज न करें।</li>
+                    <li style="margin-bottom: 8px;">DPP मे दिए जाने वाले टॉपिक को घर पर अच्छे से याद करे।</li>
+                    <li style="margin-bottom: 8px;">शिक्षक आपको राह दिखा सकते हैं, लेकिन उस राह पर चलकर मंजिल पाना आपकी जिम्मेदारी है। एग्जाम अब आपका निकट आ रहा है। आप ईमानदारी से हमारे साथ सारा वर्क कीजिए वरना बाद में पछतावा होगा कि कास हम पढ़ लिए होते और ईमानदारी और मेहनत से पढ़ने वाले बच्चो से मेरा स्पेशल रिक्वेस्ट 🙏 है की please आप सीरियस होकर पढ़िए अभी आपको पता नहीं चलेगा की इतने सारे चीजों को करने से क्या होगा,लेकिन जब বাধ में एग्जाम दीजियेगा तब पता चलेगा की मैंने सही समय पर सही कदम उठाया👍।</li>
+                </ul>
+            </div>
+            <button class="btn btn-success" onclick="proceedToLogin()">Yes, मै अब मेहनत करूँगा🥺(Next)</button>
+        </div>
+
+        <!-- लॉगिन स्क्रीन -->
+        <div id="login-screen" class="card hidden">
+            <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;">Student's identification</h2>
+            <div class="input-group">
+                <label>Student Name(विद्यार्थी का नाम):</label>
+                <input type="text" id="student-name" placeholder="ex-'Chandramani'...">
+            </div>
+            <div class="input-group">
+                <label>विद्यार्थी की आईडी:</label>
+                <input type="text" id="student-id" placeholder="ex-'cm1217'">
+            </div>
+            <button class="btn" onclick="verifyStudent()">Next</button>
+        </div>
+
+        <!-- DPP SETUP SCREEN -->
+        <div id="selection-screen" class="card hidden">
+            <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;">DPP Setup</h2>
+            <div class="input-group">
+                <label>विषय चुनें (Class 12th):</label>
+                <div class="glass-select-box" onclick="openSubjectSelect()">
+                    <span id="subject-text">-- विषय चुनें --</span>
+                    <span class="select-icon">▼</span>
+                </div>
+                <input type="hidden" id="subject-select" value="">
+            </div>
+            <div class="input-group">
+                <label>अध्याय चुनें:</label>
+                <div class="glass-select-box" onclick="openChapterSelect()">
+                    <span id="chapter-text">-- पहले विषय चुनें --</span>
+                    <span class="select-icon">▼</span>
+                </div>
+                <input type="hidden" id="chapter-select" value="">
+            </div>
+            <div class="input-group">
+                <label>DPP चुनें:</label>
+                <div class="glass-select-box" onclick="openQuizSelect()">
+                    <span id="quiz-text">-- पहले अध्याय चुनें --</span>
+                    <span class="select-icon">▼</span>
+                </div>
+                <input type="hidden" id="quiz-select" value="">
+            </div>
+            <button class="btn" onclick="startQuiz()">Start DPP</button>
+        </div>
+
+        <!-- DOCK CONTAINER (Shows with Setup) -->
+        <div id="dock-container" class="dock-card hidden">
+            <div style="flex-grow: 1; color: rgba(255,255,255,0.4); font-size: 0.8rem; font-weight: 500;">
+                <!-- खाली जगह ताकि बेल राइट साइड में रहे -->
+            </div>
+            
+            <!-- नोटिफिकेशन बेल -->
+            <div id="notification-bell" class="bell-wrapper" onclick="openNotificationModal()">
+                🔔
+                <span id="bell-dot" class="red-dot"></span>
+            </div>
+        </div>
+
+        <!-- क्विज स्क्रीन -->
+        <div id="quiz-screen" class="card hidden">
+            <div>
+                <span id="q-counter" style="font-weight: 500; color: #38bdf8; font-size: 0.95rem;">प्रश्न 1 / 10</span>
+                <div class="timer-box" id="timer-ui">⏱️ <span id="time-left">30:00</span></div>
+            </div>
+            
+            <!-- 10 Minute Warning Message -->
+            <div id="time-warning" style="display: none; clear: both; margin-top: 50px; margin-bottom: -15px; color: #ff4c4c; background: rgba(255,0,0,0.1); border: 1px solid #ff4c4c; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; animation: alertPulse 1s infinite;">
+                ⚠️ आपके पास सिर्फ 10 मिनट शेष हैं! कृपया जल्दी करें।
+            </div>
+
+            <div class="question-text" id="q-text">प्रश्न लोड আসতে रहा है...</div>
+            <div id="options-container"></div>
+            
+            <div class="nav-btns">
+                <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()">◄ Previous</button>
+                <button class="btn" id="btn-next" onclick="nextQuestion()">Next ►</button>
+            </div>
+            <button class="btn btn-success" id="btn-submit" style="margin-top: 15px; display: none;" onclick="submitQuiz()">Submit🧐</button>
+        </div>
+
+        <!-- NEW: QUIZ SCREEN DOCK -->
+        <div id="quiz-dock-container" class="dock-card hidden" style="margin-top: 5px;">
+            <!-- Left Side: Screen Mode -->
+            <div style="width: 50%; display: flex; justify-content: flex-start; position: relative;">
+                <button id="btn-screen-mode" class="glass-btn-dock" onclick="toggleThemePopup()">स्क्रीन मोड 🌗</button>
+                
+                <!-- Theme Popup -->
+                <div id="theme-popup" class="theme-popup-box hidden">
+                    <div class="theme-opt" onclick="applyLightMode()">Light Mode ☀️</div>
+                    <div class="theme-opt" onclick="applyDarkMode()">Dark Mode 🌙</div>
+                </div>
+            </div>
+            
+            <!-- Right Side: Full Screen Mode -->
+            <div style="width: 50%; display: flex; justify-content: flex-end;">
+                <button id="btn-fullscreen" class="glass-btn-dock" onclick="toggleFullScreen()">फुल स्क्रीन मोड 🔲</button>
+            </div>
+        </div>
+
+        <!-- प्री-सबमिट स्क्रीन -->
+        <div id="pre-submit-screen" class="card hidden">
+            <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;"> DPP Submition Details </h2>
+            <div id="pre-submit-details" style="font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <!-- यहाँ डेटा डायनामिकली लोड होगा -->
+            </div>
+            
+            <div id="submit-loader" class="hidden" style="text-align: center; margin-top: 20px; padding: 15px;">
+                <h3 style="color: #fbbf24; font-size: 1.2rem;">आपका रिजल्ट सबमिट हो रहा है...</h3>
+                <div class="timer-anim" style="font-size: 3.5rem; font-weight: 800; margin-top: 15px; color: #ffffff;" id="submit-timer-text">5</div>
+            </div>
+            
+            <button class="btn btn-success" id="btn-final-submit" onclick="startFinalSubmit()">OK (सबमिट करें)</button>
+        </div>
+
+        <!-- रिजल्ट स्क्रीन -->
+        <div id="result-screen" class="card score-card hidden">
+            <h2 style="color: #38bdf8; font-size: 1.6rem; letter-spacing: 0.5px;">🧾Your Result🫣</h2>
+            <p id="res-name" style="margin-top: 15px; color: #ffffff; font-weight: 500; font-size: 1.15rem;"></p>
+            <p id="res-id-display" style="color: #ffffff; font-size: 0.95rem; margin-top: 5px;"></p>
+            <div class="score-badge" id="res-score">0 / 0</div>
+            <p id="res-percent" style="font-size: 1.3rem; font-weight: 600; color: #10b981;"></p>
+            <br>
+            
+            <button class="btn btn-secondary" onclick="openSummaryModal()" style="margin-top: 15px; margin-bottom: 10px;">View Summary / Answer 📝</button>
+            <button class="btn" onclick="goHome()" style="margin-top: 10px;">Home 🏠</button>
+
+            <div class="reminder-card">
+                यदि आप आज के सभी डीपीपी नहीं बनाए हैं तो कृपया सभी डीपीपी बनाएं
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODALS SECTION -->
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="modal-glass">
+            <div class="modal-icon">⚠️</div>
+            <p id="modal-text">संदेश यहाँ दिखेगा</p>
+            <button class="btn" style="padding: 12px;" onclick="closeModal()">ठीक है</button>
+        </div>
+    </div>
+
+    <div id="options-modal" class="modal-overlay hidden">
+        <div class="modal-glass options-glass">
+            <h3 id="options-title" style="margin-bottom: 20px; color: #38bdf8; font-size: 1.2rem; font-weight: 500;">चुनें</h3>
+            <div id="options-list" class="options-list"></div>
+            <button class="btn btn-secondary" style="padding: 12px;" onclick="closeOptionsModal()">रद्द करें</button>
+        </div>
+    </div>
+
+    <div id="summary-modal" class="modal-overlay hidden">
+        <div class="summary-glass">
+            <h3 style="text-align:center; color:#38bdf8; margin-bottom:20px; font-size:1.4rem;">विस्तृत परिणाम</h3>
+            <div id="summary-content" class="summary-content-scroll"></div>
+            <button class="btn btn-secondary" style="margin-top: 20px; padding: 12px;" onclick="closeSummaryModal()">बंद करें ❌</button>
+        </div>
+    </div>
+
+    <div id="notification-modal" class="modal-overlay hidden">
+        <div class="modal-glass">
+            <div style="font-size: 3rem; margin-bottom: 10px; animation: bellRing 2s infinite;">🔔</div>
+            <h3 style="margin-bottom: 20px; color: #38bdf8; font-size: 1.3rem; font-weight: 600;">आपके लिए खास संदेश</h3>
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+                <p id="student-msg-text" style="color: #ffffff; font-size: 1.05rem; line-height: 1.6; margin: 0;"></p>
+            </div>
+            <button class="btn btn-secondary" style="padding: 12px;" onclick="closeNotificationModal()">बंद करें</button>
+        </div>
+    </div>
+
+    <!-- Script File Reference -->
+    <script src="questions.js"></script>
+
+    <!-- Main JS Logic -->
+    <script>
+        const subjectsList = {
+            1: "भौतिक विज्ञान (Physics)",
+            2: "रसायन विज्ञान (Chemistry)",
+            3: "गणित (Mathematics)",
+            4: "जीव विज्ञान (Biology)",
+            5: "हिंदी (Hindi)",
+            6: "अंग्रेज़ी (English)"
+        };
+
+        const chaptersData = {
+            1: ["वैद्युत आवेश तथा क्षेत्र", "स्थिरवैद्युत विभव तथा धारिता", "विद्युत धारा", "गतिमान आवेश और चुंबकत्व", "चुंबकत्व एवं द्रव्य", "वैद्युतचुंबकीय प्रेरण", "प्रत्यावर्ती धारा", "वैद्युतचुंबकीय तरंगें", "किरण प्रकाशिकी एवं प्रकाशिक यंत्र", "तरंग - प्रकाशिकी", "विकिरण तथा द्रव्य की द्वैत प्रकृति", "परमाणु", "नाभिक", "अर्धचालक इलेक्ट्रॉनिकी", "संचार व्यवस्था"],
+            2: ["ठोस अवस्था", "विलयन", "वैद्युत रसायन", "रासायनिक बलगतिकी", "पृष्ठ रसायन", "तत्त्वों के निष्कर्षण के सिद्धांत एवं प्रक्रम", "p-ब्लॉक के तत्त्व", "d- एवं f-ब्लॉक के तत्त्व", "उपसहसंयोजन यौगिक", "हैलोऐल्केन तथा हैलोऐरीन", "ऐल्कोहॉल, फ़ीनॉल एवं ईथर", "ऐल्डिहाइड, कीटोन एवं कार्बोक्सिलिक अम्ल", "ऐमीन", "जैव-अणु", "बहुलक", "दैनिक जीवन में रसायन"],
+            3: ["संबंध एवं फलन", "प्रतिलोम त्रिकोणमितीय फलन", "आव्यूह", "सारणिक", "सांतत्य तथा अवकलनीयता", "अवकलज के अनुप्रयोग", "समाकलन", "समाकलनों के अनुप्रयोग", "अवकल समीकरण", "सदिश बीजगणित", "त्रि-विमीय ज्यामिति", "रैखिक प्रोग्रामन", "प्रायिकता"],
+            4: ["जीवों में जनन", "पुष्पी पादपों में लैंगिक जनन", "मानव जनन", "जनन स्वास्थ्य", "वंशागति तथा विविधता के सिद्धांत", "वंशागति के आणविक आधार", "विकास", "मानव स्वास्थ्य तथा रोग", "खाद्य उत्पादन में वृद्धि की कार्यनीति", "मानव कल्याण में सूक्ष्म जीव", "जैव प्रौद्योगिकी - सिद्धांत व प्रक्रम", "जैव प्रौद्योगिकी एवं उसके उपयोग", "जीव और समष्टियां", "पारितंत्र", "जैव विविधता एवं संरक्षण", "पर्यावरण के मुद्दे"],
+            5: ["बातचीत", "उसने कहा था", "संपूर्ण क्रांति", "अर्द्धनारीश्वर", "रोज", "एक लेख और एक पत्र", "ओ सदानीरा", "सिपाही की माँ", "प्रगीत और समाज", "जूठन", "हंसते हुए मेरा अकेलापन", "तिरछ", "शिक्षा", "कड़बक", "पद (सूरदास)", "पद (तुलसीदास)", "छप्पय", "कवित्त", "तुमुल कोलाहल कलह में", "पुत्र वियोग", "उषा", "जन-जन का चेहरा एक", "अधिनायक", "प्यारे नन्हें बेटे को", "हार-जीत", "गाँव का घर"],
+            6: ["Indian Civilization and Culture", "Bharat is My Home", "A Pinch of Snuff", "I Have a Dream", "Ideas That Have Helped Mankind", "The Artist", "A Child is Born", "How Free is the Press", "The Earth", "India Through a Traveler's Eyes", "A Marriage Proposal", "Sweetest Love I Do Not Goe", "Song of Myself", "Now the Leaves Are Falling Fast", "Ode to Autumn", "An Epitaph", "The Soldier", "Macavity: The Mystery Cat", "Fire-Hymn", "Snake", "My Grandmother's House"]
+        };
+
+        let currentQuestions = [];
+        let currentQIndex = 0;
+        let userAnswers = [];
+        let timerInterval;
+        let timeLeft = 1800; // 30 minutes in seconds
+        window.currentQuizFinished = false;
+
+        // NEW FUNCTION: क्विज़ सेटअप को रिसेट करने के लिए
+        function resetSetupScreen() {
+            document.getElementById("subject-select").value = "";
+            document.getElementById("subject-text").innerText = "-- विषय चुनें --";
+            document.getElementById("chapter-select").value = "";
+            document.getElementById("chapter-text").innerText = "-- पहले विषय चुनें --";
+            document.getElementById("quiz-select").value = "";
+            document.getElementById("quiz-text").innerText = "-- पहले अध्याय चुनें --";
+        }
+
+        window.onload = function() {
+            // यह कोड रिफ्रेश होते ही नाम और आईडी के बॉक्स को खाली कर देगा
+            document.getElementById('student-name').value = '';
+            document.getElementById('student-id').value = '';
+            
+            // हमेशा शुरुआत (Instruction Screen) से ही पोर्टल खुलेगा
+            history.replaceState({ screen: 'instruction' }, '');
+            showScreen('instruction-screen');
+        };
+
+        window.addEventListener('popstate', function(event) {
+            const state = event.state;
+            document.getElementById("custom-modal").classList.add("hidden");
+            document.getElementById("options-modal").classList.add("hidden");
+            document.getElementById("summary-modal").classList.add("hidden");
+            document.getElementById("notification-modal").classList.add("hidden");
+
+            if (!state) {
+                showScreen('instruction-screen');
+                return;
+            }
+
+            if (state.modal) document.getElementById("custom-modal").classList.remove("hidden");
+            if (state.optionsModal) document.getElementById("options-modal").classList.remove("hidden");
+            if (state.summaryModal) document.getElementById("summary-modal").classList.remove("hidden");
+            if (state.notifModal) document.getElementById("notification-modal").classList.remove("hidden");
+
+            // UPDATE: अगर रिजल्ट/क्विज/प्री-सबमिट स्क्रीन से वापस आता है तो सेटअप रिसेट हो जाएगा
+            if (state.screen === 'quiz' || state.screen === 'pre-submit') {
+                if (window.currentQuizFinished) {
+                    resetSetupScreen();
+                    window.currentQuizFinished = false; // स्टेट को पुनः नार्मल करें
+                    history.replaceState({ screen: 'selection' }, '');
+                    showScreen('selection-screen');
+                    return;
+                }
+            }
+
+            if (state.screen === 'instruction') { showScreen('instruction-screen'); clearInterval(timerInterval); } 
+            else if (state.screen === 'login') { showScreen('login-screen'); clearInterval(timerInterval); } 
+            else if (state.screen === 'selection') { showScreen('selection-screen'); clearInterval(timerInterval); } 
+            else if (state.screen === 'quiz') { showScreen('quiz-screen'); } 
+            else if (state.screen === 'pre-submit') { showScreen('pre-submit-screen'); } 
+            else if (state.screen === 'result') { showScreen('result-screen'); }
+        });
+
+        function showScreen(screenId) {
+            document.getElementById("instruction-screen").classList.add("hidden");
+            document.getElementById("login-screen").classList.add("hidden");
+            document.getElementById("selection-screen").classList.add("hidden");
+            document.getElementById("quiz-screen").classList.add("hidden");
+            document.getElementById("pre-submit-screen").classList.add("hidden");
+            document.getElementById("result-screen").classList.add("hidden");
+            document.getElementById("dock-container").classList.add("hidden");
+            document.getElementById("quiz-dock-container").classList.add("hidden");
+            
+            document.getElementById(screenId).classList.remove("hidden");
+            
+            if(screenId === 'selection-screen') {
+                document.getElementById("dock-container").classList.remove("hidden");
+            }
+            if(screenId === 'quiz-screen') {
+                document.getElementById("quiz-dock-container").classList.remove("hidden");
+            }
+        }
+
+        // UPDATE: 10 घंटे का लोकल स्टोरेज लॉजिक ऐड किया गया और स्पेस/कैपिटल इग्नोर किया गया
+        function checkAndShowNotification(studentId) {
+            let bell = document.getElementById("notification-bell");
+            // सारा स्पेस हटा कर और लोअरकेस करके आईडी को क्लीन करना
+            let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, '');
+            let foundMessage = null;
+
+            // 10 घंटे के Cooldown का चेक
+            let cooldownKey = 'bell_cooldown_' + enteredIdClean;
+            let savedTime = localStorage.getItem(cooldownKey);
+            
+            if (savedTime) {
+                let elapsed = Date.now() - parseInt(savedTime);
+                if (elapsed < 10 * 60 * 60 * 1000) { // 10 Hours
+                    bell.style.display = "none";
+                    return; // अगले 10 घंटे तक बेल नहीं दिखेगा
+                } else {
+                    localStorage.removeItem(cooldownKey); // 10 घंटे पूरे हो गए, टाइमर डिलीट
+                }
+            }
+
+            if (window.studentMessages) {
+                for (let savedId in window.studentMessages) {
+                    // सेव की हुई आईडी का भी स्पेस हटा कर और लोअरकेस करके मिलान करना
+                    if (savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean) {
+                        foundMessage = window.studentMessages[savedId];
+                        break;
+                    }
+                }
+            }
+            
+            if (foundMessage) {
+                bell.style.display = "block";
+                bell.dataset.message = foundMessage;
+                bell.dataset.clicks = "0"; // क्लिक काउंटर सेट
+                
+                let dot = document.getElementById("bell-dot");
+                if(dot) dot.style.display = "block"; // सुनिश्चित करें कि नया मैसेज आने पर डॉट दिखे
+            } else {
+                bell.style.display = "none";
+            }
+        }
+
+        // UPDATE: पहली बार और दूसरी बार क्लिक करने का लॉजिक
+        function openNotificationModal() {
+            let bell = document.getElementById("notification-bell");
+            // नोटिफिकेशन के लिए भी क्लीन आईडी का उपयोग
+            let studentId = document.getElementById("student-id").value.trim().toLowerCase().replace(/\s+/g, '');
+            
+            // क्लिक की गिनती बढ़ाएं
+            let currentClicks = parseInt(bell.dataset.clicks || "0");
+            currentClicks++;
+            bell.dataset.clicks = currentClicks.toString();
+
+            let dot = document.getElementById("bell-dot");
+            
+            if (currentClicks === 1) {
+                // पहली बार क्लिक: सिर्फ रेड डॉट हटेगा
+                if(dot) dot.style.display = "none";
+            } else if (currentClicks >= 2) {
+                // दूसरी बार (या अधिक) क्लिक: बेल पूरी तरह गायब और 10 घंटे का टाइमर सेव
+                bell.style.display = "none";
+                localStorage.setItem('bell_cooldown_' + studentId, Date.now().toString());
+            }
+            
+            let msg = bell.dataset.message;
+            if(msg) {
+                document.getElementById("student-msg-text").innerText = msg;
+                document.getElementById("notification-modal").classList.remove("hidden");
+                history.pushState({ screen: history.state ? history.state.screen : 'selection', notifModal: true }, '');
+            }
+        }
+
+        function closeNotificationModal() {
+            if (history.state && history.state.notifModal) {
+                history.back();
+            } else {
+                document.getElementById("notification-modal").classList.add("hidden");
+            }
+        }
+
+        function proceedToLogin() {
+            history.pushState({ screen: 'login' }, '');
+            showScreen('login-screen');
+        }
+
+        function verifyStudent() {
+            let name = document.getElementById("student-name").value.trim();
+            let studentId = document.getElementById("student-id").value.trim(); 
+
+            if (!name) { showModal("Please, 👉 Enter Your Name "); return; }
+            if (!studentId) { showModal("Please, 👉 Enter Your id "); return; }
+
+            let isIdValid = false;
+            // सारा स्पेस हटा कर और लोअरकेस करके आईडी को क्लीन करना
+            let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, ''); 
+
+            if (window.validStudentIDs) {
+                isIdValid = window.validStudentIDs.some(function(savedId) {
+                    // सेव की हुई आईडी का भी स्पेस हटा कर और लोअरकेस करके मिलान करना
+                    return savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean;
+                });
+            }
+
+            if (!isIdValid) { showModal("आपकी आईडी पंजीकृत नहीं है! कृपया सही आईडी दर्ज करें।"); return; }
+
+            checkAndShowNotification(studentId);
+
+            history.pushState({ screen: 'selection' }, '');
+            showScreen('selection-screen');
+        }
+
+        function openSubjectSelect() {
+            let list = document.getElementById("options-list");
+            list.innerHTML = "";
+            document.getElementById("options-title").innerText = "विषय चुनें";
+
+            for (let key in subjectsList) {
+                list.innerHTML += `<div class="option-card" onclick="selectSubject('${key}', '${subjectsList[key]}')">${subjectsList[key]}</div>`;
+            }
+
+            document.getElementById("options-modal").classList.remove("hidden");
+            history.pushState({ screen: history.state ? history.state.screen : 'selection', optionsModal: true }, '');
+        }
+
+        function selectSubject(val, text) {
+            document.getElementById("subject-select").value = val;
+            document.getElementById("subject-text").innerText = text;
+            
+            document.getElementById("chapter-select").value = "";
+            document.getElementById("chapter-text").innerText = "-- अध्याय चुनें --";
+            document.getElementById("quiz-select").value = "";
+            document.getElementById("quiz-text").innerText = "-- पहले अध्याय चुनें --";
+            
+            history.back();
+        }
+
+        function openChapterSelect() {
+            let sub = document.getElementById("subject-select").value;
+            if(!sub) { showModal("कृपया पहले विषय चुनें!"); return; }
+
+            let list = document.getElementById("options-list");
+            list.innerHTML = "";
+            document.getElementById("options-title").innerText = "अध्याय चुनें";
+
+            let chapters = chaptersData[sub];
+            for (let i = 0; i < chapters.length; i++) {
+                let chNum = i + 1;
+                list.innerHTML += `<div class="option-card" onclick="selectChapter('${chNum}', 'अध्याय ${chNum}: ${chapters[i]}')">अध्याय ${chNum}: ${chapters[i]}</div>`;
+            }
+
+            document.getElementById("options-modal").classList.remove("hidden");
+            history.pushState({ screen: history.state ? history.state.screen : 'selection', optionsModal: true }, '');
+        }
+
+        function selectChapter(val, text) {
+            document.getElementById("chapter-select").value = val;
+            document.getElementById("chapter-text").innerText = text;
+            history.back();
+            loadQuizzesCustom();
+        }
+
+        function loadQuizzesCustom() {
+            let sub = document.getElementById("subject-select").value;
+            let chNum = document.getElementById("chapter-select").value;
+            let qText = document.getElementById("quiz-text");
+            document.getElementById("quiz-select").value = ""; 
+
+            let hasQuizzes = false;
+            let hiddenDueToCooldown = false;
+
+            if (window.quizDatabase && window.quizDatabase[sub] && window.quizDatabase[sub][`ch_${chNum}`]) {
+                let quizzes = window.quizDatabase[sub][`ch_${chNum}`];
+                for (let qKey in quizzes) {
+                    let cooldownKey = `dpp_cooldown_${sub}_${chNum}_${qKey}`;
+                    let savedTime = localStorage.getItem(cooldownKey);
+                    let hide = false;
+                    
+                    if (savedTime) {
+                        let elapsed = Date.now() - parseInt(savedTime);
+                        if (elapsed < 5 * 60 * 60 * 1000) { hide = true; hiddenDueToCooldown = true; } 
+                        else { localStorage.removeItem(cooldownKey); }
+                    }
+                    if (!hide) { hasQuizzes = true; break; }
+                }
+            }
+
+            if (hasQuizzes) { qText.innerText = "-- DPP चुनें --"; } 
+            else if (hiddenDueToCooldown) { qText.innerText = "-- आपने सभी DPP बना लिए (5 घंटे बाद देखें) --"; } 
+            else { qText.innerText = "-- अभी कोई DPP उपलब्ध नहीं है --"; }
+        }
+
+        function openQuizSelect() {
+            let sub = document.getElementById("subject-select").value;
+            let chNum = document.getElementById("chapter-select").value;
+            
+            if(!sub) { showModal("कृपया पहले विषय चुनें!"); return; }
+            if(!chNum) { showModal("कृपया पहले अध्याय चुनें!"); return; }
+
+            let list = document.getElementById("options-list");
+            list.innerHTML = "";
+            document.getElementById("options-title").innerText = "DPP चुनें";
+
+            let hasQuizzes = false;
+            let totalQuizzes = 0;
+            let hiddenQuizzesCount = 0;
+
+            if (window.quizDatabase && window.quizDatabase[sub] && window.quizDatabase[sub][`ch_${chNum}`]) {
+                let quizzes = window.quizDatabase[sub][`ch_${chNum}`];
+                
+                if(Object.keys(quizzes).length > 0) {
+                    for (let qKey in quizzes) {
+                        totalQuizzes++;
+                        let cooldownKey = `dpp_cooldown_${sub}_${chNum}_${qKey}`;
+                        let savedTime = localStorage.getItem(cooldownKey);
+                        let hideQuiz = false;
+                        
+                        if (savedTime) {
+                            let elapsed = Date.now() - parseInt(savedTime);
+                            if (elapsed < 5 * 60 * 60 * 1000) { 
+                                hideQuiz = true; hiddenQuizzesCount++;
+                            } else {
+                                localStorage.removeItem(cooldownKey); 
+                            }
+                        }
+
+                        if (!hideQuiz) {
+                            hasQuizzes = true;
+                            let qNum = qKey.replace("dpp_", "");
+                            list.innerHTML += `<div class="option-card" onclick="selectQuiz('${qKey}', 'DPP-${qNum}')">DPP-${qNum}</div>`;
+                        }
+                    }
+                }
+            }
+
+            if (!hasQuizzes) {
+                if (totalQuizzes > 0 && hiddenQuizzesCount === totalQuizzes) {
+                    list.innerHTML = `<div style="text-align:center; color:#ffffff; padding: 20px;">आपने इस अध्याय के सभी DPP हाल ही में बना लिए हैं。<br><br><span style="color:#fbbf24;">कृपया 5 घंटे बाद पुनः प्रयास करें।</span></div>`;
+                } else {
+                    list.innerHTML = `<div style="text-align:center; color:#ffffff; padding: 20px;">अभी इस अध्याय में कोई DPP नहीं डाला गया है。<br><br>कृपया बाद में प्रयास करें।</div>`;
+                }
+            }
+
+            document.getElementById("options-modal").classList.remove("hidden");
+            history.pushState({ screen: history.state ? history.state.screen : 'selection', optionsModal: true }, '');
+        }
+
+        function selectQuiz(val, text) {
+            document.getElementById("quiz-select").value = val;
+            document.getElementById("quiz-text").innerText = text;
+            history.back();
+        }
+
+        function closeOptionsModal() {
+            if (history.state && history.state.optionsModal) { history.back(); } 
+            else { document.getElementById("options-modal").classList.add("hidden"); }
+        }
+
+        function showModal(msg) {
+            document.getElementById("modal-text").innerText = msg;
+            document.getElementById("custom-modal").classList.remove("hidden");
+            history.pushState({ screen: history.state ? history.state.screen : 'selection', modal: true }, '');
+        }
+
+        function closeModal() {
+            if (history.state && history.state.modal) { history.back(); } 
+            else { document.getElementById("custom-modal").classList.add("hidden"); }
+        }
+
+        /* ========================================================== */
+        /* NEW FEATURES LOGIC: Screen Mode & Full Screen Mode         */
+        /* ========================================================== */
+
+        function toggleThemePopup() {
+            document.getElementById('theme-popup').classList.toggle('hidden');
+        }
+
+        function applyLightMode() {
+            document.getElementById('quiz-screen').classList.add('light-mode-active');
+            document.getElementById('theme-popup').classList.add('hidden');
+        }
+
+        function applyDarkMode() {
+            document.getElementById('quiz-screen').classList.remove('light-mode-active');
+            document.getElementById('theme-popup').classList.add('hidden');
+        }
+
+        function toggleFullScreen() {
+            let btn = document.getElementById("btn-fullscreen");
+            
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().then(() => {
+                    btn.innerText = "नॉर्मल 🔙";
+                }).catch(err => {
+                    console.log("Error attempting to enable fullscreen:", err.message);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().then(() => {
+                        btn.innerText = "फुल स्क्रीन मोड 🔲";
+                    });
+                }
+            }
+        }
+
+        // Full Screen Event Listener - अगर छात्र Esc बटन दबा कर फुल स्क्रीन से बाहर आये
+        document.addEventListener('fullscreenchange', (event) => {
+            let btn = document.getElementById("btn-fullscreen");
+            if (!document.fullscreenElement) {
+                btn.innerText = "फुल स्क्रीन मोड 🔲";
+            }
+        });
+
+        /* ========================================================== */
+
+        function startQuiz() {
+            let sub = document.getElementById("subject-select").value;
+            let ch = document.getElementById("chapter-select").value;
+            let qKey = document.getElementById("quiz-select").value;
+
+            if (!sub) { showModal("कृपया विषय चुनें!"); return; }
+            if (!ch) { showModal("कृपया अध्याय चुनें!"); return; }
+            if (!qKey) { showModal("कोई DPP चुना नहीं गया है। यदि उपलब्ध नहीं है, तो बाद में प्रयास करें।"); return; }
+
+            const chKey = `ch_${ch}`;
+
+            if (window.quizDatabase && window.quizDatabase[sub] && window.quizDatabase[sub][chKey] && window.quizDatabase[sub][chKey][qKey]) {
+                currentQuestions = window.quizDatabase[sub][chKey][qKey];
+                userAnswers = new Array(currentQuestions.length).fill(null);
+                currentQIndex = 0;
+                window.currentQuizFinished = false;
+
+                // Ensure Dark mode is default on start
+                applyDarkMode();
+
+                history.pushState({ screen: 'quiz' }, '');
+                showScreen('quiz-screen');
+                
+                startOverallTimer();
+                loadQuestion();
+            } else {
+                showModal("इस DPP के सवाल अभी जोड़े नहीं गए हैं!");
+            }
+        }
+
+        function startOverallTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 1800; // 30 Minutes
+            
+            document.getElementById("time-warning").style.display = "none";
+            document.getElementById("timer-ui").classList.remove('timer-warning');
+
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft === 600) {
+                    document.getElementById("time-warning").style.display = "block";
+                    document.getElementById("timer-ui").classList.add('timer-warning');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showModal("समय समाप्त! आपका DPP स्वचालित रूप से सबमिट किया जा रहा है।");
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById("time-left").innerText = `${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
+        }
+
+        function loadQuestion() {
+            let q = currentQuestions[currentQIndex];
+            document.getElementById("q-counter").innerHTML = `प्रश्न ${currentQIndex + 1} / ${currentQuestions.length}`;
+            document.getElementById("q-text").innerHTML = `${currentQIndex + 1}. ${q.question}`;
+
+            let optsContainer = document.getElementById("options-container");
+            optsContainer.innerHTML = "";
+
+            q.options.forEach((opt, idx) => {
+                let isSelected = userAnswers[currentQIndex] === idx ? "selected" : "";
+                optsContainer.innerHTML += `<div class="option-item ${isSelected}" onclick="selectOption(${idx})">${String.fromCharCode(65+idx)}) ${opt}</div>`;
+            });
+
+            document.getElementById("btn-prev").style.visibility = currentQIndex === 0 ? "hidden" : "visible";
+            if (currentQIndex === currentQuestions.length - 1) {
+                document.getElementById("btn-next").style.display = "none";
+                document.getElementById("btn-submit").style.display = "block";
+            } else {
+                document.getElementById("btn-next").style.display = "block";
+                document.getElementById("btn-submit").style.display = "none";
+            }
+        }
+
+        function selectOption(idx) {
+            userAnswers[currentQIndex] = idx;
+            loadQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < currentQuestions.length - 1) {
+                currentQIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                currentQIndex--;
+                loadQuestion();
+            }
+        }
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Remove Light Theme so that Result Screen displays in Dark Mode correctly
+            applyDarkMode(); 
+
+            let studentName = document.getElementById("student-name").value;
+            let studentId = document.getElementById("student-id").value;
+            let total = currentQuestions.length;
+            let attempted = userAnswers.filter(ans => ans !== null).length;
+            
+            let timeTakenSec = 1800 - timeLeft;
+            let m = Math.floor(timeTakenSec / 60);
+            let s = timeTakenSec % 60;
+            let timeTakenStr = `${m} मिनट ${s} सेकंड`;
+
+            document.getElementById("pre-submit-details").innerHTML = `
+                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">नाम:</strong> ${studentName}</div>
+                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">ID:</strong> ${studentId}</div>
+                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">इस DPP में कुल प्रश्न:</strong> ${total}</div>
+                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">आपने अटेम्प्ट किये:</strong> <span style="color:#38bdf8; font-weight:bold;">${attempted}</span></div>
+                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">कुल लिया गया समय:</strong> ${timeTakenStr}</div>
+            `;
+
+            document.getElementById("submit-loader").classList.add("hidden");
+            document.getElementById("btn-final-submit").classList.remove("hidden");
+
+            history.pushState({ screen: 'pre-submit' }, '');
+            showScreen('pre-submit-screen');
+        }
+
+        function startFinalSubmit() {
+            document.getElementById("btn-final-submit").classList.add("hidden");
+            document.getElementById("submit-loader").classList.remove("hidden");
+            
+            let counter = 5;
+            document.getElementById("submit-timer-text").innerText = counter;
+            
+            let countdown = setInterval(() => {
+                counter--;
+                document.getElementById("submit-timer-text").innerText = counter;
+                if(counter <= 0) {
+                    clearInterval(countdown);
+                    finalizeQuizSubmit();
+                }
+            }, 1000);
+        }
+
+        function finalizeQuizSubmit() {
+            window.currentQuizFinished = true; 
+            let score = 0;
+            currentQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct) score++;
+            });
+
+            let total = currentQuestions.length;
+            let percent = Math.round((score / total) * 100);
+
+            let studentName = document.getElementById("student-name").value;
+            let studentId = document.getElementById("student-id").value;
+            let subjectCode = document.getElementById("subject-select").value;
+            let subjectName = document.getElementById("subject-text").innerText;
+            let chapterCode = document.getElementById("chapter-select").value;
+            let chapterName = document.getElementById("chapter-text").innerText;
+            let dppKey = document.getElementById("quiz-select").value;
+            let dppName = document.getElementById("quiz-text").innerText;
+
+            let cooldownKey = `dpp_cooldown_${subjectCode}_${chapterCode}_${dppKey}`;
+            localStorage.setItem(cooldownKey, Date.now().toString());
+
+            let sheetData = {
+                name: studentName,
+                id: studentId,
+                score: `${score} / ${total}`,
+                subjectCode: subjectCode,
+                subjectName: subjectName,
+                chapterName: chapterName,
+                dppName: dppName
+            };
+
+            const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxZVqprhQ_Y4pdg0xwRixDZUHavrTVDkdbMlprX6hCsqvAboITOaOVHBZYfCZO1O2yySw/exec'; 
+
+            if(GOOGLE_SHEET_URL) {
+                fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    keepalive: true, 
+                    body: JSON.stringify(sheetData)
+                }).catch(e => console.log("डेटा भेजने में त्रुटि: ", e));
+            }
+
+            history.replaceState({ screen: 'result' }, '');
+            showScreen('result-screen');
+
+            document.getElementById("res-name").innerText = `विद्यार्थी: ${studentName}`;
+            document.getElementById("res-id-display").innerText = `ID: ${studentId}`;
+            document.getElementById("res-score").innerText = `${score} / ${total}`;
+            document.getElementById("res-percent").innerText = `कुल प्राप्तांक: ${percent}%`;
+
+            generateSummary();
+        }
+
+        // UPDATE: Home बटन दबाने पर अब सेटअप रिसेट हो जाएगा
+        function goHome() {
+            resetSetupScreen();
+            window.currentQuizFinished = false; // स्टेट को पुनः नार्मल करें
+            history.pushState({ screen: 'selection' }, '');
+            showScreen('selection-screen');
+        }
+
+        function openSummaryModal() {
+            document.getElementById("summary-modal").classList.remove("hidden");
+            history.pushState({ screen: history.state ? history.state.screen : 'result', summaryModal: true }, '');
+        }
+
+        function closeSummaryModal() {
+            if (history.state && history.state.summaryModal) { history.back(); } 
+            else { document.getElementById("summary-modal").classList.add("hidden"); }
+        }
+
+        function generateSummary() {
+            let container = document.getElementById("summary-content");
+            container.innerHTML = "";
+            
+            currentQuestions.forEach((q, idx) => {
+                let userAnsIdx = userAnswers[idx];
+                let isAttempted = userAnsIdx !== null;
+                let isCorrect = isAttempted && userAnsIdx === q.correct;
+                
+                let mark = isCorrect ? "✔️ सही" : "❌ गलत";
+                let markClass = isCorrect ? "ans-correct" : "ans-wrong";
+                
+                let userAnsText = isAttempted ? String.fromCharCode(65+userAnsIdx) + ") " + q.options[userAnsIdx] : "उत्तर नहीं दिया गया";
+                let correctAnsText = String.fromCharCode(65+q.correct) + ") " + q.options[q.correct];
+
+                let optionsHtml = `<div style="margin: 10px 0; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">`;
+                q.options.forEach((opt, oIdx) => {
+                    optionsHtml += `<div>${String.fromCharCode(65+oIdx)}) ${opt}</div>`;
+                });
+                optionsHtml += `</div>`;
+
+                let html = `
+                    <div class="summary-item">
+                        <div style="margin-bottom: 5px; color: #ffffff; font-size: 1.05rem;">
+                            <strong>प्रश्न ${idx + 1}:</strong> ${q.question} <span class="${markClass}">(${mark})</span>
+                        </div>
+                        ${optionsHtml}
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                            <div style="font-size: 0.95rem; margin-bottom: 5px;">
+                                <strong style="color: #cbd5e1;">छात्र द्वारा दिया गया उत्तर:</strong> 
+                                <span style="${!isCorrect ? 'color:#ef4444; font-weight:600;' : 'color:#10b981; font-weight:600;'}">${userAnsText}</span>
+                            </div>
+                            <div style="color: #10b981; font-size: 0.95rem;">
+                                <strong>असली उत्तर:</strong> <span style="font-weight:600;">${correctAnsText}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+    </script>
+</body>
+</html>
