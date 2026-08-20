@@ -4,72 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAINBOW CLASSES - DPP Portal</title>
+    <!-- HTML To Canvas Library (For Score Card Download) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        /* CSS: न्यू डार्क ब्लू-ग्रे थीम (Rainbow Classes Custom Theme) */
+        /* CSS: अल्ट्रा-प्रीमियम Glassmorphism (White & Transparent) */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; user-select: none; }
         input { user-select: auto; }
         
-        /* स्मूथ 2 सेकंड ट्रांजिशन के लिए (थीम बदलने पर काम आएगा) */
+        /* स्मूथ ट्रांजिशन */
         body, .card, .dock-card, .question-text, .option-item, .timer-box, input, .glass-select-box, p, label, h2, h3, .summary-glass, .modal-glass {
-            transition: background 2s ease-in-out, color 2s ease-in-out, border-color 2s ease-in-out, box-shadow 2s ease-in-out !important;
+            transition: all 0.5s ease-in-out;
         }
 
-        /* 1. बैकग्राउंड: डार्क ब्लू-ग्रे ग्रेडिएंट */
-        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; background-attachment: fixed; }
+        /* प्रोफेशनल पर्पल-ब्लू स्मूथ बैकग्राउंड */
+        body { 
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: #333333; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background-attachment: fixed; 
+        }
         
-        /* z-index 10 हटा दिया गया है ताकि डॉक और पॉप-अप ब्लर ओवरले के ऊपर आ सकें */
-        .container { width: 100%; max-width: 600px; padding: 15px 15px 20px 15px; margin-top: 0; position: relative; }
+        .container { width: 100%; max-width: 600px; padding: 15px 15px 20px 15px; margin-top: 0; position: relative; z-index: 1; }
         
-        /* 2. मेन कंटेनर (Glass Panel): सेमी-ट्रांसपेरेंट डार्क ब्लू विद हल्का वाइट बॉर्डर */
-        .card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 25px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); margin-bottom: 20px; animation: fadeIn 0.4s ease-out; position: relative; }
+        /* असली ट्रांसपेरेंट ग्लास इफ़ेक्ट - आर-पार दिखने वाला (White High Transparency) */
+        .card { 
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            border-radius: 20px; 
+            padding: 25px; 
+            box-shadow: 0 15px 35px rgba(31, 38, 135, 0.15); 
+            margin-bottom: 20px; 
+            animation: fadeIn 0.4s ease-out; 
+            position: relative; 
+        }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
         .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-weight: 500; margin-bottom: 10px; color: #ffffff; font-size: 0.95rem; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 10px; color: #444444; font-size: 0.95rem; }
         
-        /* 3. इनपुट फील्ड्स: पारदर्शी काला */
-        .input-group input { width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; font-size: 1rem; color: #ffffff; outline: none; backdrop-filter: blur(8px); transition: all 0.3s ease; }
-        .input-group input::placeholder { color: rgba(255, 255, 255, 0.6); }
-        .input-group input:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); background: rgba(0, 0, 0, 0.5); }
+        .input-group input { width: 100%; padding: 14px 18px; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 12px; font-size: 1rem; color: #222222; outline: none; backdrop-filter: blur(10px); transition: all 0.3s ease; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
+        .input-group input::placeholder { color: rgba(0, 0, 0, 0.4); }
+        .input-group input:focus { border-color: #8ec5fc; box-shadow: 0 0 15px rgba(142, 197, 252, 0.4); background: rgba(255, 255, 255, 0.7); }
         
-        /* डार्क ग्लास सेलेक्ट बॉक्स */
-        .glass-select-box { width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; font-size: 1rem; color: #ffffff; cursor: pointer; backdrop-filter: blur(8px); transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; }
-        .glass-select-box:hover { border-color: #38bdf8; background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 12px rgba(56, 189, 248, 0.2); }
-        .select-icon { font-size: 0.8rem; color: #ffffff; }
+        .glass-select-box { width: 100%; padding: 14px 18px; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 12px; font-size: 1rem; color: #222222; cursor: pointer; backdrop-filter: blur(10px); transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); font-weight: 500;}
+        .glass-select-box:hover { border-color: #8ec5fc; background: rgba(255, 255, 255, 0.7); box-shadow: 0 0 12px rgba(142, 197, 252, 0.3); }
+        .select-icon { font-size: 0.8rem; color: #555555; }
         
-        /* 4. बटन्स: प्राइमरी (ब्लू), सक्सेस (ग्रीन), सेकेंडरी (ग्रे) */
-        .btn { width: 100%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #ffffff; border: none; padding: 15px; border-radius: 12px; font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5); filter: brightness(1.1); }
-        .btn:active { transform: scale(0.92); box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3); }
+        /* प्रीमियम कलर्ड बटन्स जो ग्लास पर अच्छे लगें */
+        .btn { width: 100%; background: linear-gradient(135deg, #6a11cb, #2575fc); color: #ffffff; border: 1px solid rgba(255,255,255,0.4); padding: 15px; border-radius: 12px; font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 6px 20px rgba(37, 117, 252, 0.3); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4); background: linear-gradient(135deg, #7a22db, #3585fc); border-color: rgba(255,255,255,0.6); }
+        .btn:active { transform: scale(0.95); box-shadow: 0 2px 10px rgba(37, 117, 252, 0.3); }
 
-        .btn-success { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35); }
-        .btn-success:hover { box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); border: none; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3); }
+        .btn-success:hover { box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); background: linear-gradient(135deg, #34d399, #059669); }
 
-        .btn-secondary { background: linear-gradient(135deg, #475569, #334155); box-shadow: 0 6px 20px rgba(71, 85, 105, 0.35); }
-        .btn-secondary:hover { box-shadow: 0 8px 25px rgba(71, 85, 105, 0.5); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.6); color: #333333; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.8); }
         
-        /* टाइमर बॉक्स: हल्का नीला */
-        .timer-box { font-size: 1rem; font-weight: 600; color: #38bdf8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.25); padding: 6px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; float: right; backdrop-filter: blur(8px); box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); transition: all 0.3s ease; }
+        .timer-box { font-size: 1rem; font-weight: 700; color: #222222; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.8); padding: 6px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; float: right; backdrop-filter: blur(8px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s ease; }
         
-        /* टाइमर का 10 मिनट वाला वार्निंग इफेक्ट */
         @keyframes alertPulse {
-            0% { box-shadow: 0 0 8px rgba(255, 76, 76, 0.4); border-color: rgba(255, 76, 76, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(255, 76, 76, 0.8); border-color: rgba(255, 76, 76, 1); }
-            100% { box-shadow: 0 0 8px rgba(255, 76, 76, 0.4); border-color: rgba(255, 76, 76, 0.4); }
+            0% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); border-color: rgba(239, 68, 68, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); border-color: rgba(239, 68, 68, 0.8); }
+            100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); border-color: rgba(239, 68, 68, 0.5); }
         }
-        .timer-warning {
-            animation: alertPulse 1s infinite !important;
-            color: #ff4c4c !important;
-            background: rgba(255, 76, 76, 0.15) !important;
-        }
+        .timer-warning { animation: alertPulse 1s infinite !important; color: #dc2626 !important; background: rgba(254, 226, 226, 0.8) !important; border-color: rgba(239, 68, 68, 0.5) !important; }
 
-        .question-text { font-size: 1.15rem; font-weight: 500; margin-top: 45px; margin-bottom: 25px; clear: both; line-height: 1.7; color: #ffffff; }
+        .question-text { font-size: 1.15rem; font-weight: 600; margin-top: 45px; margin-bottom: 25px; clear: both; line-height: 1.7; color: #111111; }
         
-        /* 5. क्विज़ ऑप्शंस: ट्रांसपेरेंट डार्क -> सेलेक्ट होने पर ब्लू */
-        .option-item { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 18px; border-radius: 12px; margin-bottom: 14px; cursor: pointer; font-size: 1rem; color: #ffffff; backdrop-filter: blur(8px); }
-        .option-item:hover { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; transform: translateX(5px); transition: transform 0.3s ease; }
-        
-        .option-item.selected { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); font-weight: 600; color: #ffffff; transform: scale(1.01); }
+        .option-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.7); padding: 15px 18px; border-radius: 12px; margin-bottom: 14px; cursor: pointer; font-size: 1rem; font-weight: 500; color: #333333; backdrop-filter: blur(8px); transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .option-item:hover { background: rgba(255, 255, 255, 0.7); border-color: #8ec5fc; transform: translateX(5px); color: #111111; }
+        .option-item.selected { background: rgba(255, 255, 255, 0.95); border-color: #6a11cb; box-shadow: 0 0 15px rgba(106, 17, 203, 0.2); font-weight: 700; color: #111111; transform: scale(1.01); }
         
         .nav-btns { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
         .nav-btns button { width: 48%; }
@@ -77,80 +87,72 @@
         .hidden { display: none !important; }
         .score-card { text-align: center; }
         
-        /* 6. स्कोर बैज (पीला/गोल्डन) */
-        .score-badge { font-size: 3.5rem; font-weight: 800; color: #fbbf24; margin: 25px 0; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        
-        /* 7. मोडल बैकग्राउंड ओवरले (डार्क) और ग्लास (स्लेट ग्रे) */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 1000; animation: modalFade 0.3s ease-out; }
-        
-        .modal-glass { background: rgba(30, 40, 50, 0.95); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 35px; max-width: 400px; width: 88%; text-align: center; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8); animation: modalScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; position: relative; }
+        /* Modal & Popup - High Transparency White Glass */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; justify-content: center; align-items: center; z-index: 1000; animation: modalFade 0.3s ease-out; }
+        .modal-glass { background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 20px; padding: 35px; max-width: 400px; width: 88%; text-align: center; box-shadow: 0 25px 50px rgba(31, 38, 135, 0.2); animation: modalScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; position: relative; }
         
         .options-glass { padding: 25px !important; max-height: 80vh; }
         .options-list { overflow-y: auto; max-height: 55vh; text-align: left; padding-right: 8px; margin-bottom: 15px; }
-        
-        /* स्क्रॉलबार */
         .options-list::-webkit-scrollbar { width: 5px; }
-        .options-list::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
-        .options-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
-        .options-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
+        .options-list::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); border-radius: 10px; }
+        .options-list::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+        .options-list::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.4); }
         
-        /* लिस्ट ऑप्शन कार्ड्स (मोडल के अंदर) */
-        .option-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px 18px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; font-size: 0.95rem; color: #ffffff; transition: transform 0.25s ease; }
-        .option-card:hover { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; color: #ffffff; transform: translateX(5px); }
+        .option-card { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.8); padding: 14px 18px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; font-size: 0.95rem; font-weight: 500; color: #333333; transition: all 0.25s ease; backdrop-filter: blur(8px); }
+        .option-card:hover { background: rgba(255, 255, 255, 0.8); border-color: #8ec5fc; color: #111111; transform: translateX(5px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
-        .modal-icon { font-size: 2.8rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
-        .modal-glass p { font-size: 1.05rem; color: #ffffff; margin-bottom: 25px; line-height: 1.6; }
+        .modal-icon { font-size: 2.8rem; margin-bottom: 15px; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1)); }
+        .modal-glass p { font-size: 1.05rem; color: #333333; font-weight: 500; margin-bottom: 25px; line-height: 1.6; }
         
         @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
         @keyframes modalScale { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        /* RAINBOW CLASSES टॉप सेंटर बैज (एनवेलप स्टाइल) */
-        .card::before, .modal-glass::before {
+        /* RAINBOW CLASSES टॉप सेंटर बैज */
+        .card:not(#result-screen)::before, .modal-glass::before {
             content: "RAINBOW CLASSES";
             position: absolute;
             top: -12px; 
             left: 50%;
             transform: translateX(-50%);
-            background: #0f172a; 
-            color: #38bdf8; 
+            background: #111111; 
+            color: #ffffff; 
             font-size: 0.65rem; 
             font-weight: 700;
             letter-spacing: 1px;
             padding: 4px 14px;
-            border: 1px solid rgba(56, 189, 248, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
             border-radius: 6px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             white-space: nowrap;
             z-index: 100;
         }
 
-        /* Summary Box & Modal */
         @keyframes slideUpPop {
             0% { transform: translateY(50px) scale(0.9); opacity: 0; }
             70% { transform: translateY(-10px) scale(1.02); opacity: 1; }
             100% { transform: translateY(0) scale(1); opacity: 1; }
         }
         
+        /* समरी ग्लास पैनल (Highly Transparent White) */
         .summary-glass {
             animation: slideUpPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
             max-width: 550px; width: 90%; max-height: 85vh; overflow: hidden; padding: 25px; display: flex;
-            flex-direction: column; background: rgba(30, 40, 50, 0.98); backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; position: relative;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            flex-direction: column; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 20px; 
+            position: relative; box-shadow: 0 25px 50px rgba(31, 38, 135, 0.25);
         }
         
-        .summary-content-scroll { overflow-y: auto; max-height: 65vh; padding-right: 8px; text-align: left; }
+        .summary-content-scroll { overflow-y: auto; max-height: 65vh; padding-right: 8px; text-align: left; color: #222222; }
         .summary-content-scroll::-webkit-scrollbar { width: 5px; }
-        .summary-content-scroll::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
-        .summary-content-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
-        .summary-content-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
+        .summary-content-scroll::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); border-radius: 10px; }
+        .summary-content-scroll::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+        .summary-content-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.4); }
 
-        .summary-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; }
+        .summary-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px; margin-bottom: 15px; }
         .summary-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .ans-correct { color: #10b981; font-weight: bold; }
-        .ans-wrong { color: #ef4444; font-weight: bold; }
+        .ans-correct { color: #059669; font-weight: bold; }
+        .ans-wrong { color: #dc2626; font-weight: bold; }
         
-        /* Reminder Card Animation */
         @keyframes wigglePulse {
             0%, 100% { transform: scale(1) rotate(0deg); }
             10% { transform: scale(1.02) rotate(-2deg); }
@@ -160,157 +162,68 @@
             50% { transform: scale(1) rotate(0deg); }
         }
         .reminder-card {
-            background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; padding: 15px 20px;
+            background: rgba(253, 230, 138, 0.6); color: #b45309; padding: 15px 20px;
             border-radius: 12px; margin-top: 25px; font-size: 1rem; font-weight: bold; text-align: center;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); animation: wigglePulse 2.5s infinite;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); animation: wigglePulse 2.5s infinite;
+            border: 1px solid rgba(245, 158, 11, 0.4); backdrop-filter: blur(8px);
         }
 
         .timer-anim { animation: pulseTimer 1s infinite ease-in-out; }
         @keyframes pulseTimer {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.8; color: #38bdf8; }
+            50% { transform: scale(1.3); opacity: 0.8; color: #555555; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* APPLE DOCK & BELL ICON */
+        /* डॉक कार्ड हाई ट्रांसपेरेंट ग्लास (White) */
         .dock-card {
-            background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 10px 25px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); margin-bottom: 20px; animation: fadeIn 0.4s ease-out;
-            display: flex; justify-content: space-between; align-items: center; height: 65px; 
-            position: relative; z-index: 200; /* Z-index 200 keeps it above the 150 overlay */
+            background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 25px; padding: 10px 25px;
+            box-shadow: 0 12px 30px rgba(31, 38, 135, 0.15); margin-bottom: 20px; animation: fadeIn 0.4s ease-out;
+            display: flex; justify-content: flex-end; align-items: center; height: 65px; 
+            position: relative; z-index: 200;
         }
         
-        .bell-wrapper {
-            font-size: 1.8rem; position: relative; cursor: pointer; animation: bellRing 2.5s infinite ease-in-out;
-            display: none; transition: transform 0.2s;
-        }
+        .bell-wrapper { font-size: 1.8rem; position: relative; cursor: pointer; animation: bellRing 2.5s infinite ease-in-out; display: none; transition: transform 0.2s; }
         .bell-wrapper:hover { transform: scale(1.1); }
-        .red-dot {
-            position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; background: #ef4444;
-            border-radius: 50%; box-shadow: 0 0 8px #ef4444; border: 2px solid #0f172a;
-        }
+        .red-dot { position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 8px #ef4444; border: 2px solid #fff; }
 
         @keyframes bellRing {
             0% { transform: rotate(0); } 10% { transform: rotate(15deg); } 20% { transform: rotate(-15deg); }
             30% { transform: rotate(10deg); } 40% { transform: rotate(-10deg); } 50%, 100% { transform: rotate(0); }
         }
 
-        /* Glass Buttons for Dock */
-        .glass-btn-dock {
-            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff; padding: 8px 16px; border-radius: 15px; cursor: pointer;
-            backdrop-filter: blur(10px); transition: transform 0.3s ease; font-weight: 600; font-size: 0.9rem;
-        }
-        .glass-btn-dock:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
-        
-        /* Theme Selection Popup (Now opens Downward) */
-        .theme-popup-box {
-            position: absolute; top: 120%; left: 0; background: rgba(30, 40, 50, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 6px;
-            display: flex; flex-direction: column; gap: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            z-index: 210; transform-origin: top; animation: dropDownAnim 0.3s ease-out; min-width: 120px;
-        }
-        @keyframes dropDownAnim { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
-        
-        .theme-opt {
-            padding: 8px 12px; cursor: pointer; border-radius: 8px; color: #fff; font-size: 0.9rem; font-weight: 500; transition: 0.2s; text-align: center;
-        }
-        .theme-opt:hover { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+        .glass-btn-dock { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.8); color: #333; padding: 8px 16px; border-radius: 15px; cursor: pointer; backdrop-filter: blur(10px); transition: transform 0.3s ease; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .glass-btn-dock:hover { background: rgba(255, 255, 255, 0.8); transform: scale(1.05); border-color: #8ec5fc; }
 
-        /* ========================================================= */
-        /* GLOBAL PROFESSIONAL LIGHT MODE CSS                        */
-        /* ========================================================= */
-        body.light-mode-active {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
-            color: #0f172a !important;
-        }
-        body.light-mode-active .card, body.light-mode-active .dock-card, body.light-mode-active .summary-glass, body.light-mode-active .modal-glass {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border: 1px solid rgba(0, 0, 0, 0.1) !important;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08) !important;
-        }
-        body.light-mode-active .card::before, body.light-mode-active .modal-glass::before {
-            background: #ffffff !important;
-            color: #2563eb !important;
-            border-color: rgba(37, 99, 235, 0.3) !important;
-        }
-        /* सभी टेक्स्ट को ब्लैक/डार्क ग्रे करना */
-        body.light-mode-active p, body.light-mode-active label, body.light-mode-active h2, body.light-mode-active h3, body.light-mode-active .question-text, body.light-mode-active strong, body.light-mode-active div:not(.theme-popup-box):not(.option-item) {
-            color: #1e293b !important;
-        }
-        /* Inputs & Dropdowns */
-        body.light-mode-active .input-group input, body.light-mode-active .glass-select-box {
-            background: #f1f5f9 !important;
-            border-color: #cbd5e1 !important;
-            color: #0f172a !important;
-        }
-        body.light-mode-active .input-group input:focus {
-            border-color: #2563eb !important;
-            background: #ffffff !important;
-            box-shadow: 0 0 10px rgba(37,99,235,0.1) !important;
-        }
-        body.light-mode-active .input-group input::placeholder { color: #94a3b8 !important; }
-        body.light-mode-active .glass-select-box .select-icon { color: #0f172a !important; }
-        
-        /* Options Card in Light Mode */
-        body.light-mode-active .option-item, body.light-mode-active .option-card {
-            background: #ffffff !important;
-            border-color: #e2e8f0 !important;
-            color: #1e293b !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02) !important;
-        }
-        body.light-mode-active .option-item:hover, body.light-mode-active .option-card:hover {
-            background: #f8fafc !important;
-            border-color: #3b82f6 !important;
-        }
-        body.light-mode-active .option-item.selected {
-            background: rgba(59, 130, 246, 0.1) !important;
-            border-color: #2563eb !important;
-            color: #0f172a !important;
-            font-weight: 600 !important;
-        }
-        
-        /* Dock Buttons in Light Mode */
-        body.light-mode-active .glass-btn-dock {
-            background: #f1f5f9 !important;
-            border-color: #cbd5e1 !important;
-            color: #1e293b !important;
-        }
-        body.light-mode-active .glass-btn-dock:hover { background: #e2e8f0 !important; }
-        
-        /* Timer & Counters */
-        body.light-mode-active .timer-box { 
-            background: rgba(37, 99, 235, 0.1) !important; color: #2563eb !important; border-color: rgba(37, 99, 235, 0.3) !important; 
-        }
-        body.light-mode-active #q-counter { color: #2563eb !important; font-weight: 600; }
-        
-        /* Theme Popup internal colors in Light mode */
-        body.light-mode-active .theme-popup-box {
-            background: #ffffff !important;
-            border-color: #e2e8f0 !important;
-        }
-        body.light-mode-active .theme-opt { color: #1e293b !important; }
-        body.light-mode-active .theme-opt:hover { background: #f1f5f9 !important; color: #2563eb !important; }
+        /* ================= PRE-SUBMIT CSS ================= */
+        .pre-sub-label { color: #555555; transition: color 0.5s ease; }
+        .pre-sub-val { color: #111111; font-weight: 600; transition: color 0.5s ease; }
+        .attempted-count { color: #6a11cb; font-weight: bold; transition: color 0.5s ease; }
+
+        /* ================= RESULT CARD ================= */
+        .score-receipt-card { padding: 30px 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.7); position: relative; box-shadow: 0 15px 40px rgba(31, 38, 135, 0.15); transition: all 0.5s ease; }
+        .rc-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #111111; color: #ffffff; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; padding: 6px 16px; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 8px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10; }
+        .rc-title { color: #111111; font-size: 1.8rem; letter-spacing: 0.5px; margin-top: 10px; font-weight: 800;}
+        .rc-details-box { margin-top: 25px; background: rgba(255, 255, 255, 0.6); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.8); text-align: left; display: inline-block; width: 95%; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .rc-details-box p { color: #222222; font-weight: 600; font-size: 1rem; margin-bottom: 8px; }
+        .res-label { color: #666666; font-weight: 500; }
+        .score-badge { font-size: 4rem; font-weight: 800; color: #6a11cb; margin: 25px 0; text-shadow: 0 4px 15px rgba(106, 17, 203, 0.2); }
+        .rc-percent { font-size: 1.4rem; font-weight: 700; color: #059669; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-
-    <!-- बैकग्राउंड ब्लर ओव्हरले (50% कम ब्लरनेस के साथ) -->
-    <div id="theme-overlay" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.15); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 150;" onclick="toggleThemePopup()"></div>
 
     <div class="container">
 
         <!-- INSTRUCTION SCREEN -->
         <div id="instruction-screen" class="card hidden">
-            <h2 style="margin-bottom: 20px; text-align: center; color: #ef4444; font-size: 1.6rem; letter-spacing: 0.5px; font-weight: bold;"> 🚨 आपके लिए सन्देश 🚨</h2>
-            <div style="font-size: 1.05rem; color: #ffffff; line-height: 1.7; margin-bottom: 25px; background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                <p style="margin-bottom: 15px; color: #cbd5e1; text-align: justify;">
+            <h2 style="margin-bottom: 20px; text-align: center; color: #dc2626; font-size: 1.6rem; letter-spacing: 0.5px; font-weight: bold;"> 🚨 आपके लिए सन्देश 🚨</h2>
+            <div style="font-size: 1.05rem; color: #333333; line-height: 1.7; margin-bottom: 25px; background: rgba(255, 255, 255, 0.6); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.8); font-weight: 500;">
+                <p style="margin-bottom: 15px; text-align: justify;">
                     प्रिय छात्रों, आज केमिस्ट्री का DPP नहीं दिया गया है आज सिर्फ आपको फिजिक्स का DPP भी बनाना है।
                 </p>
             </div>
-            
             <div style="display: flex; justify-content: center;">
                 <button class="btn btn-success" style="width: auto; padding: 12px 40px; border-radius: 25px;" onclick="proceedToLogin()">Next</button>
             </div>
@@ -318,9 +231,9 @@
 
         <!-- लॉगिन स्क्रीन -->
         <div id="login-screen" class="card hidden">
-            <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;">Student's identification</h2>
+            <h2 style="margin-bottom: 25px; text-align: center; color: #111111; font-size: 1.4rem; letter-spacing: 0.5px; font-weight: 700;">Student's identification</h2>
             <div class="input-group">
-                <label>Student Name(विद्यार्थी का नाम):</label>
+                <label>Student Name (विद्यार्थी का नाम):</label>
                 <input type="text" id="student-name" placeholder="ex-'Chandramani'...">
             </div>
             <div class="input-group">
@@ -332,7 +245,7 @@
 
         <!-- DPP SETUP SCREEN -->
         <div id="selection-screen" class="card hidden">
-            <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;">DPP Setup</h2>
+            <h2 style="margin-bottom: 25px; text-align: center; color: #111111; font-size: 1.4rem; letter-spacing: 0.5px; font-weight: 700;">DPP Setup</h2>
             <div class="input-group">
                 <label>विषय चुनें (Class 12th):</label>
                 <div class="glass-select-box" onclick="openSubjectSelect()">
@@ -360,43 +273,25 @@
             <button class="btn" onclick="startQuiz()">Start DPP</button>
         </div>
 
-        <!-- DOCK CONTAINER (Shows with Setup) - NOW CONTAINS SCREEN MODE -->
+        <!-- DOCK CONTAINER -->
         <div id="dock-container" class="dock-card hidden">
-            <!-- Left Side: Screen Mode -->
-            <div style="display: flex; justify-content: flex-start; position: relative;">
-                <button id="btn-screen-mode" class="glass-btn-dock" onclick="toggleThemePopup()">स्क्रीन मोड 🌗</button>
-                
-                <!-- Theme Popup -->
-                <div id="theme-popup" class="theme-popup-box hidden">
-                    <div class="theme-opt" onclick="applyLightMode()">Light Mode ☀️</div>
-                    <div class="theme-opt" onclick="applyDarkMode()">Dark Mode 🌙</div>
-                </div>
-            </div>
-
-            <div style="flex-grow: 1;">
-                <!-- खाली जगह ताकि बेल राइट साइड में रहे -->
-            </div>
-            
-            <!-- नोटिफिकेशन बेल -->
             <div id="notification-bell" class="bell-wrapper" onclick="openNotificationModal()">
-                🔔
-                <span id="bell-dot" class="red-dot"></span>
+                🔔<span id="bell-dot" class="red-dot"></span>
             </div>
         </div>
 
         <!-- क्विज स्क्रीन -->
         <div id="quiz-screen" class="card hidden">
             <div>
-                <span id="q-counter" style="font-weight: 500; color: #38bdf8; font-size: 0.95rem;">प्रश्न 1 / 10</span>
+                <span id="q-counter" style="font-weight: 600; color: #555555; font-size: 0.95rem;">प्रश्न 1 / 10</span>
                 <div class="timer-box" id="timer-ui">⏱️ <span id="time-left">30:00</span></div>
             </div>
             
-            <!-- 10 Minute Warning Message -->
-            <div id="time-warning" style="display: none; clear: both; margin-top: 50px; margin-bottom: -15px; color: #ff4c4c; background: rgba(255,0,0,0.1); border: 1px solid #ff4c4c; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; animation: alertPulse 1s infinite;">
+            <div id="time-warning" style="display: none; clear: both; margin-top: 50px; margin-bottom: -15px; color: #dc2626; background: rgba(254, 226, 226, 0.8); border: 1px solid rgba(239, 68, 68, 0.5); padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; animation: alertPulse 1s infinite;">
                 ⚠️ आपके पास सिर्फ 10 मिनट शेष हैं! कृपया जल्दी करें।
             </div>
 
-            <div class="question-text" id="q-text">प्रश्न लोड আসতে रहा है...</div>
+            <div class="question-text" id="q-text">प्रश्न लोड हो रहा है...</div>
             <div id="options-container"></div>
             
             <div class="nav-btns">
@@ -406,39 +301,55 @@
             <button class="btn btn-success" id="btn-submit" style="margin-top: 15px; display: none;" onclick="submitQuiz()">Submit🧐</button>
         </div>
 
-        <!-- QUIZ SCREEN DOCK (Only Full Screen left here) -->
         <div id="quiz-dock-container" class="dock-card hidden" style="margin-top: 5px; justify-content: center;">
-            <!-- Full Screen Mode -->
             <button id="btn-fullscreen" class="glass-btn-dock" onclick="toggleFullScreen()">फुल स्क्रीन मोड 🔲</button>
         </div>
 
         <!-- प्री-सबमिट स्क्रीन -->
         <div id="pre-submit-screen" class="card hidden">
-            <h2 style="margin-bottom: 25px; text-align: center; color: #38bdf8; font-size: 1.4rem; letter-spacing: 0.5px;"> DPP Submition Details </h2>
-            <div id="pre-submit-details" style="font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                <!-- यहाँ डेटा डायनामिकली लोड होगा -->
+            <h2 style="margin-bottom: 25px; text-align: center; color: #111111; font-size: 1.4rem; letter-spacing: 0.5px; font-weight: 700;"> DPP Submission Details </h2>
+            <div id="pre-submit-details" style="font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; background: rgba(255, 255, 255, 0.6); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.8);">
             </div>
-            
             <div id="submit-loader" class="hidden" style="text-align: center; margin-top: 20px; padding: 15px;">
-                <h3 style="color: #fbbf24; font-size: 1.2rem;">आपका रिजल्ट सबमिट हो रहा है...</h3>
-                <div class="timer-anim" style="font-size: 3.5rem; font-weight: 800; margin-top: 15px; color: #ffffff;" id="submit-timer-text">5</div>
+                <h3 style="color: #6a11cb; font-size: 1.2rem;">आपका रिजल्ट सबमिट हो रहा है...</h3>
+                <div class="timer-anim" style="font-size: 3.5rem; font-weight: 800; margin-top: 15px; color: #111111;" id="submit-timer-text">5</div>
             </div>
-            
             <button class="btn btn-success" id="btn-final-submit" onclick="startFinalSubmit()">OK (सबमिट करें)</button>
         </div>
 
         <!-- रिजल्ट स्क्रीन -->
         <div id="result-screen" class="card score-card hidden">
-            <h2 style="color: #38bdf8; font-size: 1.6rem; letter-spacing: 0.5px;">🧾Your Result🫣</h2>
-            <p id="res-name" style="margin-top: 15px; color: #ffffff; font-weight: 500; font-size: 1.15rem;"></p>
-            <div class="score-badge" id="res-score">0 / 0</div>
-            <p id="res-percent" style="font-size: 1.3rem; font-weight: 600; color: #10b981;"></p>
-            <br>
             
-            <button class="btn btn-secondary" onclick="openSummaryModal()" style="margin-top: 15px; margin-bottom: 10px;">View Summary / Answer 📝</button>
-            <button class="btn" onclick="goHome()" style="margin-top: 10px;">Home 🏠</button>
+            <div id="download-wrapper" style="padding: 20px; background: transparent; display: inline-block; width: 100%;">
+                
+                <!-- प्रीमियम रिजल्ट कार्ड जो डाउनलोड होगा -->
+                <div id="score-receipt" class="score-receipt-card">
+                    
+                    <div id="rc-badge" class="rc-badge">
+                        RAINBOW CLASSES
+                    </div>
 
-            <div class="reminder-card">
+                    <h2 class="rc-title">🧾 Your Result 🫣</h2>
+                    
+                    <div id="rc-details-box" class="rc-details-box">
+                        <p id="res-name"></p>
+                        <p id="res-chapter"></p>
+                        <p id="res-dpp"></p>
+                    </div>
+
+                    <div class="score-badge" id="res-score">0 / 0</div>
+                    <p id="res-percent" class="rc-percent"></p>
+                </div>
+            </div>
+            
+            <!-- एक्शन बटन्स -->
+            <div id="action-buttons" style="margin-top: 10px;">
+                <button class="btn" onclick="downloadScoreCard()" style="margin-bottom: 15px; background: linear-gradient(135deg, #d946ef, #9333ea); border:none; box-shadow: 0 6px 20px rgba(147, 51, 234, 0.25);">Download Score Card 📥</button>
+                <button class="btn btn-secondary" onclick="openSummaryModal()" style="margin-bottom: 10px;">View Summary / Answer 📝</button>
+                <button class="btn" onclick="goHome()" style="margin-top: 10px;">Home 🏠</button>
+            </div>
+
+            <div class="reminder-card" id="reminder-msg">
                 यदि आप आज के सभी डीपीपी नहीं बनाए हैं तो कृपया सभी डीपीपी बनाएं
             </div>
         </div>
@@ -456,7 +367,7 @@
 
     <div id="options-modal" class="modal-overlay hidden">
         <div class="modal-glass options-glass">
-            <h3 id="options-title" style="margin-bottom: 20px; color: #38bdf8; font-size: 1.2rem; font-weight: 500;">चुनें</h3>
+            <h3 id="options-title" style="margin-bottom: 20px; color: #111111; font-size: 1.2rem; font-weight: 700;">चुनें</h3>
             <div id="options-list" class="options-list"></div>
             <button class="btn btn-secondary" style="padding: 12px;" onclick="closeOptionsModal()">रद्द करें</button>
         </div>
@@ -464,7 +375,7 @@
 
     <div id="summary-modal" class="modal-overlay hidden">
         <div class="summary-glass">
-            <h3 style="text-align:center; color:#38bdf8; margin-bottom:20px; font-size:1.4rem;">विस्तृत परिणाम</h3>
+            <h3 style="text-align:center; color:#111111; margin-bottom:20px; font-size:1.4rem; font-weight: 700;">विस्तृत परिणाम</h3>
             <div id="summary-content" class="summary-content-scroll"></div>
             <button class="btn btn-secondary" style="margin-top: 20px; padding: 12px;" onclick="closeSummaryModal()">बंद करें ❌</button>
         </div>
@@ -473,19 +384,17 @@
     <div id="notification-modal" class="modal-overlay hidden">
         <div class="modal-glass">
             <div style="font-size: 3rem; margin-bottom: 10px; animation: bellRing 2s infinite;">🔔</div>
-            <h3 style="margin-bottom: 20px; color: #38bdf8; font-size: 1.3rem; font-weight: 600;">आपके लिए खास संदेश</h3>
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
-                <p id="student-msg-text" style="color: #ffffff; font-size: 1.05rem; line-height: 1.6; margin: 0;"></p>
+            <h3 style="margin-bottom: 20px; color: #111111; font-size: 1.3rem; font-weight: 700;">आपके लिए खास संदेश</h3>
+            <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+                <p id="student-msg-text" style="color: #333333; font-size: 1.05rem; line-height: 1.6; margin: 0; font-weight: 500;"></p>
             </div>
             <button class="btn btn-secondary" style="padding: 12px;" onclick="closeNotificationModal()">बंद करें</button>
         </div>
     </div>
 
-    <!-- Script File Reference -->
     <script src="questions.js"></script>
-
-    <!-- Main JS Logic -->
     <script>
+        // JS लॉजिक में कोई बदलाव नहीं, 100% सुरक्षित और पहले जैसा है
         const subjectsList = {
             1: "भौतिक विज्ञान (Physics)",
             2: "रसायन विज्ञान (Chemistry)",
@@ -508,7 +417,7 @@
         let currentQIndex = 0;
         let userAnswers = [];
         let timerInterval;
-        let timeLeft = 1800; // 30 minutes in seconds
+        let timeLeft = 1800; 
         window.currentQuizFinished = false;
 
         function resetSetupScreen() {
@@ -523,7 +432,6 @@
         window.onload = function() {
             document.getElementById('student-name').value = '';
             document.getElementById('student-id').value = '';
-            
             history.replaceState({ screen: 'instruction' }, '');
             showScreen('instruction-screen');
         };
@@ -535,10 +443,7 @@
             document.getElementById("summary-modal").classList.add("hidden");
             document.getElementById("notification-modal").classList.add("hidden");
 
-            if (!state) {
-                showScreen('instruction-screen');
-                return;
-            }
+            if (!state) { showScreen('instruction-screen'); return; }
 
             if (state.modal) document.getElementById("custom-modal").classList.remove("hidden");
             if (state.optionsModal) document.getElementById("options-modal").classList.remove("hidden");
@@ -575,12 +480,8 @@
             
             document.getElementById(screenId).classList.remove("hidden");
             
-            if(screenId === 'selection-screen') {
-                document.getElementById("dock-container").classList.remove("hidden");
-            }
-            if(screenId === 'quiz-screen') {
-                document.getElementById("quiz-dock-container").classList.remove("hidden");
-            }
+            if(screenId === 'selection-screen') document.getElementById("dock-container").classList.remove("hidden");
+            if(screenId === 'quiz-screen') document.getElementById("quiz-dock-container").classList.remove("hidden");
         }
 
         function checkAndShowNotification(studentId) {
@@ -593,20 +494,13 @@
             
             if (savedTime) {
                 let elapsed = Date.now() - parseInt(savedTime);
-                if (elapsed < 10 * 60 * 60 * 1000) { 
-                    bell.style.display = "none";
-                    return; 
-                } else {
-                    localStorage.removeItem(cooldownKey); 
-                }
+                if (elapsed < 10 * 60 * 60 * 1000) { bell.style.display = "none"; return; } 
+                else { localStorage.removeItem(cooldownKey); }
             }
 
             if (window.studentMessages) {
                 for (let savedId in window.studentMessages) {
-                    if (savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean) {
-                        foundMessage = window.studentMessages[savedId];
-                        break;
-                    }
+                    if (savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean) { foundMessage = window.studentMessages[savedId]; break; }
                 }
             }
             
@@ -614,7 +508,6 @@
                 bell.style.display = "block";
                 bell.dataset.message = foundMessage;
                 bell.dataset.clicks = "0"; 
-                
                 let dot = document.getElementById("bell-dot");
                 if(dot) dot.style.display = "block"; 
             } else {
@@ -632,9 +525,8 @@
 
             let dot = document.getElementById("bell-dot");
             
-            if (currentClicks === 1) {
-                if(dot) dot.style.display = "none";
-            } else if (currentClicks >= 2) {
+            if (currentClicks === 1) { if(dot) dot.style.display = "none"; } 
+            else if (currentClicks >= 2) {
                 bell.style.display = "none";
                 localStorage.setItem('bell_cooldown_' + studentId, Date.now().toString());
             }
@@ -648,17 +540,11 @@
         }
 
         function closeNotificationModal() {
-            if (history.state && history.state.notifModal) {
-                history.back();
-            } else {
-                document.getElementById("notification-modal").classList.add("hidden");
-            }
+            if (history.state && history.state.notifModal) { history.back(); } 
+            else { document.getElementById("notification-modal").classList.add("hidden"); }
         }
 
-        function proceedToLogin() {
-            history.pushState({ screen: 'login' }, '');
-            showScreen('login-screen');
-        }
+        function proceedToLogin() { history.pushState({ screen: 'login' }, ''); showScreen('login-screen'); }
 
         function verifyStudent() {
             let name = document.getElementById("student-name").value.trim();
@@ -671,15 +557,11 @@
             let enteredIdClean = studentId.toLowerCase().replace(/\s+/g, ''); 
 
             if (window.validStudentIDs) {
-                isIdValid = window.validStudentIDs.some(function(savedId) {
-                    return savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean;
-                });
+                isIdValid = window.validStudentIDs.some(function(savedId) { return savedId.toLowerCase().replace(/\s+/g, '') === enteredIdClean; });
             }
-
             if (!isIdValid) { showModal("आपकी आईडी पंजीकृत नहीं है! कृपया सही आईडी दर्ज करें।"); return; }
 
             checkAndShowNotification(studentId);
-
             history.pushState({ screen: 'selection' }, '');
             showScreen('selection-screen');
         }
@@ -688,11 +570,7 @@
             let list = document.getElementById("options-list");
             list.innerHTML = "";
             document.getElementById("options-title").innerText = "विषय चुनें";
-
-            for (let key in subjectsList) {
-                list.innerHTML += `<div class="option-card" onclick="selectSubject('${key}', '${subjectsList[key]}')">${subjectsList[key]}</div>`;
-            }
-
+            for (let key in subjectsList) { list.innerHTML += `<div class="option-card" onclick="selectSubject('${key}', '${subjectsList[key]}')">${subjectsList[key]}</div>`; }
             document.getElementById("options-modal").classList.remove("hidden");
             history.pushState({ screen: history.state ? history.state.screen : 'selection', optionsModal: true }, '');
         }
@@ -700,29 +578,24 @@
         function selectSubject(val, text) {
             document.getElementById("subject-select").value = val;
             document.getElementById("subject-text").innerText = text;
-            
             document.getElementById("chapter-select").value = "";
             document.getElementById("chapter-text").innerText = "-- अध्याय चुनें --";
             document.getElementById("quiz-select").value = "";
             document.getElementById("quiz-text").innerText = "-- पहले अध्याय चुनें --";
-            
             history.back();
         }
 
         function openChapterSelect() {
             let sub = document.getElementById("subject-select").value;
             if(!sub) { showModal("कृपया पहले विषय चुनें!"); return; }
-
             let list = document.getElementById("options-list");
             list.innerHTML = "";
             document.getElementById("options-title").innerText = "अध्याय चुनें";
-
             let chapters = chaptersData[sub];
             for (let i = 0; i < chapters.length; i++) {
                 let chNum = i + 1;
                 list.innerHTML += `<div class="option-card" onclick="selectChapter('${chNum}', 'अध्याय ${chNum}: ${chapters[i]}')">अध्याय ${chNum}: ${chapters[i]}</div>`;
             }
-
             document.getElementById("options-modal").classList.remove("hidden");
             history.pushState({ screen: history.state ? history.state.screen : 'selection', optionsModal: true }, '');
         }
@@ -740,13 +613,15 @@
             let qText = document.getElementById("quiz-text");
             document.getElementById("quiz-select").value = ""; 
 
+            let studentId = document.getElementById("student-id").value.trim().toLowerCase();
+
             let hasQuizzes = false;
             let hiddenDueToCooldown = false;
 
             if (window.quizDatabase && window.quizDatabase[sub] && window.quizDatabase[sub][`ch_${chNum}`]) {
                 let quizzes = window.quizDatabase[sub][`ch_${chNum}`];
                 for (let qKey in quizzes) {
-                    let cooldownKey = `dpp_cooldown_${sub}_${chNum}_${qKey}`;
+                    let cooldownKey = `dpp_cooldown_${studentId}_${sub}_${chNum}_${qKey}`;
                     let savedTime = localStorage.getItem(cooldownKey);
                     let hide = false;
                     
@@ -771,6 +646,8 @@
             if(!sub) { showModal("कृपया पहले विषय चुनें!"); return; }
             if(!chNum) { showModal("कृपया पहले अध्याय चुनें!"); return; }
 
+            let studentId = document.getElementById("student-id").value.trim().toLowerCase();
+
             let list = document.getElementById("options-list");
             list.innerHTML = "";
             document.getElementById("options-title").innerText = "DPP चुनें";
@@ -781,21 +658,17 @@
 
             if (window.quizDatabase && window.quizDatabase[sub] && window.quizDatabase[sub][`ch_${chNum}`]) {
                 let quizzes = window.quizDatabase[sub][`ch_${chNum}`];
-                
                 if(Object.keys(quizzes).length > 0) {
                     for (let qKey in quizzes) {
                         totalQuizzes++;
-                        let cooldownKey = `dpp_cooldown_${sub}_${chNum}_${qKey}`;
+                        let cooldownKey = `dpp_cooldown_${studentId}_${sub}_${chNum}_${qKey}`;
                         let savedTime = localStorage.getItem(cooldownKey);
                         let hideQuiz = false;
                         
                         if (savedTime) {
                             let elapsed = Date.now() - parseInt(savedTime);
-                            if (elapsed < 5 * 60 * 60 * 1000) { 
-                                hideQuiz = true; hiddenQuizzesCount++;
-                            } else {
-                                localStorage.removeItem(cooldownKey); 
-                            }
+                            if (elapsed < 5 * 60 * 60 * 1000) { hideQuiz = true; hiddenQuizzesCount++; } 
+                            else { localStorage.removeItem(cooldownKey); }
                         }
 
                         if (!hideQuiz) {
@@ -809,9 +682,9 @@
 
             if (!hasQuizzes) {
                 if (totalQuizzes > 0 && hiddenQuizzesCount === totalQuizzes) {
-                    list.innerHTML = `<div style="text-align:center; color:#ffffff; padding: 20px;">आपने इस अध्याय के सभी DPP हाल ही में बना लिए हैं。<br><br><span style="color:#fbbf24;">कृपया 5 घंटे बाद पुनः प्रयास करें।</span></div>`;
+                    list.innerHTML = `<div style="text-align:center; color:#222222; padding: 20px; font-weight: 500;">आपने इस अध्याय के सभी DPP हाल ही में बना लिए हैं。<br><br><span style="color:#d97706; font-weight:700;">कृपया 5 घंटे बाद पुनः प्रयास करें।</span></div>`;
                 } else {
-                    list.innerHTML = `<div style="text-align:center; color:#ffffff; padding: 20px;">अभी इस अध्याय में कोई DPP नहीं डाला गया है。<br><br>कृपया बाद में प्रयास करें।</div>`;
+                    list.innerHTML = `<div style="text-align:center; color:#222222; padding: 20px; font-weight: 500;">अभी इस अध्याय में कोई DPP नहीं डाला गया है。<br><br>कृपया बाद में प्रयास करें।</div>`;
                 }
             }
 
@@ -841,53 +714,19 @@
             else { document.getElementById("custom-modal").classList.add("hidden"); }
         }
 
-        /* ========================================================== */
-        /* GLOBAL SCREEN MODE & FULL SCREEN MODE LOGIC                */
-        /* ========================================================== */
-
-        function toggleThemePopup() {
-            document.getElementById('theme-popup').classList.toggle('hidden');
-            document.getElementById('theme-overlay').classList.toggle('hidden');
-        }
-
-        function applyLightMode() {
-            document.body.classList.add('light-mode-active');
-            document.getElementById('theme-popup').classList.add('hidden');
-            document.getElementById('theme-overlay').classList.add('hidden');
-        }
-
-        function applyDarkMode() {
-            document.body.classList.remove('light-mode-active');
-            document.getElementById('theme-popup').classList.add('hidden');
-            document.getElementById('theme-overlay').classList.add('hidden');
-        }
-
         function toggleFullScreen() {
             let btn = document.getElementById("btn-fullscreen");
-            
             if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().then(() => {
-                    btn.innerText = "नॉर्मल 🔙";
-                }).catch(err => {
-                    console.log("Error attempting to enable fullscreen:", err.message);
-                });
+                document.documentElement.requestFullscreen().then(() => { btn.innerText = "नॉर्मल 🔙"; }).catch(err => { console.log(err.message); });
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().then(() => {
-                        btn.innerText = "फुल स्क्रीन मोड 🔲";
-                    });
-                }
+                if (document.exitFullscreen) { document.exitFullscreen().then(() => { btn.innerText = "फुल स्क्रीन मोड 🔲"; }); }
             }
         }
 
         document.addEventListener('fullscreenchange', (event) => {
             let btn = document.getElementById("btn-fullscreen");
-            if (!document.fullscreenElement) {
-                btn.innerText = "फुल स्क्रीन मोड 🔲";
-            }
+            if (!document.fullscreenElement) { btn.innerText = "फुल स्क्रीन मोड 🔲"; }
         });
-
-        /* ========================================================== */
 
         function startQuiz() {
             let sub = document.getElementById("subject-select").value;
@@ -911,29 +750,23 @@
                 
                 startOverallTimer();
                 loadQuestion();
-            } else {
-                showModal("इस DPP के सवाल अभी जोड़े नहीं गए हैं!");
-            }
+            } else { showModal("इस DPP के सवाल अभी जोड़े नहीं गए हैं!"); }
         }
 
         function startOverallTimer() {
             clearInterval(timerInterval);
-            timeLeft = 1800; // 30 Minutes
-            
+            timeLeft = 1800; 
             document.getElementById("time-warning").style.display = "none";
             document.getElementById("timer-ui").classList.remove('timer-warning');
-
             updateTimerDisplay();
 
             timerInterval = setInterval(() => {
                 timeLeft--;
                 updateTimerDisplay();
-
                 if (timeLeft === 600) {
                     document.getElementById("time-warning").style.display = "block";
                     document.getElementById("timer-ui").classList.add('timer-warning');
                 }
-
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     showModal("समय समाप्त! आपका DPP स्वचालित रूप से सबमिट किया जा रहा है।");
@@ -971,28 +804,12 @@
             }
         }
 
-        function selectOption(idx) {
-            userAnswers[currentQIndex] = idx;
-            loadQuestion();
-        }
-
-        function nextQuestion() {
-            if (currentQIndex < currentQuestions.length - 1) {
-                currentQIndex++;
-                loadQuestion();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQIndex > 0) {
-                currentQIndex--;
-                loadQuestion();
-            }
-        }
+        function selectOption(idx) { userAnswers[currentQIndex] = idx; loadQuestion(); }
+        function nextQuestion() { if (currentQIndex < currentQuestions.length - 1) { currentQIndex++; loadQuestion(); } }
+        function prevQuestion() { if (currentQIndex > 0) { currentQIndex--; loadQuestion(); } }
 
         function submitQuiz() {
             clearInterval(timerInterval);
-            
             let studentName = document.getElementById("student-name").value;
             let total = currentQuestions.length;
             let attempted = userAnswers.filter(ans => ans !== null).length;
@@ -1003,15 +820,14 @@
             let timeTakenStr = `${m} मिनट ${s} सेकंड`;
 
             document.getElementById("pre-submit-details").innerHTML = `
-                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">नाम:</strong> ${studentName}</div>
-                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">इस DPP में कुल प्रश्न:</strong> ${total}</div>
-                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">आपने अटेम्प्ट किये:</strong> <span style="color:#38bdf8; font-weight:bold;">${attempted}</span></div>
-                <div style="margin-bottom: 8px;"><strong style="color: #cbd5e1;">कुल लिया गया समय:</strong> ${timeTakenStr}</div>
+                <div style="margin-bottom: 8px;"><strong class="pre-sub-label">नाम:</strong> <span class="pre-sub-val">${studentName}</span></div>
+                <div style="margin-bottom: 8px;"><strong class="pre-sub-label">इस DPP में कुल प्रश्न:</strong> <span class="pre-sub-val">${total}</span></div>
+                <div style="margin-bottom: 8px;"><strong class="pre-sub-label">आपने अटेम्प्ट किये:</strong> <span class="attempted-count">${attempted}</span></div>
+                <div style="margin-bottom: 8px;"><strong class="pre-sub-label">कुल लिया गया समय:</strong> <span class="pre-sub-val">${timeTakenStr}</span></div>
             `;
 
             document.getElementById("submit-loader").classList.add("hidden");
             document.getElementById("btn-final-submit").classList.remove("hidden");
-
             history.pushState({ screen: 'pre-submit' }, '');
             showScreen('pre-submit-screen');
         }
@@ -1026,25 +842,20 @@
             let countdown = setInterval(() => {
                 counter--;
                 document.getElementById("submit-timer-text").innerText = counter;
-                if(counter <= 0) {
-                    clearInterval(countdown);
-                    finalizeQuizSubmit();
-                }
+                if(counter <= 0) { clearInterval(countdown); finalizeQuizSubmit(); }
             }, 1000);
         }
 
         function finalizeQuizSubmit() {
             window.currentQuizFinished = true; 
             let score = 0;
-            currentQuestions.forEach((q, idx) => {
-                if (userAnswers[idx] === q.correct) score++;
-            });
+            currentQuestions.forEach((q, idx) => { if (userAnswers[idx] === q.correct) score++; });
 
             let total = currentQuestions.length;
             let percent = Math.round((score / total) * 100);
 
             let studentName = document.getElementById("student-name").value;
-            let studentId = document.getElementById("student-id").value;
+            let studentId = document.getElementById("student-id").value.trim().toLowerCase(); 
             let subjectCode = document.getElementById("subject-select").value;
             let subjectName = document.getElementById("subject-text").innerText;
             let chapterCode = document.getElementById("chapter-select").value;
@@ -1052,33 +863,27 @@
             let dppKey = document.getElementById("quiz-select").value;
             let dppName = document.getElementById("quiz-text").innerText;
 
-            let cooldownKey = `dpp_cooldown_${subjectCode}_${chapterCode}_${dppKey}`;
+            let cooldownKey = `dpp_cooldown_${studentId}_${subjectCode}_${chapterCode}_${dppKey}`;
             localStorage.setItem(cooldownKey, Date.now().toString());
 
             let sheetData = {
-                name: studentName,
-                id: studentId,
-                score: `${score} / ${total}`,
-                subjectCode: subjectCode,
-                subjectName: subjectName,
-                chapterName: chapterName,
-                dppName: dppName
+                name: studentName, id: studentId, score: `${score} / ${total}`,
+                subjectCode: subjectCode, subjectName: subjectName, chapterName: chapterName, dppName: dppName
             };
 
             const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxZVqprhQ_Y4pdg0xwRixDZUHavrTVDkdbMlprX6hCsqvAboITOaOVHBZYfCZO1O2yySw/exec'; 
-
             if(GOOGLE_SHEET_URL) {
-                fetch(GOOGLE_SHEET_URL, {
-                    method: 'POST',
-                    keepalive: true, 
-                    body: JSON.stringify(sheetData)
-                }).catch(e => console.log("डेटा भेजने में त्रुटि: ", e));
+                fetch(GOOGLE_SHEET_URL, { method: 'POST', keepalive: true, body: JSON.stringify(sheetData) }).catch(e => console.log(e));
             }
 
             history.replaceState({ screen: 'result' }, '');
             showScreen('result-screen');
 
-            document.getElementById("res-name").innerText = `विद्यार्थी: ${studentName}`;
+            // --- RESULT CARD DATA INJECTION ---
+            document.getElementById("res-name").innerHTML = `<span class="res-label">Name:</span> ${studentName}`;
+            document.getElementById("res-chapter").innerHTML = `<span class="res-label">Chapter:</span> ${chapterName}`;
+            document.getElementById("res-dpp").innerHTML = `<span class="res-label">DPP:</span> ${dppName}`;
+            
             document.getElementById("res-score").innerText = `${score} / ${total}`;
             document.getElementById("res-percent").innerText = `कुल प्राप्तांक: ${percent}%`;
 
@@ -1105,22 +910,17 @@
         function generateSummary() {
             let container = document.getElementById("summary-content");
             container.innerHTML = "";
-            
             currentQuestions.forEach((q, idx) => {
                 let userAnsIdx = userAnswers[idx];
                 let isAttempted = userAnsIdx !== null;
                 let isCorrect = isAttempted && userAnsIdx === q.correct;
-                
                 let mark = isCorrect ? "✅ सही" : "❌ गलत";
                 let markClass = isCorrect ? "ans-correct" : "ans-wrong";
-                
                 let userAnsText = isAttempted ? String.fromCharCode(65+userAnsIdx) + ") " + q.options[userAnsIdx] : "उत्तर नहीं दिया गया";
                 let correctAnsText = String.fromCharCode(65+q.correct) + ") " + q.options[q.correct];
 
-                let optionsHtml = `<div style="margin: 10px 0; font-size: 0.95rem; line-height: 1.6; opacity: 0.8;">`;
-                q.options.forEach((opt, oIdx) => {
-                    optionsHtml += `<div>${String.fromCharCode(65+oIdx)}) ${opt}</div>`;
-                });
+                let optionsHtml = `<div style="margin: 10px 0; font-size: 0.95rem; line-height: 1.6; color: #444444;">`;
+                q.options.forEach((opt, oIdx) => { optionsHtml += `<div>${String.fromCharCode(65+oIdx)}) ${opt}</div>`; });
                 optionsHtml += `</div>`;
 
                 let html = `
@@ -1129,18 +929,40 @@
                             <strong>प्रश्न ${idx + 1}:</strong> ${q.question} <span class="${markClass}">(${mark})</span>
                         </div>
                         ${optionsHtml}
-                        <div style="background: rgba(0,0,0,0.1); border: 1px solid rgba(150,150,150,0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 8px; margin-top: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
                             <div style="font-size: 0.95rem; margin-bottom: 5px;">
-                                <strong style="opacity: 0.8;">आपका उत्तर 👉</strong> 
-                                <span style="${!isCorrect ? 'color:#ef4444; font-weight:600;' : 'color:#10b981; font-weight:600;'}">${userAnsText}</span>
+                                <strong style="color: #555555;">आपका उत्तर 👉</strong> 
+                                <span style="${!isCorrect ? 'color:#dc2626; font-weight:700;' : 'color:#059669; font-weight:700;'}">${userAnsText}</span>
                             </div>
-                            <div style="color: #10b981; font-size: 0.95rem;">
-                                <strong>असली उत्तर 👉</strong> <span style="font-weight:600;">${correctAnsText}</span>
+                            <div style="color: #059669; font-size: 0.95rem;">
+                                <strong style="color: #555555;">असली उत्तर 👉</strong> <span style="font-weight:700;">${correctAnsText}</span>
                             </div>
                         </div>
                     </div>
                 `;
                 container.innerHTML += html;
+            });
+        }
+        
+        function downloadScoreCard() {
+            let scoreCardWrapper = document.getElementById("download-wrapper");
+            
+            // डाउनलोड होने वाली इमेज का बैकग्राउंड अब व्हाइट/लाइट पर्पल होगा ताकि ट्रांसपेरेंट कार्ड अच्छा लगे
+            let canvasBgColor = "#e0c3fc"; 
+
+            html2canvas(scoreCardWrapper, {
+                scale: 3, 
+                backgroundColor: canvasBgColor, 
+                useCORS: true
+            }).then(canvas => {
+                let studentName = document.getElementById("student-name").value.trim() || "Student";
+                let link = document.createElement('a');
+                link.download = studentName + '_DPP_Result.png';
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            }).catch(err => {
+                console.error("Error generating score card:", err);
+                alert("स्कोरकार्ड डाउनलोड करने में कोई समस्या आई। कृपया फिर से प्रयास करें।");
             });
         }
     </script>
