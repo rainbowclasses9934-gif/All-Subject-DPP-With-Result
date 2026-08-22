@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAINBOW CLASSES - DPP Portal</title>
+    <title>RAINBOW CLASSES - DPP </title>
     <!-- HTML To Canvas Library (For Score Card Download) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -229,9 +229,12 @@
             <div style="font-size: 1.05rem; color: #333333; line-height: 1.7; margin-bottom: 25px; background: rgba(255, 255, 255, 0.6); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.8); font-weight: 500;">
                 <p style="margin-bottom: 15px; text-align: justify;">
                     प्रिय छात्रों 👋, 
-                    आज आपको DPP नहीं दिया गया है। आज मजे कीजिये सबलोग।
-                    or जिनको सर के द्वारा id दे दिया गया है वे थोड़ा कम्युनिटी मैसेज मे msg
-                    करके बताये ki id काम कर रहा है।(कुछ भी कमैंट्स करें lekin अच्छा 🤷‍♂️) 
+                    आपसे निवेदन है कि phy & che दोनों सब्जेक्ट का dpp बनाये।
+                    कल से आपका हिंदी का DPP भी सुरु होने जा रहा है।
+                    अब हिंदी का dpp बना कर तो अलग ही मज़ा आएगा। आप सब तैयार रहिएगा।
+                    हिंदी का dpp टॉपिक भी दिया जायेगा। और सबसे खास बात तो ye है कि हिंदी dpp 
+                    मे जो क्वेश्चन आएगा वो हम आपको चुप चाप कम्युनिटी मे भेज देंगे, फिर क्या आपलोग मजे से एकदम 100% सही कीजियेगा।
+                    धन्यवाद 🙋🏻‍♂️।
                 </p>
             </div>
             <div style="display: flex; justify-content: center;">
@@ -308,7 +311,7 @@
                 <h3 style="color: #6a11cb; font-size: 1.2rem;">आपका रिजल्ट सबमिट हो रहा है...</h3>
                 <div class="timer-anim" style="font-size: 3.5rem; font-weight: 800; margin-top: 15px; color: #111111;" id="submit-timer-text">5</div>
             </div>
-            <button class="btn btn-success" id="btn-final-submit" onclick="startFinalSubmit()">OK (सबमिट करें)</button>
+            <button class="btn btn-success" id="btn-final-submit" onclick="startFinalSubmit()">OK 👍</button>
         </div>
         
         <!-- रिजल्ट स्क्रीन -->
@@ -347,14 +350,14 @@
         <div class="modal-glass">
             <h3 style="margin-bottom: 20px; color: #111111; font-size: 1.3rem; font-weight: 700;">Student Verification</h3>
             <div class="input-group" style="text-align: left;">
-                <label>कृपया अपनी ID दर्ज करें:</label>
-                <input type="text" id="enter-student-id" placeholder="Ex: cm1217" style="margin-bottom: 15px;" oninput="autoFillName()">
+                <label>बस अपना id लिख दो यहाँ पर रे बाबा 👇:</label>
+                <input type="text" id="enter-student-id" placeholder="संतोष सर जो id दिए है उ लिखो न रे बउआ 🥸" style="margin-bottom: 15px;" oninput="autoFillName()">
             </div>
             
             <!-- नया नाम का बॉक्स जोड़ा गया -->
             <div class="input-group" style="text-align: left;">
                 <label>छात्र का नाम (Name):</label>
-                <input type="text" id="student-name-display" placeholder="ID दर्ज करते ही नाम यहाँ आ जाएगा" readonly onclick="checkIdFirst()" style="margin-bottom: 15px; background: rgba(220, 220, 220, 0.5); cursor: not-allowed; color: #222; font-weight: bold;">
+                <input type="text" id="student-name-display" placeholder="अब नाम थोड़े न लिखना है रे बउआ 🤷‍♂️" readonly onclick="checkIdFirst()" style="margin-bottom: 15px; background: rgba(220, 220, 220, 0.5); cursor: not-allowed; color: #222; font-weight: bold;">
             </div>
 
             <button class="btn btn-success" onclick="verifyId()">Verify & Save</button>
@@ -386,7 +389,7 @@
     <div id="notification-modal" class="modal-overlay hidden">
         <div class="modal-glass">
             <div style="font-size: 3rem; margin-bottom: 10px; animation: bellRing 2s infinite;">🔔</div>
-            <h3 style="margin-bottom: 20px; color: #111111; font-size: 1.3rem; font-weight: 700;">आपके लिए खास संदेश</h3>
+            <h3 style="margin-bottom: 20px; color: #111111; font-size: 1.3rem; font-weight: 700;">आपके लिए संदेश 💬 </h3>
             <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
                 <p id="student-msg-text" style="color: #333333; font-size: 1.05rem; line-height: 1.6; margin: 0; font-weight: 500;"></p>
             </div>
@@ -435,7 +438,7 @@
             document.getElementById("top-bar-name").innerText = "RAINBOW CLASSES";
             
             let idBtn = document.getElementById("btn-top-id");
-            idBtn.innerText = "ID दर्ज करें 🔑";
+            idBtn.innerText = "Your id";
             idBtn.style.background = "linear-gradient(135deg, #6a11cb, #2575fc)";
             idBtn.onclick = openIdModal;
             
@@ -552,7 +555,7 @@
 
                 closeIdModal();
                 checkAndShowNotification(inputId);
-                showModal("आपकी आईडी सफलतापूर्वक सत्यापित हो गई है! अब आप क्विज दे सकते हैं।");
+                showModal(" बस-बस आईडी सही है अब बनाओ मजे में DPP 😌।");
             } else {
                 showModal("आपकी आईडी गलत है या सूची में नहीं है। कृपया सही आईडी दर्ज करें।");
             }
