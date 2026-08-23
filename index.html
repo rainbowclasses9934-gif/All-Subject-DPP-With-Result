@@ -1,0 +1,5068 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<title>RAINBOW CLASSES - DPP</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
+}
+
+input{
+    user-select:auto;
+}
+
+body{
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.55),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(255,255,255,.35),transparent 25%),
+        linear-gradient(135deg,#e0c3fc 0%,#8ec5fc 100%);
+    color:#222;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-attachment:fixed;
+}
+
+body,
+.card,
+.dock-card,
+.question-text,
+.option-item,
+.timer-box,
+.glass-select-box,
+p,
+label,
+h2,
+h3,
+.summary-glass,
+.modal-glass,
+.top-bar-glass{
+    transition:all .35s ease;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar-glass{
+    position:fixed;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:600px;
+    height:70px;
+    background:rgba(255,255,255,.48);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.7);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 18px;
+    z-index:1000;
+    box-shadow:0 4px 18px rgba(31,38,135,.10);
+}
+
+.top-bar-title{
+    font-weight:800;
+    color:#111;
+    font-size:1.08rem;
+    letter-spacing:.4px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:60%;
+}
+
+.container{
+    width:100%;
+    max-width:600px;
+    padding:85px 15px 25px;
+    position:relative;
+    z-index:1;
+}
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.card{
+    background:rgba(255,255,255,.43);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.68);
+    border-radius:22px;
+    padding:24px;
+    box-shadow:0 18px 40px rgba(31,38,135,.16);
+    margin-bottom:20px;
+    animation:fadeIn .4s ease-out;
+    position:relative;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    font-weight:600;
+    margin-bottom:10px;
+    color:#444;
+    font-size:.95rem;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px 18px;
+    background:rgba(255,255,255,.52);
+    border:1px solid rgba(255,255,255,.75);
+    border-radius:12px;
+    font-size:1rem;
+    color:#222;
+    outline:none;
+    backdrop-filter:blur(10px);
+}
+
+.input-group input:focus{
+    border-color:#8ec5fc;
+    box-shadow:0 0 15px rgba(142,197,252,.4);
+    background:rgba(255,255,255,.75);
+}
+
+.input-group input::placeholder{
+    color:rgba(0,0,0,.4);
+}
+
+.glass-select-box{
+    width:100%;
+    padding:14px 18px;
+    background:rgba(255,255,255,.52);
+    border:1px solid rgba(255,255,255,.75);
+    border-radius:12px;
+    font-size:1rem;
+    color:#222;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.03);
+    font-weight:500;
+}
+
+.glass-select-box:hover{
+    background:rgba(255,255,255,.75);
+    border-color:#8ec5fc;
+}
+
+.select-icon{
+    font-size:.8rem;
+    color:#555;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+    width:100%;
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.4);
+    padding:14px 15px;
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:650;
+    letter-spacing:.3px;
+    cursor:pointer;
+    box-shadow:0 6px 20px rgba(37,117,252,.3);
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn:active{
+    transform:scale(.97);
+}
+
+.btn-success{
+    background:linear-gradient(135deg,#10b981,#059669);
+    border:none;
+    box-shadow:0 6px 20px rgba(16,185,129,.3);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.62);
+    color:#333;
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+
+/* =========================================================
+   QUIZ HEADER
+========================================================= */
+
+.quiz-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.question-counter-wrap{
+    min-width:0;
+}
+
+.q-counter{
+    font-weight:750;
+    color:#333;
+    font-size:.95rem;
+}
+
+.q-status{
+    font-size:.78rem;
+    color:#666;
+    margin-top:3px;
+}
+
+.timer-box{
+    font-size:.95rem;
+    font-weight:750;
+    color:#222;
+    background:rgba(255,255,255,.65);
+    border:1px solid rgba(255,255,255,.85);
+    padding:7px 13px;
+    border-radius:20px;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    backdrop-filter:blur(10px);
+    white-space:nowrap;
+    box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-section{
+    margin-top:18px;
+}
+
+.progress-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.78rem;
+    color:#555;
+    margin-bottom:7px;
+}
+
+.progress-track{
+    width:100%;
+    height:8px;
+    border-radius:20px;
+    background:rgba(255,255,255,.48);
+    border:1px solid rgba(255,255,255,.55);
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#6a11cb,#2575fc);
+    transition:width .35s ease;
+}
+
+/* =========================================================
+   AUTO SAVE
+========================================================= */
+
+.autosave-row{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:9px;
+    min-height:20px;
+}
+
+.autosave-status{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:.72rem;
+    color:#059669;
+    font-weight:650;
+    background:rgba(255,255,255,.42);
+    padding:4px 8px;
+    border-radius:20px;
+}
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.question-text{
+    font-size:1.13rem;
+    font-weight:650;
+    margin-top:25px;
+    margin-bottom:22px;
+    line-height:1.7;
+    color:#111;
+}
+
+.option-item{
+    background:rgba(255,255,255,.52);
+    border:1px solid rgba(255,255,255,.75);
+    padding:15px 16px;
+    border-radius:14px;
+    margin-bottom:12px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:500;
+    color:#333;
+    backdrop-filter:blur(8px);
+    box-shadow:0 4px 10px rgba(0,0,0,.025);
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.option-item:hover{
+    background:rgba(255,255,255,.72);
+    border-color:#8ec5fc;
+    transform:translateX(3px);
+}
+
+.option-letter{
+    min-width:30px;
+    height:30px;
+    border-radius:9px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.9);
+    font-weight:800;
+    color:#555;
+}
+
+.option-content{
+    flex:1;
+    line-height:1.55;
+}
+
+.option-item.selected{
+    background:linear-gradient(
+        135deg,
+        rgba(106,17,203,.14),
+        rgba(37,117,252,.15)
+    );
+    border-color:#6a11cb;
+    box-shadow:
+        0 0 0 2px rgba(106,17,203,.08),
+        0 8px 20px rgba(106,17,203,.15);
+    font-weight:700;
+    transform:scale(1.01);
+}
+
+.option-item.selected .option-letter{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:#fff;
+    border-color:transparent;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-btns{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:25px;
+}
+
+.nav-btns button{
+    width:50%;
+}
+
+/* =========================================================
+   QUESTION PALETTE
+========================================================= */
+
+.palette-card{
+    margin-top:18px;
+    padding:16px;
+    border-radius:17px;
+    background:rgba(255,255,255,.38);
+    border:1px solid rgba(255,255,255,.65);
+}
+
+.palette-title-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.palette-title{
+    font-weight:750;
+    color:#222;
+    font-size:.95rem;
+}
+
+.palette-summary{
+    font-size:.75rem;
+    color:#666;
+}
+
+.question-palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.palette-btn{
+    height:40px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.8);
+    background:rgba(255,255,255,.6);
+    color:#555;
+    font-size:.85rem;
+    font-weight:750;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.palette-btn:hover{
+    transform:translateY(-1px);
+}
+
+.palette-btn.answered{
+    background:rgba(16,185,129,.18);
+    color:#047857;
+    border-color:rgba(16,185,129,.45);
+}
+
+.palette-btn.current{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:#fff;
+    border-color:transparent;
+    box-shadow:0 4px 12px rgba(106,17,203,.25);
+    transform:scale(1.05);
+}
+
+.palette-btn.current.answered{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:#fff;
+}
+
+.palette-legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:13px;
+    font-size:.7rem;
+    color:#555;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#ddd;
+}
+
+.legend-dot.current{
+    background:#6a11cb;
+}
+
+.legend-dot.answered{
+    background:#10b981;
+}
+
+.legend-dot.unanswered{
+    background:#cbd5e1;
+}
+
+/* =========================================================
+   TIMER WARNING
+========================================================= */
+
+@keyframes alertPulse{
+    0%{
+        box-shadow:0 0 8px rgba(239,68,68,.3);
+    }
+    50%{
+        box-shadow:0 0 20px rgba(239,68,68,.6);
+    }
+    100%{
+        box-shadow:0 0 8px rgba(239,68,68,.3);
+    }
+}
+
+.timer-warning{
+    animation:alertPulse 1s infinite!important;
+    color:#dc2626!important;
+    background:rgba(254,226,226,.8)!important;
+    border-color:rgba(239,68,68,.5)!important;
+}
+
+#time-warning{
+    clear:both;
+    margin-top:18px;
+    color:#dc2626;
+    background:rgba(254,226,226,.8);
+    border:1px solid rgba(239,68,68,.5);
+    padding:10px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+    animation:alertPulse 1s infinite;
+}
+
+/* =========================================================
+   DOCK
+========================================================= */
+
+.dock-card{
+    background:rgba(255,255,255,.45);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:25px;
+    padding:10px 20px;
+    box-shadow:0 12px 30px rgba(31,38,135,.15);
+    margin-bottom:20px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    min-height:60px;
+    position:relative;
+    z-index:200;
+}
+
+.glass-btn-dock{
+    background:rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.8);
+    color:#333;
+    padding:8px 15px;
+    border-radius:15px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:.85rem;
+    box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+.bell-wrapper{
+    font-size:1.8rem;
+    position:relative;
+    cursor:pointer;
+    animation:bellRing 2.5s infinite ease-in-out;
+    display:none;
+}
+
+.red-dot{
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:12px;
+    height:12px;
+    background:#ef4444;
+    border-radius:50%;
+    box-shadow:0 0 8px #ef4444;
+    border:2px solid #fff;
+}
+
+@keyframes bellRing{
+    0%{transform:rotate(0)}
+    10%{transform:rotate(15deg)}
+    20%{transform:rotate(-15deg)}
+    30%{transform:rotate(10deg)}
+    40%{transform:rotate(-10deg)}
+    50%,100%{transform:rotate(0)}
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.2);
+    backdrop-filter:blur(7px);
+    -webkit-backdrop-filter:blur(7px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+    animation:modalFade .25s ease-out;
+    padding:15px;
+}
+
+.modal-glass{
+    background:rgba(255,255,255,.48);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,.72);
+    border-radius:21px;
+    padding:30px;
+    max-width:400px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 25px 50px rgba(31,38,135,.22);
+    animation:modalScale .3s cubic-bezier(.175,.885,.32,1.275);
+}
+
+@keyframes modalFade{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+@keyframes modalScale{
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.options-glass{
+    max-height:82vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.options-list{
+    overflow-y:auto;
+    max-height:58vh;
+    text-align:left;
+    padding-right:5px;
+    margin-bottom:15px;
+}
+
+.option-card{
+    background:rgba(255,255,255,.52);
+    border:1px solid rgba(255,255,255,.8);
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:10px;
+    cursor:pointer;
+    font-size:.95rem;
+    font-weight:500;
+    color:#333;
+}
+
+.option-card:hover{
+    background:rgba(255,255,255,.82);
+    border-color:#8ec5fc;
+    transform:translateX(4px);
+}
+
+.modal-icon{
+    font-size:2.8rem;
+    margin-bottom:15px;
+}
+
+/* =========================================================
+   PRE SUBMIT
+========================================================= */
+
+.pre-sub-label{
+    color:#555;
+}
+
+.pre-sub-val{
+    color:#111;
+    font-weight:650;
+}
+
+.attempted-count{
+    color:#6a11cb;
+    font-weight:800;
+}
+
+/* =========================================================
+   RESULT INTERFACE
+========================================================= */
+
+.result-hero{
+    text-align:center;
+    padding:5px 0 18px;
+}
+
+.result-icon{
+    width:76px;
+    height:76px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2.5rem;
+    background:rgba(255,255,255,.58);
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 10px 25px rgba(31,38,135,.14);
+}
+
+.result-title{
+    font-size:1.65rem;
+    font-weight:850;
+    color:#111;
+}
+
+.result-subtitle{
+    margin-top:5px;
+    color:#666;
+    font-size:.9rem;
+}
+
+.score-receipt-card{
+    padding:25px 18px;
+    border-radius:20px;
+    background:rgba(255,255,255,.46);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.7);
+    position:relative;
+    box-shadow:0 15px 40px rgba(31,38,135,.15);
+}
+
+.rc-badge{
+    position:absolute;
+    top:-13px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#111;
+    color:#fff;
+    font-size:.7rem;
+    font-weight:750;
+    letter-spacing:1.3px;
+    padding:6px 15px;
+    border-radius:8px;
+    white-space:nowrap;
+}
+
+.rc-details-box{
+    margin-top:22px;
+    background:rgba(255,255,255,.6);
+    padding:14px 17px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.8);
+    text-align:left;
+}
+
+.rc-details-box p{
+    color:#222;
+    font-weight:600;
+    font-size:.95rem;
+    margin-bottom:7px;
+}
+
+.rc-details-box p:last-child{
+    margin-bottom:0;
+}
+
+.res-label{
+    color:#666;
+    font-weight:500;
+}
+
+.score-badge{
+    font-size:3.4rem;
+    font-weight:850;
+    color:#6a11cb;
+    margin:22px 0 5px;
+}
+
+.rc-percent{
+    font-size:1.25rem;
+    font-weight:750;
+    color:#059669;
+}
+
+.result-stat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+    margin-top:18px;
+}
+
+.result-stat{
+    padding:12px 7px;
+    border-radius:12px;
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(255,255,255,.75);
+    text-align:center;
+}
+
+.result-stat-number{
+    display:block;
+    font-size:1.3rem;
+    font-weight:850;
+}
+
+.result-stat-label{
+    display:block;
+    font-size:.68rem;
+    color:#666;
+    margin-top:3px;
+}
+
+.stat-correct .result-stat-number{
+    color:#059669;
+}
+
+.stat-wrong .result-stat-number{
+    color:#dc2626;
+}
+
+.stat-unanswered .result-stat-number{
+    color:#64748b;
+}
+
+.performance-box{
+    margin-top:18px;
+    padding:14px;
+    border-radius:13px;
+    background:rgba(255,255,255,.58);
+    border:1px solid rgba(255,255,255,.75);
+    text-align:center;
+    color:#333;
+    line-height:1.55;
+    font-size:.92rem;
+    font-weight:600;
+}
+
+.reminder-card{
+    background:rgba(253,230,138,.6);
+    color:#b45309;
+    padding:15px 20px;
+    border-radius:12px;
+    margin-top:20px;
+    font-size:.95rem;
+    font-weight:bold;
+    text-align:center;
+    border:1px solid rgba(245,158,11,.4);
+}
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary-glass{
+    max-width:550px;
+    width:100%;
+    max-height:85vh;
+    overflow:hidden;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    background:rgba(255,255,255,.46);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:20px;
+    box-shadow:0 25px 50px rgba(31,38,135,.25);
+}
+
+.summary-content-scroll{
+    overflow-y:auto;
+    max-height:65vh;
+    padding-right:6px;
+    text-align:left;
+    color:#222;
+}
+
+.summary-item{
+    border-bottom:1px solid rgba(0,0,0,.1);
+    padding-bottom:15px;
+    margin-bottom:15px;
+}
+
+.summary-item:last-child{
+    border-bottom:none;
+}
+
+.ans-correct{
+    color:#059669;
+    font-weight:bold;
+}
+
+.ans-wrong{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+/* =========================================================
+   SUBMIT LOADER
+========================================================= */
+
+.timer-anim{
+    animation:pulseTimer 1s infinite ease-in-out;
+}
+
+@keyframes pulseTimer{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:scale(1.25);
+        opacity:.8;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:420px){
+
+    .container{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .card{
+        padding:18px;
+        border-radius:18px;
+    }
+
+    .question-text{
+        font-size:1.05rem;
+    }
+
+    .option-item{
+        padding:13px;
+    }
+
+    .question-palette{
+        grid-template-columns:repeat(5,1fr);
+        gap:6px;
+    }
+
+    .palette-btn{
+        height:37px;
+        font-size:.78rem;
+    }
+
+    .result-stat-grid{
+        gap:6px;
+    }
+
+    .score-badge{
+        font-size:3rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div id="top-bar" class="top-bar-glass hidden">
+
+    <div id="top-bar-name" class="top-bar-title">
+        RAINBOW CLASSES
+    </div>
+
+    <button
+        id="btn-top-id"
+        class="glass-btn-dock"
+        style="background:linear-gradient(135deg,#6a11cb,#2575fc);color:white;border:none;"
+        onclick="openIdModal()">
+        ID दर्ज करें 🔑
+    </button>
+
+</div>
+
+
+<div class="container">
+
+<!-- =========================================================
+     INSTRUCTION SCREEN
+========================================================= -->
+
+<div id="instruction-screen" class="card hidden">
+
+    <h2 style="margin-bottom:20px;text-align:center;color:#dc2626;font-size:1.55rem;">
+        🚨 आपके लिए सन्देश 🚨
+    </h2>
+
+    <div style="
+        font-size:1.05rem;
+        color:#333;
+        line-height:1.7;
+        margin-bottom:25px;
+        background:rgba(255,255,255,.6);
+        padding:15px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,.8);
+        font-weight:500;
+    ">
+
+        <p style="margin-bottom:15px;text-align:justify;">
+            प्रिय छात्रों 👋,
+            आपसे निवेदन है कि phy & che दोनों सब्जेक्ट का dpp बनाये।
+            कल से आपका हिंदी का DPP भी सुरु होने जा रहा है।
+            अब हिंदी का dpp बना कर तो अलग ही मज़ा आएगा। आप सब तैयार रहिएगा।
+            हिंदी का dpp टॉपिक भी दिया जायेगा। और सबसे खास बात तो ye है कि हिंदी dpp
+            मे जो क्वेश्चन आएगा वो हम आपको चुप चाप कम्युनिटी मे भेज देंगे, फिर क्या
+            आपलोग मजे से एकदम 100% सही कीजियेगा।
+            धन्यवाद 🙋🏻‍♂️।
+        </p>
+
+    </div>
+
+    <div style="display:flex;justify-content:center;">
+        <button
+            class="btn btn-success"
+            style="width:auto;padding:12px 40px;border-radius:25px;"
+            onclick="goToSetup()">
+            Next
+        </button>
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SETUP
+========================================================= -->
+
+<div id="selection-screen" class="card hidden">
+
+    <h2 style="
+        margin-bottom:25px;
+        text-align:center;
+        color:#111;
+        font-size:1.4rem;
+    ">
+        DPP Setup
+    </h2>
+
+    <div class="input-group">
+
+        <label>विषय चुनें (Class 12th):</label>
+
+        <div
+            class="glass-select-box"
+            onclick="openSubjectSelect()">
+
+            <span id="subject-text">-- विषय चुनें --</span>
+            <span class="select-icon">▼</span>
+
+        </div>
+
+        <input type="hidden" id="subject-select">
+
+    </div>
+
+
+    <div class="input-group">
+
+        <label>अध्याय चुनें:</label>
+
+        <div
+            class="glass-select-box"
+            onclick="openChapterSelect()">
+
+            <span id="chapter-text">-- पहले विषय चुनें --</span>
+            <span class="select-icon">▼</span>
+
+        </div>
+
+        <input type="hidden" id="chapter-select">
+
+    </div>
+
+
+    <div class="input-group">
+
+        <label>DPP चुनें:</label>
+
+        <div
+            class="glass-select-box"
+            onclick="openQuizSelect()">
+
+            <span id="quiz-text">-- पहले अध्याय चुनें --</span>
+            <span class="select-icon">▼</span>
+
+        </div>
+
+        <input type="hidden" id="quiz-select">
+
+    </div>
+
+
+    <button class="btn" onclick="startQuiz()">
+        Start DPP
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     DOCK
+========================================================= -->
+
+<div id="dock-container" class="dock-card hidden">
+
+    <div
+        id="notification-bell"
+        class="bell-wrapper"
+        onclick="openNotificationModal()">
+
+        🔔
+        <span id="bell-dot" class="red-dot"></span>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     QUIZ / DPP SCREEN
+========================================================= -->
+
+<div id="quiz-screen" class="card hidden">
+
+    <!-- Header -->
+
+    <div class="quiz-header">
+
+        <div class="question-counter-wrap">
+
+            <div
+                id="q-counter"
+                class="q-counter">
+                प्रश्न 1 / 10
+            </div>
+
+            <div
+                id="q-status"
+                class="q-status">
+                अभी उत्तर नहीं दिया गया
+            </div>
+
+        </div>
+
+
+        <div
+            class="timer-box"
+            id="timer-ui">
+
+            ⏱️
+            <span id="time-left">
+                30:00
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Progress -->
+
+    <div class="progress-section">
+
+        <div class="progress-meta">
+
+            <span>
+                Question Progress
+            </span>
+
+            <span id="progress-percent">
+                0%
+            </span>
+
+        </div>
+
+        <div class="progress-track">
+
+            <div
+                id="progress-fill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Auto Save -->
+
+    <div class="autosave-row">
+
+        <span
+            id="autosave-status"
+            class="autosave-status">
+
+            ☁️ Auto-save ready
+
+        </span>
+
+    </div>
+
+
+    <!-- Timer warning -->
+
+    <div
+        id="time-warning"
+        style="display:none;">
+
+        ⚠️ आपके पास सिर्फ 10 मिनट शेष हैं!
+        कृपया जल्दी करें।
+
+    </div>
+
+
+    <!-- Question -->
+
+    <div
+        class="question-text"
+        id="q-text">
+
+        प्रश्न लोड हो रहा है...
+
+    </div>
+
+
+    <!-- Options -->
+
+    <div id="options-container"></div>
+
+
+    <!-- Navigation -->
+
+    <div class="nav-btns">
+
+        <button
+            class="btn btn-secondary"
+            id="btn-prev"
+            onclick="prevQuestion()">
+
+            ◄ Previous
+
+        </button>
+
+
+        <button
+            class="btn"
+            id="btn-next"
+            onclick="nextQuestion()">
+
+            Next ►
+
+        </button>
+
+    </div>
+
+
+    <button
+        class="btn btn-success"
+        id="btn-submit"
+        style="margin-top:15px;display:none;"
+        onclick="submitQuiz()">
+
+        Submit 🧐
+
+    </button>
+
+
+    <!-- Question Palette -->
+
+    <div class="palette-card">
+
+        <div class="palette-title-row">
+
+            <span class="palette-title">
+                Question Palette
+            </span>
+
+            <span
+                class="palette-summary"
+                id="palette-summary">
+
+                0 / 0 Answered
+
+            </span>
+
+        </div>
+
+
+        <div
+            id="question-palette"
+            class="question-palette">
+        </div>
+
+
+        <div class="palette-legend">
+
+            <div class="legend-item">
+                <span class="legend-dot current"></span>
+                Current
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-dot answered"></span>
+                Answered
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-dot unanswered"></span>
+                Unanswered
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FULLSCREEN DOCK -->
+
+<div
+    id="quiz-dock-container"
+    class="dock-card hidden"
+    style="margin-top:5px;justify-content:center;">
+
+    <button
+        id="btn-fullscreen"
+        class="glass-btn-dock"
+        onclick="toggleFullScreen()">
+
+        फुल स्क्रीन मोड 🔲
+
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     PRE SUBMIT
+========================================================= -->
+
+<div id="pre-submit-screen" class="card hidden">
+
+    <h2 style="
+        margin-bottom:25px;
+        text-align:center;
+        color:#111;
+        font-size:1.4rem;
+    ">
+        DPP Submission Details
+    </h2>
+
+
+    <div
+        id="pre-submit-details"
+        style="
+            font-size:1.05rem;
+            line-height:1.9;
+            margin-bottom:20px;
+            background:rgba(255,255,255,.6);
+            padding:15px;
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,.8);
+        ">
+    </div>
+
+
+    <div
+        id="submit-loader"
+        class="hidden"
+        style="
+            text-align:center;
+            margin-top:20px;
+            padding:15px;
+        ">
+
+        <h3 style="color:#6a11cb;">
+            आपका रिजल्ट सबमिट हो रहा है...
+        </h3>
+
+        <div
+            class="timer-anim"
+            style="
+                font-size:3.5rem;
+                font-weight:800;
+                margin-top:15px;
+                color:#111;
+            "
+            id="submit-timer-text">
+
+            5
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="btn btn-success"
+        id="btn-final-submit"
+        onclick="startFinalSubmit()">
+
+        OK 👍
+
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     RESULT SCREEN
+========================================================= -->
+
+<div id="result-screen" class="card score-card hidden">
+
+    <div class="result-hero">
+
+        <div class="result-icon">
+            🏆
+        </div>
+
+        <div class="result-title">
+            DPP Completed!
+        </div>
+
+        <div class="result-subtitle">
+            आपका DPP सफलतापूर्वक पूरा हो गया
+        </div>
+
+    </div>
+
+
+    <div
+        id="download-wrapper"
+        style="
+            padding:10px;
+            background:transparent;
+            display:inline-block;
+            width:100%;
+        ">
+
+        <div id="score-receipt" class="score-receipt-card">
+
+            <div
+                id="rc-badge"
+                class="rc-badge">
+
+                RAINBOW CLASSES
+
+            </div>
+
+
+            <h2
+                class="rc-title"
+                style="
+                    color:#111;
+                    font-size:1.45rem;
+                    margin-top:10px;
+                ">
+
+                📄 Your Result
+
+            </h2>
+
+
+            <div
+                id="rc-details-box"
+                class="rc-details-box">
+
+                <p id="res-name"></p>
+                <p id="res-chapter"></p>
+                <p id="res-dpp"></p>
+
+            </div>
+
+
+            <div
+                class="score-badge"
+                id="res-score">
+
+                0 / 0
+
+            </div>
+
+
+            <p
+                id="res-percent"
+                class="rc-percent">
+
+            </p>
+
+
+            <!-- Result Statistics -->
+
+            <div class="result-stat-grid">
+
+                <div class="result-stat stat-correct">
+
+                    <span
+                        class="result-stat-number"
+                        id="res-correct">
+
+                        0
+
+                    </span>
+
+                    <span class="result-stat-label">
+                        सही
+                    </span>
+
+                </div>
+
+
+                <div class="result-stat stat-wrong">
+
+                    <span
+                        class="result-stat-number"
+                        id="res-wrong">
+
+                        0
+
+                    </span>
+
+                    <span class="result-stat-label">
+                        गलत
+                    </span>
+
+                </div>
+
+
+                <div class="result-stat stat-unanswered">
+
+                    <span
+                        class="result-stat-number"
+                        id="res-unanswered">
+
+                        0
+
+                    </span>
+
+                    <span class="result-stat-label">
+                        अनुत्तरित
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="performance-message"
+                class="performance-box">
+
+                शानदार प्रयास! 🎉
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Actions -->
+
+    <div
+        id="action-buttons"
+        style="margin-top:10px;">
+
+        <button
+            class="btn"
+            onclick="downloadScoreCard()"
+            style="
+                margin-bottom:15px;
+                background:linear-gradient(135deg,#d946ef,#9333ea);
+                border:none;
+            ">
+
+            Download Score Card 📥
+
+        </button>
+
+
+        <button
+            class="btn btn-secondary"
+            onclick="openSummaryModal()"
+            style="margin-bottom:10px;">
+
+            View Summary / Answer 📝
+
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="goHome()"
+            style="margin-top:10px;">
+
+            Home 🏠
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="reminder-card"
+        id="reminder-msg">
+
+        यदि आप आज के सभी DPP नहीं बनाए हैं
+        तो कृपया सभी DPP बनाएं।
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     ID MODAL
+========================================================= -->
+
+<div id="id-modal" class="modal-overlay hidden">
+
+    <div class="modal-glass">
+
+        <h3 style="
+            margin-bottom:20px;
+            color:#111;
+            font-size:1.3rem;
+        ">
+            Student Verification
+        </h3>
+
+
+        <div
+            class="input-group"
+            style="text-align:left;">
+
+            <label>
+                बस अपना id लिख दो यहाँ पर रे बाबा 👇:
+            </label>
+
+            <input
+                type="text"
+                id="enter-student-id"
+                placeholder="अपनी Student ID लिखें"
+                oninput="autoFillName()">
+
+        </div>
+
+
+        <div
+            class="input-group"
+            style="text-align:left;">
+
+            <label>
+                छात्र का नाम (Name):
+            </label>
+
+            <input
+                type="text"
+                id="student-name-display"
+                placeholder="ID डालते ही नाम आएगा"
+                readonly
+                onclick="checkIdFirst()"
+                style="
+                    background:rgba(220,220,220,.5);
+                    cursor:not-allowed;
+                    color:#222;
+                    font-weight:bold;
+                ">
+
+        </div>
+
+
+        <button
+            class="btn btn-success"
+            onclick="verifyId()">
+
+            Verify & Save
+
+        </button>
+
+
+        <button
+            class="btn btn-secondary"
+            style="margin-top:10px;"
+            onclick="closeIdModal()">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CUSTOM MODAL -->
+
+<div id="custom-modal" class="modal-overlay hidden">
+
+    <div class="modal-glass">
+
+        <div class="modal-icon">
+            ⚠️
+        </div>
+
+        <p
+            id="modal-text"
+            style="
+                font-size:1.05rem;
+                color:#333;
+                font-weight:500;
+                margin-bottom:25px;
+                line-height:1.6;
+            ">
+        </p>
+
+        <button
+            class="btn"
+            style="padding:12px;"
+            onclick="closeModal()">
+
+            ठीक है
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- OPTIONS MODAL -->
+
+<div id="options-modal" class="modal-overlay hidden">
+
+    <div class="modal-glass options-glass">
+
+        <h3
+            id="options-title"
+            style="
+                margin-bottom:20px;
+                color:#111;
+                font-size:1.2rem;
+            ">
+
+            चुनें
+
+        </h3>
+
+
+        <div
+            id="options-list"
+            class="options-list">
+        </div>
+
+
+        <button
+            class="btn btn-secondary"
+            style="padding:12px;"
+            onclick="closeOptionsModal()">
+
+            रद्द करें
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SUMMARY MODAL -->
+
+<div id="summary-modal" class="modal-overlay hidden">
+
+    <div class="summary-glass">
+
+        <h3
+            style="
+                text-align:center;
+                color:#111;
+                margin-bottom:20px;
+                font-size:1.4rem;
+            ">
+
+            विस्तृत परिणाम
+
+        </h3>
+
+
+        <div
+            id="summary-content"
+            class="summary-content-scroll">
+        </div>
+
+
+        <button
+            class="btn btn-secondary"
+            style="margin-top:20px;padding:12px;"
+            onclick="closeSummaryModal()">
+
+            बंद करें ❌
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- NOTIFICATION -->
+
+<div id="notification-modal" class="modal-overlay hidden">
+
+    <div class="modal-glass">
+
+        <div
+            style="
+                font-size:3rem;
+                margin-bottom:10px;
+                animation:bellRing 2s infinite;
+            ">
+
+            🔔
+
+        </div>
+
+
+        <h3 style="
+            margin-bottom:20px;
+            color:#111;
+            font-size:1.3rem;
+        ">
+
+            आपके लिए संदेश 💬
+
+        </h3>
+
+
+        <div
+            style="
+                background:rgba(255,255,255,.6);
+                border:1px solid rgba(255,255,255,.8);
+                border-radius:12px;
+                padding:20px;
+                margin-bottom:25px;
+            ">
+
+            <p
+                id="student-msg-text"
+                style="
+                    color:#333;
+                    font-size:1.05rem;
+                    line-height:1.6;
+                    margin:0;
+                    font-weight:500;
+                ">
+            </p>
+
+        </div>
+
+
+        <button
+            class="btn btn-secondary"
+            style="padding:12px;"
+            onclick="closeNotificationModal()">
+
+            बंद करें
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="questions.js"></script>
+
+<script>
+
+/* =========================================================
+   SUBJECT / CHAPTER DATA
+========================================================= */
+
+const subjectsList = {
+
+    1:"भौतिक विज्ञान (Physics)",
+    2:"रसायन विज्ञान (Chemistry)",
+    3:"गणित (Mathematics)",
+    4:"जीव विज्ञान (Biology)",
+    5:"हिंदी (Hindi)",
+    6:"अंग्रेज़ी (English)"
+
+};
+
+
+const chaptersData = {
+
+1:[
+"वैद्युत आवेश तथा क्षेत्र",
+"स्थिरवैद्युत विभव तथा धारिता",
+"विद्युत धारा",
+"गतिमान आवेश और चुंबकत्व",
+"चुंबकत्व एवं द्रव्य",
+"वैद्युतचुंबकीय प्रेरण",
+"प्रत्यावर्ती धारा",
+"वैद्युतचुंबकीय तरंगें",
+"किरण प्रकाशिकी एवं प्रकाशिक यंत्र",
+"तरंग - प्रकाशिकी",
+"विकिरण तथा द्रव्य की द्वैत प्रकृति",
+"परमाणु",
+"नाभिक",
+"अर्धचालक इलेक्ट्रॉनिकी",
+"संचार व्यवस्था"
+],
+
+2:[
+"ठोस अवस्था",
+"विलयन",
+"वैद्युत रसायन",
+"रासायनिक बलगतिकी",
+"पृष्ठ रसायन",
+"तत्त्वों के निष्कर्षण के सिद्धांत एवं प्रक्रम",
+"p-ब्लॉक के तत्त्व",
+"d- एवं f-ब्लॉक के तत्त्व",
+"उपसहसंयोजन यौगिक",
+"हैलोऐल्केन तथा हैलोऐरीन",
+"ऐल्कोहॉल, फ़ीनॉल एवं ईथर",
+"ऐल्डिहाइड, कीटोन एवं कार्बोक्सिलिक अम्ल",
+"ऐमीन",
+"जैव-अणु",
+"बहुलक",
+"दैनिक जीवन में रसायन"
+],
+
+3:[
+"संबंध एवं फलन",
+"प्रतिलोम त्रिकोणमितीय फलन",
+"आव्यूह",
+"सारणिक",
+"सांतत्य तथा अवकलनीयता",
+"अवकलज के अनुप्रयोग",
+"समाकलन",
+"समाकलनों के अनुप्रयोग",
+"अवकल समीकरण",
+"सदिश बीजगणित",
+"त्रि-विमीय ज्यामिति",
+"रैखिक प्रोग्रामन",
+"प्रायिकता"
+],
+
+4:[
+"जीवों में जनन",
+"पुष्पी पादपों में लैंगिक जनन",
+"मानव जनन",
+"जनन स्वास्थ्य",
+"वंशागति तथा विविधता के सिद्धांत",
+"वंशागति के आणविक आधार",
+"विकास",
+"मानव स्वास्थ्य तथा रोग",
+"खाद्य उत्पादन में वृद्धि की कार्यनीति",
+"मानव कल्याण में सूक्ष्म जीव",
+"जैव प्रौद्योगिकी - सिद्धांत व प्रक्रम",
+"जैव प्रौद्योगिकी एवं उसके उपयोग",
+"जीव और समष्टियां",
+"पारितंत्र",
+"जैव विविधता एवं संरक्षण",
+"पर्यावरण के मुद्दे"
+],
+
+5:[
+"बातचीत",
+"उसने कहा था",
+"संपूर्ण क्रांति",
+"अर्द्धनारीश्वर",
+"रोज",
+"एक लेख और एक पत्र",
+"ओ सदानीरा",
+"सिपाही की माँ",
+"प्रगीत और समाज",
+"जूठन",
+"हंसते हुए मेरा अकेलापन",
+"तिरछ",
+"शिक्षा",
+"कड़बक",
+"पद (सूरदास)",
+"पद (तुलसीदास)",
+"छप्पय",
+"कवित्त",
+"तुमुल कोलाहल कलह में",
+"पुत्र वियोग",
+"उषा",
+"जन-जन का चेहरा एक",
+"अधिनायक",
+"प्यारे नन्हें बेटे को",
+"हार-जीत",
+"गाँव का घर"
+],
+
+6:[
+"Indian Civilization and Culture",
+"Bharat is My Home",
+"A Pinch of Snuff",
+"I Have a Dream",
+"Ideas That Have Helped Mankind",
+"The Artist",
+"A Child is Born",
+"How Free is the Press",
+"The Earth",
+"India Through a Traveler's Eyes",
+"A Marriage Proposal",
+"Sweetest Love I Do Not Goe",
+"Song of Myself",
+"Now the Leaves Are Falling Fast",
+"Ode to Autumn",
+"An Epitaph",
+"The Soldier",
+"Macavity: The Mystery Cat",
+"Fire-Hymn",
+"Snake",
+"My Grandmother's House"
+]
+
+};
+
+
+/* =========================================================
+   GLOBAL QUIZ VARIABLES
+========================================================= */
+
+let currentQuestions = [];
+let currentQIndex = 0;
+let userAnswers = [];
+
+let timerInterval = null;
+
+let timeLeft = 1800;
+let quizStartTime = null;
+
+window.currentQuizFinished = false;
+
+window.verifiedStudentId = null;
+window.verifiedStudentName = null;
+
+
+/* =========================================================
+   AUTO SAVE
+========================================================= */
+
+function getAutosaveKey(){
+
+    const student =
+        window.verifiedStudentId || "unknown";
+
+    const sub =
+        document.getElementById("subject-select")?.value || "";
+
+    const ch =
+        document.getElementById("chapter-select")?.value || "";
+
+    const dpp =
+        document.getElementById("quiz-select")?.value || "";
+
+    return `dpp_autosave_${student}_${sub}_${ch}_${dpp}`;
+
+}
+
+
+function updateAutosaveStatus(text, color){
+
+    const el =
+        document.getElementById("autosave-status");
+
+    if(!el) return;
+
+    el.innerText = text;
+
+    el.style.color = color || "#059669";
+
+}
+
+
+function saveQuizState(){
+
+    if(!currentQuestions.length) return;
+
+    try{
+
+        const data = {
+
+            answers:userAnswers,
+
+            currentIndex:currentQIndex,
+
+            timeLeft:timeLeft,
+
+            savedAt:Date.now()
+
+        };
+
+        localStorage.setItem(
+            getAutosaveKey(),
+            JSON.stringify(data)
+        );
+
+        updateAutosaveStatus(
+            "✓ Auto-saved",
+            "#059669"
+        );
+
+    }catch(e){
+
+        updateAutosaveStatus(
+            "Auto-save unavailable",
+            "#dc2626"
+        );
+
+    }
+
+}
+
+
+function loadSavedQuizState(){
+
+    try{
+
+        const raw =
+            localStorage.getItem(getAutosaveKey());
+
+        if(!raw) return false;
+
+        const data =
+            JSON.parse(raw);
+
+        if(
+            !data ||
+            !Array.isArray(data.answers) ||
+            data.answers.length !== currentQuestions.length
+        ){
+
+            return false;
+
+        }
+
+        /*
+         * केवल 2 घंटे तक पुराने incomplete session
+         * को restore करेंगे।
+         */
+
+        if(
+            data.savedAt &&
+            Date.now() - data.savedAt > 2 * 60 * 60 * 1000
+        ){
+
+            localStorage.removeItem(getAutosaveKey());
+            return false;
+
+        }
+
+        userAnswers = data.answers;
+        currentQIndex =
+            Math.min(
+                Math.max(0,data.currentIndex || 0),
+                currentQuestions.length - 1
+            );
+
+        timeLeft =
+            Math.min(
+                1800,
+                Math.max(
+                    1,
+                    Number(data.timeLeft || 1800)
+                )
+            );
+
+        return true;
+
+    }catch(e){
+
+        return false;
+
+    }
+
+}
+
+
+function clearQuizAutosave(){
+
+    try{
+
+        localStorage.removeItem(
+            getAutosaveKey()
+        );
+
+    }catch(e){}
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+window.onload = function(){
+
+    window.verifiedStudentId = null;
+    window.verifiedStudentName = null;
+
+    document.getElementById(
+        "top-bar-name"
+    ).innerText = "RAINBOW CLASSES";
+
+    let idBtn =
+        document.getElementById("btn-top-id");
+
+    idBtn.innerText = "Your id";
+
+    idBtn.onclick = openIdModal;
+
+    history.replaceState(
+        {screen:"instruction"},
+        ""
+    );
+
+    showScreen("instruction-screen");
+
+};
+
+
+/* =========================================================
+   HISTORY / BACK BUTTON
+========================================================= */
+
+window.addEventListener(
+    "popstate",
+    function(event){
+
+        const state = event.state;
+
+        document
+            .getElementById("custom-modal")
+            .classList.add("hidden");
+
+        document
+            .getElementById("options-modal")
+            .classList.add("hidden");
+
+        document
+            .getElementById("summary-modal")
+            .classList.add("hidden");
+
+        document
+            .getElementById("notification-modal")
+            .classList.add("hidden");
+
+        document
+            .getElementById("id-modal")
+            .classList.add("hidden");
+
+
+        if(!state){
+
+            showScreen("instruction-screen");
+
+            return;
+
+        }
+
+
+        if(state.modal){
+
+            document
+                .getElementById("custom-modal")
+                .classList.remove("hidden");
+
+        }
+
+
+        if(state.optionsModal){
+
+            document
+                .getElementById("options-modal")
+                .classList.remove("hidden");
+
+        }
+
+
+        if(state.summaryModal){
+
+            document
+                .getElementById("summary-modal")
+                .classList.remove("hidden");
+
+        }
+
+
+        if(state.notifModal){
+
+            document
+                .getElementById("notification-modal")
+                .classList.remove("hidden");
+
+        }
+
+
+        if(
+            state.screen === "quiz" ||
+            state.screen === "pre-submit"
+        ){
+
+            if(window.currentQuizFinished){
+
+                resetSetupScreen();
+
+                window.currentQuizFinished = false;
+
+                history.replaceState(
+                    {screen:"selection"},
+                    ""
+                );
+
+                showScreen(
+                    "selection-screen"
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        if(state.screen === "instruction"){
+
+            showScreen("instruction-screen");
+            clearInterval(timerInterval);
+
+        }
+
+        else if(state.screen === "selection"){
+
+            showScreen("selection-screen");
+            clearInterval(timerInterval);
+
+        }
+
+        else if(state.screen === "quiz"){
+
+            showScreen("quiz-screen");
+
+        }
+
+        else if(state.screen === "pre-submit"){
+
+            showScreen("pre-submit-screen");
+
+        }
+
+        else if(state.screen === "result"){
+
+            showScreen("result-screen");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SCREEN MANAGEMENT
+========================================================= */
+
+function showScreen(screenId){
+
+    [
+        "instruction-screen",
+        "selection-screen",
+        "quiz-screen",
+        "pre-submit-screen",
+        "result-screen"
+    ].forEach(id => {
+
+        document
+            .getElementById(id)
+            .classList.add("hidden");
+
+    });
+
+
+    document
+        .getElementById("dock-container")
+        .classList.add("hidden");
+
+    document
+        .getElementById("quiz-dock-container")
+        .classList.add("hidden");
+
+
+    if(screenId !== "instruction-screen"){
+
+        document
+            .getElementById("top-bar")
+            .classList.remove("hidden");
+
+    }else{
+
+        document
+            .getElementById("top-bar")
+            .classList.add("hidden");
+
+    }
+
+
+    document
+        .getElementById(screenId)
+        .classList.remove("hidden");
+
+
+    if(screenId === "selection-screen"){
+
+        document
+            .getElementById("dock-container")
+            .classList.remove("hidden");
+
+    }
+
+
+    if(screenId === "quiz-screen"){
+
+        document
+            .getElementById("quiz-dock-container")
+            .classList.remove("hidden");
+
+    }
+
+}
+
+
+function goToSetup(){
+
+    history.pushState(
+        {screen:"selection"},
+        ""
+    );
+
+    showScreen(
+        "selection-screen"
+    );
+
+}
+
+
+/* =========================================================
+   ID MODAL
+========================================================= */
+
+function openIdModal(){
+
+    if(!window.verifiedStudentId){
+
+        document.getElementById(
+            "enter-student-id"
+        ).value = "";
+
+        document.getElementById(
+            "student-name-display"
+        ).value = "";
+
+    }
+
+    document
+        .getElementById("id-modal")
+        .classList.remove("hidden");
+
+}
+
+
+function closeIdModal(){
+
+    document
+        .getElementById("id-modal")
+        .classList.add("hidden");
+
+}
+
+
+function autoFillName(){
+
+    let inputId =
+        document
+            .getElementById("enter-student-id")
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g,"");
+
+    let nameBox =
+        document.getElementById(
+            "student-name-display"
+        );
+
+
+    if(
+        inputId &&
+        window.studentData &&
+        window.studentData[inputId]
+    ){
+
+        nameBox.value =
+            window.studentData[inputId];
+
+    }else{
+
+        nameBox.value = "";
+
+    }
+
+}
+
+
+function checkIdFirst(){
+
+    let nameBox =
+        document.getElementById(
+            "student-name-display"
+        );
+
+    if(!nameBox.value){
+
+        showModal(
+            "कृपया पहले अपनी ID दर्ज करें!"
+        );
+
+    }
+
+}
+
+
+function verifyId(){
+
+    let inputId =
+        document
+            .getElementById("enter-student-id")
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g,"");
+
+
+    if(!inputId){
+
+        showModal(
+            "कृपया अपनी आईडी दर्ज करें!"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        window.studentData &&
+        window.studentData[inputId]
+    ){
+
+        window.verifiedStudentId =
+            inputId;
+
+        window.verifiedStudentName =
+            window.studentData[inputId];
+
+
+        document
+            .getElementById("top-bar-name")
+            .innerText =
+            window.verifiedStudentName;
+
+
+        let idBtn =
+            document.getElementById(
+                "btn-top-id"
+            );
+
+        idBtn.innerText =
+            "Verified ✅";
+
+        idBtn.style.background =
+            "linear-gradient(135deg,#10b981,#059669)";
+
+        closeIdModal();
+
+        checkAndShowNotification(
+            inputId
+        );
+
+        showModal(
+            "बस-बस आईडी सही है अब बनाओ मजे में DPP 😌।"
+        );
+
+    }else{
+
+        showModal(
+            "आपकी आईडी गलत है या सूची में नहीं है। कृपया सही आईडी दर्ज करें।"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+function checkAndShowNotification(studentId){
+
+    let bell =
+        document.getElementById(
+            "notification-bell"
+        );
+
+    let enteredIdClean =
+        studentId
+            .toLowerCase()
+            .replace(/\s+/g,"");
+
+    let foundMessage = null;
+
+    let cooldownKey =
+        "bell_cooldown_" +
+        enteredIdClean;
+
+    let savedTime =
+        localStorage.getItem(
+            cooldownKey
+        );
+
+
+    if(savedTime){
+
+        let elapsed =
+            Date.now() -
+            parseInt(savedTime);
+
+        if(
+            elapsed <
+            10 * 60 * 60 * 1000
+        ){
+
+            bell.style.display =
+                "none";
+
+            return;
+
+        }else{
+
+            localStorage.removeItem(
+                cooldownKey
+            );
+
+        }
+
+    }
+
+
+    if(window.studentMessages){
+
+        for(
+            let savedId in
+            window.studentMessages
+        ){
+
+            if(
+                savedId
+                    .toLowerCase()
+                    .replace(/\s+/g,"")
+                === enteredIdClean
+            ){
+
+                foundMessage =
+                    window.studentMessages[savedId];
+
+                break;
+
+            }
+
+        }
+
+    }
+
+
+    if(foundMessage){
+
+        bell.style.display =
+            "block";
+
+        bell.dataset.message =
+            foundMessage;
+
+        bell.dataset.clicks =
+            "0";
+
+        let dot =
+            document.getElementById(
+                "bell-dot"
+            );
+
+        if(dot)
+            dot.style.display =
+                "block";
+
+    }else{
+
+        bell.style.display =
+            "none";
+
+    }
+
+}
+
+
+function openNotificationModal(){
+
+    let bell =
+        document.getElementById(
+            "notification-bell"
+        );
+
+    let studentId =
+        window.verifiedStudentId ||
+        "unknown";
+
+    let currentClicks =
+        parseInt(
+            bell.dataset.clicks || "0"
+        );
+
+    currentClicks++;
+
+    bell.dataset.clicks =
+        currentClicks.toString();
+
+
+    let dot =
+        document.getElementById(
+            "bell-dot"
+        );
+
+
+    if(currentClicks === 1){
+
+        if(dot)
+            dot.style.display =
+                "none";
+
+    }
+
+    else if(currentClicks >= 2){
+
+        bell.style.display =
+            "none";
+
+        localStorage.setItem(
+            "bell_cooldown_" + studentId,
+            Date.now().toString()
+        );
+
+    }
+
+
+    let msg =
+        bell.dataset.message;
+
+
+    if(msg){
+
+        document.getElementById(
+            "student-msg-text"
+        ).innerText = msg;
+
+        document
+            .getElementById(
+                "notification-modal"
+            )
+            .classList.remove("hidden");
+
+        history.pushState(
+            {
+                screen:
+                    history.state ?
+                    history.state.screen :
+                    "selection",
+
+                notifModal:true
+            },
+            ""
+        );
+
+    }
+
+}
+
+
+function closeNotificationModal(){
+
+    if(
+        history.state &&
+        history.state.notifModal
+    ){
+
+        history.back();
+
+    }else{
+
+        document
+            .getElementById(
+                "notification-modal"
+            )
+            .classList.add("hidden");
+
+    }
+
+}
+
+
+/* =========================================================
+   SUBJECT
+========================================================= */
+
+function openSubjectSelect(){
+
+    let list =
+        document.getElementById(
+            "options-list"
+        );
+
+    list.innerHTML = "";
+
+    document.getElementById(
+        "options-title"
+    ).innerText =
+        "विषय चुनें";
+
+
+    for(
+        let key in subjectsList
+    ){
+
+        list.innerHTML += `
+            <div
+                class="option-card"
+                onclick="
+                    selectSubject(
+                        '${key}',
+                        '${subjectsList[key]}'
+                    )
+                ">
+
+                ${subjectsList[key]}
+
+            </div>
+        `;
+
+    }
+
+
+    document
+        .getElementById(
+            "options-modal"
+        )
+        .classList.remove("hidden");
+
+
+    history.pushState(
+        {
+            screen:
+                history.state ?
+                history.state.screen :
+                "selection",
+
+            optionsModal:true
+        },
+        ""
+    );
+
+}
+
+
+function selectSubject(val,text){
+
+    document.getElementById(
+        "subject-select"
+    ).value = val;
+
+    document.getElementById(
+        "subject-text"
+    ).innerText = text;
+
+
+    document.getElementById(
+        "chapter-select"
+    ).value = "";
+
+    document.getElementById(
+        "chapter-text"
+    ).innerText =
+        "-- अध्याय चुनें --";
+
+
+    document.getElementById(
+        "quiz-select"
+    ).value = "";
+
+    document.getElementById(
+        "quiz-text"
+    ).innerText =
+        "-- पहले अध्याय चुनें --";
+
+
+    history.back();
+
+}
+
+
+/* =========================================================
+   CHAPTER
+========================================================= */
+
+function openChapterSelect(){
+
+    let sub =
+        document.getElementById(
+            "subject-select"
+        ).value;
+
+
+    if(!sub){
+
+        showModal(
+            "कृपया पहले विषय चुनें!"
+        );
+
+        return;
+
+    }
+
+
+    let list =
+        document.getElementById(
+            "options-list"
+        );
+
+    list.innerHTML = "";
+
+
+    document.getElementById(
+        "options-title"
+    ).innerText =
+        "अध्याय चुनें";
+
+
+    let chapters =
+        chaptersData[sub];
+
+
+    for(
+        let i=0;
+        i<chapters.length;
+        i++
+    ){
+
+        let chNum =
+            i + 1;
+
+
+        list.innerHTML += `
+            <div
+                class="option-card"
+                onclick="
+                    selectChapter(
+                        '${chNum}',
+                        'अध्याय ${chNum}: ${chapters[i]}'
+                    )
+                ">
+
+                अध्याय ${chNum}: ${chapters[i]}
+
+            </div>
+        `;
+
+    }
+
+
+    document
+        .getElementById(
+            "options-modal"
+        )
+        .classList.remove("hidden");
+
+
+    history.pushState(
+        {
+            screen:
+                history.state ?
+                history.state.screen :
+                "selection",
+
+            optionsModal:true
+        },
+        ""
+    );
+
+}
+
+
+function selectChapter(val,text){
+
+    document.getElementById(
+        "chapter-select"
+    ).value = val;
+
+    document.getElementById(
+        "chapter-text"
+    ).innerText = text;
+
+    history.back();
+
+    loadQuizzesCustom();
+
+}
+
+
+/* =========================================================
+   DPP SELECT
+========================================================= */
+
+function loadQuizzesCustom(){
+
+    let sub =
+        document.getElementById(
+            "subject-select"
+        ).value;
+
+    let chNum =
+        document.getElementById(
+            "chapter-select"
+        ).value;
+
+    let qText =
+        document.getElementById(
+            "quiz-text"
+        );
+
+
+    document.getElementById(
+        "quiz-select"
+    ).value = "";
+
+
+    let studentId =
+        window.verifiedStudentId ||
+        "unknown";
+
+    let hasQuizzes = false;
+    let hiddenDueToCooldown = false;
+
+
+    if(
+        window.quizDatabase &&
+        window.quizDatabase[sub] &&
+        window.quizDatabase[sub][`ch_${chNum}`]
+    ){
+
+        let quizzes =
+            window.quizDatabase[sub][`ch_${chNum}`];
+
+
+        for(
+            let qKey in quizzes
+        ){
+
+            let cooldownKey =
+                `dpp_cooldown_${studentId}_${sub}_${chNum}_${qKey}`;
+
+            let savedTime =
+                localStorage.getItem(
+                    cooldownKey
+                );
+
+            let hide = false;
+
+
+            if(savedTime){
+
+                let elapsed =
+                    Date.now() -
+                    parseInt(savedTime);
+
+
+                if(
+                    elapsed <
+                    5 * 60 * 60 * 1000
+                ){
+
+                    hide = true;
+                    hiddenDueToCooldown = true;
+
+                }else{
+
+                    localStorage.removeItem(
+                        cooldownKey
+                    );
+
+                }
+
+            }
+
+
+            if(!hide){
+
+                hasQuizzes = true;
+                break;
+
+            }
+
+        }
+
+    }
+
+
+    if(hasQuizzes){
+
+        qText.innerText =
+            "-- DPP चुनें --";
+
+    }
+
+    else if(hiddenDueToCooldown){
+
+        qText.innerText =
+            "-- आपने सभी DPP बना लिए (5 घंटे बाद देखें) --";
+
+    }
+
+    else{
+
+        qText.innerText =
+            "-- अभी कोई DPP उपलब्ध नहीं है --";
+
+    }
+
+}
+
+
+function openQuizSelect(){
+
+    let sub =
+        document.getElementById(
+            "subject-select"
+        ).value;
+
+    let chNum =
+        document.getElementById(
+            "chapter-select"
+        ).value;
+
+
+    if(!sub){
+
+        showModal(
+            "कृपया पहले विषय चुनें!"
+        );
+
+        return;
+
+    }
+
+
+    if(!chNum){
+
+        showModal(
+            "कृपया पहले अध्याय चुनें!"
+        );
+
+        return;
+
+    }
+
+
+    let studentId =
+        window.verifiedStudentId ||
+        "unknown";
+
+
+    let list =
+        document.getElementById(
+            "options-list"
+        );
+
+    list.innerHTML = "";
+
+
+    document.getElementById(
+        "options-title"
+    ).innerText =
+        "DPP चुनें";
+
+
+    let hasQuizzes = false;
+    let totalQuizzes = 0;
+    let hiddenQuizzesCount = 0;
+
+
+    if(
+        window.quizDatabase &&
+        window.quizDatabase[sub] &&
+        window.quizDatabase[sub][`ch_${chNum}`]
+    ){
+
+        let quizzes =
+            window.quizDatabase[sub][`ch_${chNum}`];
+
+
+        if(Object.keys(quizzes).length > 0){
+
+            for(
+                let qKey in quizzes
+            ){
+
+                totalQuizzes++;
+
+
+                let cooldownKey =
+                    `dpp_cooldown_${studentId}_${sub}_${chNum}_${qKey}`;
+
+
+                let savedTime =
+                    localStorage.getItem(
+                        cooldownKey
+                    );
+
+                let hideQuiz = false;
+
+
+                if(savedTime){
+
+                    let elapsed =
+                        Date.now() -
+                        parseInt(savedTime);
+
+
+                    if(
+                        elapsed <
+                        5 * 60 * 60 * 1000
+                    ){
+
+                        hideQuiz = true;
+                        hiddenQuizzesCount++;
+
+                    }else{
+
+                        localStorage.removeItem(
+                            cooldownKey
+                        );
+
+                    }
+
+                }
+
+
+                if(!hideQuiz){
+
+                    hasQuizzes = true;
+
+                    let qNum =
+                        qKey.replace(
+                            "dpp_",
+                            ""
+                        );
+
+
+                    list.innerHTML += `
+                        <div
+                            class="option-card"
+                            onclick="
+                                selectQuiz(
+                                    '${qKey}',
+                                    'DPP-${qNum}'
+                                )
+                            ">
+
+                            DPP-${qNum}
+
+                        </div>
+                    `;
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    if(!hasQuizzes){
+
+        if(
+            totalQuizzes > 0 &&
+            hiddenQuizzesCount === totalQuizzes
+        ){
+
+            list.innerHTML = `
+                <div
+                    style="
+                        text-align:center;
+                        color:#222;
+                        padding:20px;
+                        font-weight:500;
+                    ">
+
+                    आपने इस अध्याय के सभी DPP
+                    हाल ही में बना लिए हैं।
+
+                    <br><br>
+
+                    <span
+                        style="
+                            color:#d97706;
+                            font-weight:700;
+                        ">
+
+                        कृपया 5 घंटे बाद पुनः प्रयास करें।
+
+                    </span>
+
+                </div>
+            `;
+
+        }else{
+
+            list.innerHTML = `
+                <div
+                    style="
+                        text-align:center;
+                        color:#222;
+                        padding:20px;
+                        font-weight:500;
+                    ">
+
+                    अभी इस अध्याय में कोई DPP
+                    नहीं डाला गया है।
+
+                    <br><br>
+
+                    कृपया बाद में प्रयास करें।
+
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    document
+        .getElementById(
+            "options-modal"
+        )
+        .classList.remove("hidden");
+
+
+    history.pushState(
+        {
+            screen:
+                history.state ?
+                history.state.screen :
+                "selection",
+
+            optionsModal:true
+        },
+        ""
+    );
+
+}
+
+
+function selectQuiz(val,text){
+
+    document.getElementById(
+        "quiz-select"
+    ).value = val;
+
+    document.getElementById(
+        "quiz-text"
+    ).innerText = text;
+
+    history.back();
+
+}
+
+
+function closeOptionsModal(){
+
+    if(
+        history.state &&
+        history.state.optionsModal
+    ){
+
+        history.back();
+
+    }else{
+
+        document
+            .getElementById(
+                "options-modal"
+            )
+            .classList.add("hidden");
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function showModal(msg){
+
+    document.getElementById(
+        "modal-text"
+    ).innerText = msg;
+
+    document
+        .getElementById(
+            "custom-modal"
+        )
+        .classList.remove("hidden");
+
+
+    history.pushState(
+        {
+            screen:
+                history.state ?
+                history.state.screen :
+                "selection",
+
+            modal:true
+        },
+        ""
+    );
+
+}
+
+
+function closeModal(){
+
+    if(
+        history.state &&
+        history.state.modal
+    ){
+
+        history.back();
+
+    }else{
+
+        document
+            .getElementById(
+                "custom-modal"
+            )
+            .classList.add("hidden");
+
+    }
+
+}
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+function toggleFullScreen(){
+
+    let btn =
+        document.getElementById(
+            "btn-fullscreen"
+        );
+
+
+    if(!document.fullscreenElement){
+
+        document.documentElement
+            .requestFullscreen()
+            .then(() => {
+
+                btn.innerText =
+                    "नॉर्मल 🔙";
+
+            })
+            .catch(err =>
+                console.log(err.message)
+            );
+
+    }else{
+
+        if(document.exitFullscreen){
+
+            document.exitFullscreen()
+                .then(() => {
+
+                    btn.innerText =
+                        "फुल स्क्रीन मोड 🔲";
+
+                });
+
+        }
+
+    }
+
+}
+
+
+document.addEventListener(
+    "fullscreenchange",
+    function(){
+
+        let btn =
+            document.getElementById(
+                "btn-fullscreen"
+            );
+
+        if(!document.fullscreenElement){
+
+            btn.innerText =
+                "फुल स्क्रीन मोड 🔲";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START DPP
+========================================================= */
+
+function startQuiz(){
+
+    let sub =
+        document.getElementById(
+            "subject-select"
+        ).value;
+
+    let ch =
+        document.getElementById(
+            "chapter-select"
+        ).value;
+
+    let qKey =
+        document.getElementById(
+            "quiz-select"
+        ).value;
+
+
+    if(!window.verifiedStudentId){
+
+        showModal(
+            "आपने अभी तक आईडी दर्ज नहीं की है या आपकी आईडी गलत है! कृपया ऊपर पट्टी में ID verify करें।"
+        );
+
+        return;
+
+    }
+
+
+    if(!sub){
+
+        showModal(
+            "कृपया विषय चुनें!"
+        );
+
+        return;
+
+    }
+
+
+    if(!ch){
+
+        showModal(
+            "कृपया अध्याय चुनें!"
+        );
+
+        return;
+
+    }
+
+
+    if(!qKey){
+
+        showModal(
+            "कोई DPP चुना नहीं गया है। यदि उपलब्ध नहीं है, तो बाद में प्रयास करें।"
+        );
+
+        return;
+
+    }
+
+
+    const chKey =
+        `ch_${ch}`;
+
+
+    if(
+        window.quizDatabase &&
+        window.quizDatabase[sub] &&
+        window.quizDatabase[sub][chKey] &&
+        window.quizDatabase[sub][chKey][qKey]
+    ){
+
+        currentQuestions =
+            window.quizDatabase[sub][chKey][qKey];
+
+
+        userAnswers =
+            new Array(
+                currentQuestions.length
+            ).fill(null);
+
+
+        currentQIndex = 0;
+        timeLeft = 1800;
+
+        window.currentQuizFinished =
+            false;
+
+
+        /*
+         * अगर पहले incomplete session मौजूद है
+         * तो restore करेंगे।
+         */
+
+        let restored =
+            loadSavedQuizState();
+
+
+        history.pushState(
+            {screen:"quiz"},
+            ""
+        );
+
+
+        showScreen(
+            "quiz-screen"
+        );
+
+
+        if(restored){
+
+            showModal(
+                "आपका पिछला DPP session restore कर दिया गया है। आप वहीं से जारी रख सकते हैं।"
+            );
+
+        }
+
+
+        startOverallTimer();
+
+        loadQuestion();
+
+
+    }else{
+
+        showModal(
+            "इस DPP के सवाल अभी जोड़े नहीं गए हैं!"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function startOverallTimer(){
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    updateTimerDisplay();
+
+
+    document
+        .getElementById(
+            "time-warning"
+        )
+        .style.display =
+        timeLeft <= 600 ?
+        "block" :
+        "none";
+
+
+    if(timeLeft <= 600){
+
+        document
+            .getElementById(
+                "timer-ui"
+            )
+            .classList.add(
+                "timer-warning"
+            );
+
+    }else{
+
+        document
+            .getElementById(
+                "timer-ui"
+            )
+            .classList.remove(
+                "timer-warning"
+            );
+
+    }
+
+
+    timerInterval =
+        setInterval(() => {
+
+            timeLeft--;
+
+            updateTimerDisplay();
+
+
+            if(timeLeft === 600){
+
+                document
+                    .getElementById(
+                        "time-warning"
+                    )
+                    .style.display =
+                    "block";
+
+                document
+                    .getElementById(
+                        "timer-ui"
+                    )
+                    .classList.add(
+                        "timer-warning"
+                    );
+
+            }
+
+
+            /*
+             * हर 10 सेकंड में state save
+             */
+
+            if(
+                timeLeft % 10 === 0
+            ){
+
+                saveQuizState();
+
+            }
+
+
+            if(timeLeft <= 0){
+
+                clearInterval(
+                    timerInterval
+                );
+
+                saveQuizState();
+
+                showModal(
+                    "समय समाप्त! आपका DPP स्वचालित रूप से submit किया जा रहा है।"
+                );
+
+                setTimeout(
+                    submitQuiz,
+                    700
+                );
+
+            }
+
+        },1000);
+
+}
+
+
+function updateTimerDisplay(){
+
+    let m =
+        Math.floor(
+            timeLeft / 60
+        );
+
+    let s =
+        timeLeft % 60;
+
+
+    document.getElementById(
+        "time-left"
+    ).innerText =
+        `${m < 10 ? "0"+m : m}:${s < 10 ? "0"+s : s}`;
+
+}
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    if(!currentQuestions.length)
+        return;
+
+
+    let q =
+        currentQuestions[
+            currentQIndex
+        ];
+
+
+    let total =
+        currentQuestions.length;
+
+
+    let answered =
+        userAnswers.filter(
+            ans => ans !== null
+        ).length;
+
+
+    let unanswered =
+        total - answered;
+
+
+    /*
+     * Counter
+     */
+
+    document.getElementById(
+        "q-counter"
+    ).innerText =
+        `प्रश्न ${currentQIndex+1} / ${total}`;
+
+
+    /*
+     * Current status
+     */
+
+    document.getElementById(
+        "q-status"
+    ).innerText =
+        userAnswers[currentQIndex] !== null
+        ? "✓ इस प्रश्न का उत्तर दिया गया"
+        : "अभी उत्तर नहीं दिया गया";
+
+
+    /*
+     * Progress
+     */
+
+    let progress =
+        Math.round(
+            ((currentQIndex+1) / total) * 100
+        );
+
+
+    document.getElementById(
+        "progress-fill"
+    ).style.width =
+        progress + "%";
+
+
+    document.getElementById(
+        "progress-percent"
+    ).innerText =
+        progress + "%";
+
+
+    /*
+     * Question
+     */
+
+    document.getElementById(
+        "q-text"
+    ).innerHTML =
+        `${currentQIndex+1}. ${q.question}`;
+
+
+    /*
+     * Options
+     */
+
+    let optsContainer =
+        document.getElementById(
+            "options-container"
+        );
+
+    optsContainer.innerHTML = "";
+
+
+    q.options.forEach(
+        (opt,idx) => {
+
+            let selected =
+                userAnswers[
+                    currentQIndex
+                ] === idx;
+
+
+            optsContainer.innerHTML += `
+
+                <div
+                    class="option-item ${selected ? "selected" : ""}"
+                    onclick="selectOption(${idx})">
+
+                    <div class="option-letter">
+
+                        ${String.fromCharCode(65+idx)}
+
+                    </div>
+
+                    <div class="option-content">
+
+                        ${opt}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    /*
+     * Previous
+     */
+
+    document.getElementById(
+        "btn-prev"
+    ).style.visibility =
+        currentQIndex === 0
+        ? "hidden"
+        : "visible";
+
+
+    /*
+     * Next / Submit
+     */
+
+    if(
+        currentQIndex ===
+        total - 1
+    ){
+
+        document.getElementById(
+            "btn-next"
+        ).style.display =
+            "none";
+
+        document.getElementById(
+            "btn-submit"
+        ).style.display =
+            "block";
+
+    }else{
+
+        document.getElementById(
+            "btn-next"
+        ).style.display =
+            "block";
+
+        document.getElementById(
+            "btn-submit"
+        ).style.display =
+            "none";
+
+    }
+
+
+    /*
+     * Palette
+     */
+
+    renderQuestionPalette();
+
+
+    document.getElementById(
+        "palette-summary"
+    ).innerText =
+        `${answered} / ${total} Answered`;
+
+}
+
+
+/* =========================================================
+   QUESTION PALETTE
+========================================================= */
+
+function renderQuestionPalette(){
+
+    const palette =
+        document.getElementById(
+            "question-palette"
+        );
+
+
+    palette.innerHTML = "";
+
+
+    currentQuestions.forEach(
+        (q,index) => {
+
+            const btn =
+                document.createElement(
+                    "button"
+                );
+
+
+            btn.className =
+                "palette-btn";
+
+
+            btn.innerText =
+                index + 1;
+
+
+            if(
+                userAnswers[index] !== null
+            ){
+
+                btn.classList.add(
+                    "answered"
+                );
+
+            }
+
+
+            if(
+                index === currentQIndex
+            ){
+
+                btn.classList.add(
+                    "current"
+                );
+
+            }
+
+
+            btn.onclick = function(){
+
+                currentQIndex =
+                    index;
+
+                loadQuestion();
+
+                saveQuizState();
+
+            };
+
+
+            palette.appendChild(btn);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SELECT OPTION
+========================================================= */
+
+function selectOption(idx){
+
+    userAnswers[
+        currentQIndex
+    ] = idx;
+
+
+    loadQuestion();
+
+    saveQuizState();
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function nextQuestion(){
+
+    if(
+        currentQIndex <
+        currentQuestions.length - 1
+    ){
+
+        currentQIndex++;
+
+        loadQuestion();
+
+        saveQuizState();
+
+    }
+
+}
+
+
+function prevQuestion(){
+
+    if(
+        currentQIndex > 0
+    ){
+
+        currentQIndex--;
+
+        loadQuestion();
+
+        saveQuizState();
+
+    }
+
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+function submitQuiz(){
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    saveQuizState();
+
+
+    let studentName =
+        window.verifiedStudentName ||
+        "Student";
+
+
+    let total =
+        currentQuestions.length;
+
+
+    let attempted =
+        userAnswers.filter(
+            ans => ans !== null
+        ).length;
+
+
+    let timeTakenSec =
+        1800 - timeLeft;
+
+
+    let m =
+        Math.floor(
+            timeTakenSec / 60
+        );
+
+
+    let s =
+        timeTakenSec % 60;
+
+
+    let timeTakenStr =
+        `${m} मिनट ${s} सेकंड`;
+
+
+    document.getElementById(
+        "pre-submit-details"
+    ).innerHTML = `
+
+        <div style="margin-bottom:8px;">
+            <strong class="pre-sub-label">
+                नाम:
+            </strong>
+
+            <span class="pre-sub-val">
+                ${studentName}
+            </span>
+        </div>
+
+
+        <div style="margin-bottom:8px;">
+            <strong class="pre-sub-label">
+                इस DPP में कुल प्रश्न:
+            </strong>
+
+            <span class="pre-sub-val">
+                ${total}
+            </span>
+        </div>
+
+
+        <div style="margin-bottom:8px;">
+            <strong class="pre-sub-label">
+                आपने अटेम्प्ट किये:
+            </strong>
+
+            <span class="attempted-count">
+                ${attempted}
+            </span>
+        </div>
+
+
+        <div style="margin-bottom:8px;">
+            <strong class="pre-sub-label">
+                अनुत्तरित:
+            </strong>
+
+            <span class="pre-sub-val">
+                ${total-attempted}
+            </span>
+        </div>
+
+
+        <div style="margin-bottom:8px;">
+            <strong class="pre-sub-label">
+                कुल लिया गया समय:
+            </strong>
+
+            <span class="pre-sub-val">
+                ${timeTakenStr}
+            </span>
+        </div>
+
+    `;
+
+
+    document
+        .getElementById(
+            "submit-loader"
+        )
+        .classList.add("hidden");
+
+
+    document
+        .getElementById(
+            "btn-final-submit"
+        )
+        .classList.remove("hidden");
+
+
+    history.pushState(
+        {screen:"pre-submit"},
+        ""
+    );
+
+
+    showScreen(
+        "pre-submit-screen"
+    );
+
+}
+
+
+/* =========================================================
+   FINAL SUBMIT
+========================================================= */
+
+function startFinalSubmit(){
+
+    document
+        .getElementById(
+            "btn-final-submit"
+        )
+        .classList.add("hidden");
+
+
+    document
+        .getElementById(
+            "submit-loader"
+        )
+        .classList.remove("hidden");
+
+
+    let counter = 5;
+
+
+    document.getElementById(
+        "submit-timer-text"
+    ).innerText =
+        counter;
+
+
+    let countdown =
+        setInterval(() => {
+
+            counter--;
+
+            document.getElementById(
+                "submit-timer-text"
+            ).innerText =
+                counter;
+
+
+            if(counter <= 0){
+
+                clearInterval(
+                    countdown
+                );
+
+                finalizeQuizSubmit();
+
+            }
+
+        },1000);
+
+}
+
+
+/* =========================================================
+   FINALIZE
+========================================================= */
+
+function finalizeQuizSubmit(){
+
+    window.currentQuizFinished =
+        true;
+
+
+    let score = 0;
+
+
+    currentQuestions.forEach(
+        (q,idx) => {
+
+            if(
+                userAnswers[idx] ===
+                q.correct
+            ){
+
+                score++;
+
+            }
+
+        }
+    );
+
+
+    let total =
+        currentQuestions.length;
+
+
+    let correct =
+        score;
+
+
+    let attempted =
+        userAnswers.filter(
+            ans => ans !== null
+        ).length;
+
+
+    let wrong =
+        attempted - correct;
+
+
+    let unanswered =
+        total - attempted;
+
+
+    let percent =
+        total > 0
+        ? Math.round(
+            (score / total) * 100
+          )
+        : 0;
+
+
+    let studentName =
+        window.verifiedStudentName ||
+        "Student";
+
+
+    let studentId =
+        window.verifiedStudentId ||
+        "unknown";
+
+
+    let subjectCode =
+        document.getElementById(
+            "subject-select"
+        ).value;
+
+
+    let subjectName =
+        document.getElementById(
+            "subject-text"
+        ).innerText;
+
+
+    let chapterCode =
+        document.getElementById(
+            "chapter-select"
+        ).value;
+
+
+    let chapterName =
+        document.getElementById(
+            "chapter-text"
+        ).innerText;
+
+
+    let dppKey =
+        document.getElementById(
+            "quiz-select"
+        ).value;
+
+
+    let dppName =
+        document.getElementById(
+            "quiz-text"
+        ).innerText;
+
+
+    /*
+     * Cooldown
+     */
+
+    let cooldownKey =
+        `dpp_cooldown_${studentId}_${subjectCode}_${chapterCode}_${dppKey}`;
+
+
+    localStorage.setItem(
+        cooldownKey,
+        Date.now().toString()
+    );
+
+
+    /*
+     * Auto-save clear
+     */
+
+    clearQuizAutosave();
+
+
+    /*
+     * Google Sheet
+     */
+
+    let sheetData = {
+
+        name:studentName,
+
+        id:studentId,
+
+        score:`${score} / ${total}`,
+
+        percentage:percent,
+
+        correct:correct,
+
+        wrong:wrong,
+
+        unanswered:unanswered,
+
+        subjectCode:subjectCode,
+
+        subjectName:subjectName,
+
+        chapterName:chapterName,
+
+        dppName:dppName
+
+    };
+
+
+    const GOOGLE_SHEET_URL =
+        'https://script.google.com/macros/s/AKfycbxZVqprhQ_Y4pdg0xwRixDZUHavrTVDkdbMlprX6hCsqvAboITOaOVHBZYfCZO1O2yySw/exec';
+
+
+    if(GOOGLE_SHEET_URL){
+
+        fetch(
+            GOOGLE_SHEET_URL,
+            {
+                method:"POST",
+                keepalive:true,
+                body:JSON.stringify(sheetData)
+            }
+        ).catch(
+            e => console.log(e)
+        );
+
+    }
+
+
+    /*
+     * Result screen
+     */
+
+    history.replaceState(
+        {screen:"result"},
+        ""
+    );
+
+
+    showScreen(
+        "result-screen"
+    );
+
+
+    /*
+     * Result details
+     */
+
+    document.getElementById(
+        "res-name"
+    ).innerHTML =
+        `<span class="res-label">Name:</span> ${studentName}`;
+
+
+    document.getElementById(
+        "res-chapter"
+    ).innerHTML =
+        `<span class="res-label">Chapter:</span> ${chapterName}`;
+
+
+    document.getElementById(
+        "res-dpp"
+    ).innerHTML =
+        `<span class="res-label">DPP:</span> ${dppName}`;
+
+
+    document.getElementById(
+        "res-score"
+    ).innerText =
+        `${score} / ${total}`;
+
+
+    document.getElementById(
+        "res-percent"
+    ).innerText =
+        `कुल प्राप्तांक: ${percent}%`;
+
+
+    /*
+     * Statistics
+     */
+
+    document.getElementById(
+        "res-correct"
+    ).innerText =
+        correct;
+
+
+    document.getElementById(
+        "res-wrong"
+    ).innerText =
+        wrong;
+
+
+    document.getElementById(
+        "res-unanswered"
+    ).innerText =
+        unanswered;
+
+
+    /*
+     * Performance message
+     */
+
+    let performance = "";
+
+
+    if(percent >= 90){
+
+        performance =
+            "🔥 Outstanding Performance! आपने शानदार प्रदर्शन किया है।";
+
+    }
+
+    else if(percent >= 75){
+
+        performance =
+            "🎉 Excellent! आपका प्रदर्शन बहुत अच्छा रहा।";
+
+    }
+
+    else if(percent >= 60){
+
+        performance =
+            "👍 Good Job! थोड़ी और practice से आप और बेहतर कर सकते हैं।";
+
+    }
+
+    else if(percent >= 40){
+
+        performance =
+            "📚 अच्छा प्रयास! जिन questions में गलती हुई है उन्हें जरूर revise करें।";
+
+    }
+
+    else{
+
+        performance =
+            "💪 Keep Practicing! हार मत मानिए, नियमित DPP practice से improvement जरूर होगा।";
+
+    }
+
+
+    document.getElementById(
+        "performance-message"
+    ).innerText =
+        performance;
+
+
+    generateSummary();
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goHome(){
+
+    resetSetupScreen();
+
+    window.currentQuizFinished =
+        false;
+
+
+    history.pushState(
+        {screen:"selection"},
+        ""
+    );
+
+
+    showScreen(
+        "selection-screen"
+    );
+
+}
+
+
+function resetSetupScreen(){
+
+    document.getElementById(
+        "subject-select"
+    ).value = "";
+
+
+    document.getElementById(
+        "subject-text"
+    ).innerText =
+        "-- विषय चुनें --";
+
+
+    document.getElementById(
+        "chapter-select"
+    ).value = "";
+
+
+    document.getElementById(
+        "chapter-text"
+    ).innerText =
+        "-- पहले विषय चुनें --";
+
+
+    document.getElementById(
+        "quiz-select"
+    ).value = "";
+
+
+    document.getElementById(
+        "quiz-text"
+    ).innerText =
+        "-- पहले अध्याय चुनें --";
+
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+function openSummaryModal(){
+
+    document
+        .getElementById(
+            "summary-modal"
+        )
+        .classList.remove("hidden");
+
+
+    history.pushState(
+        {
+            screen:
+                history.state ?
+                history.state.screen :
+                "result",
+
+            summaryModal:true
+        },
+        ""
+    );
+
+}
+
+
+function closeSummaryModal(){
+
+    if(
+        history.state &&
+        history.state.summaryModal
+    ){
+
+        history.back();
+
+    }else{
+
+        document
+            .getElementById(
+                "summary-modal"
+            )
+            .classList.add("hidden");
+
+    }
+
+}
+
+
+function generateSummary(){
+
+    let container =
+        document.getElementById(
+            "summary-content"
+        );
+
+
+    container.innerHTML = "";
+
+
+    currentQuestions.forEach(
+        (q,idx) => {
+
+            let userAnsIdx =
+                userAnswers[idx];
+
+
+            let isAttempted =
+                userAnsIdx !== null;
+
+
+            let isCorrect =
+                isAttempted &&
+                userAnsIdx === q.correct;
+
+
+            let mark =
+                isCorrect
+                ? "✅ सही"
+                : isAttempted
+                    ? "❌ गलत"
+                    : "⚪ अनुत्तरित";
+
+
+            let markClass =
+                isCorrect
+                ? "ans-correct"
+                : "ans-wrong";
+
+
+            let userAnsText =
+                isAttempted
+                ? String.fromCharCode(
+                    65+userAnsIdx
+                  ) +
+                  ") " +
+                  q.options[userAnsIdx]
+                : "उत्तर नहीं दिया गया";
+
+
+            let correctAnsText =
+                String.fromCharCode(
+                    65+q.correct
+                ) +
+                ") " +
+                q.options[q.correct];
+
+
+            let optionsHtml =
+                `<div
+                    style="
+                        margin:10px 0;
+                        font-size:.95rem;
+                        line-height:1.6;
+                        color:#444;
+                    ">`;
+
+
+            q.options.forEach(
+                (opt,oIdx) => {
+
+                    optionsHtml += `
+                        <div>
+                            ${String.fromCharCode(65+oIdx)})
+                            ${opt}
+                        </div>
+                    `;
+
+                }
+            );
+
+
+            optionsHtml +=
+                "</div>";
+
+
+            let html = `
+
+                <div class="summary-item">
+
+                    <div
+                        style="
+                            margin-bottom:5px;
+                            font-size:1.05rem;
+                        ">
+
+                        <strong>
+                            प्रश्न ${idx+1}:
+                        </strong>
+
+                        ${q.question}
+
+                        <span
+                            class="${markClass}">
+
+                            (${mark})
+
+                        </span>
+
+                    </div>
+
+
+                    ${optionsHtml}
+
+
+                    <div
+                        style="
+                            background:rgba(255,255,255,.6);
+                            border:1px solid rgba(255,255,255,.8);
+                            padding:10px;
+                            border-radius:8px;
+                            margin-top:10px;
+                        ">
+
+                        <div
+                            style="
+                                font-size:.95rem;
+                                margin-bottom:5px;
+                            ">
+
+                            <strong
+                                style="color:#555;">
+
+                                आपका उत्तर 👉
+
+                            </strong>
+
+                            <span
+                                style="
+                                    ${
+                                        isCorrect
+                                        ? "color:#059669;"
+                                        : "color:#dc2626;"
+                                    }
+                                    font-weight:700;
+                                ">
+
+                                ${userAnsText}
+
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                color:#059669;
+                                font-size:.95rem;
+                            ">
+
+                            <strong
+                                style="color:#555;">
+
+                                असली उत्तर 👉
+
+                            </strong>
+
+                            <span style="font-weight:700;">
+
+                                ${correctAnsText}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.innerHTML +=
+                html;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DOWNLOAD SCORE CARD
+========================================================= */
+
+function downloadScoreCard(){
+
+    let scoreCardWrapper =
+        document.getElementById(
+            "download-wrapper"
+        );
+
+
+    let canvasBgColor =
+        "#e0c3fc";
+
+
+    html2canvas(
+        scoreCardWrapper,
+        {
+            scale:3,
+            backgroundColor:
+                canvasBgColor,
+            useCORS:true
+        }
+    )
+    .then(canvas => {
+
+        let studentName =
+            window.verifiedStudentName ||
+            "Student";
+
+
+        let link =
+            document.createElement("a");
+
+
+        link.download =
+            studentName +
+            "_DPP_Result.png";
+
+
+        link.href =
+            canvas.toDataURL(
+                "image/png"
+            );
+
+
+        link.click();
+
+    })
+    .catch(err => {
+
+        console.error(
+            "Error generating score card:",
+            err
+        );
+
+
+        alert(
+            "स्कोरकार्ड डाउनलोड करने में कोई समस्या आई। कृपया फिर से प्रयास करें।"
+        );
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
