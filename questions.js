@@ -834,8 +834,8 @@ window.quizDatabase[2].ch_3.dpp_4 = [
     correct: 3
   }
 ];
-window.quizDatabase[2].ch_3 = window.quizDatabase[2].ch_3 || {};
-window.quizDatabase[2].ch_3.dpp_4 = [
+window.quizDatabase[5].ch_1 = window.quizDatabase[5].ch_1 || {};
+window.quizDatabase[5].ch_1.dpp_2 = [
   {
     question: "'सौ अजान एक सुजान' किसकी औपन्यासिक कृति है?",
     options: [
