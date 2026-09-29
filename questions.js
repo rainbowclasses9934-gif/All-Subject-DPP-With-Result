@@ -547,3 +547,136 @@ window.quizDatabase[5].ch_3.dpp_2 = [
     correct: 1
   }
 ];
+window.quizDatabase[1].ch_1 = window.quizDatabase[1].ch_1 || {};
+window.quizDatabase[1].ch_1.dpp_1 = [
+  {
+    question: "sin(sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>) =",
+    options: [
+      "1",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>√3</span><span style='border-top:1px solid; display:block;'>2</span></span>",
+      "0"
+    ],
+    correct: 1
+  },
+  {
+    question: "sin⁻¹x + sin⁻¹y =",
+    options: [
+      "sin⁻¹{x√(1 - y²) - y√(1 - x²)}",
+      "sin⁻¹{x√(1 - y²) + y√(1 - x²)}",
+      "sin⁻¹{x√(1 + y²) + y√(1 + x²)}",
+      "sin⁻¹{x√(1 + y²) - y√(1 + x²)}"
+    ],
+    correct: 1
+  },
+  {
+    question: "x ∈ [-1, 1], sin[2(sin⁻¹x + cos⁻¹x)] =",
+    options: [
+      "0",
+      "1",
+      "-1",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>"
+    ],
+    correct: 0
+  },
+  {
+    question: "x ∈ R, cosec(tan⁻¹x + cot⁻¹x) =",
+    options: [
+      "0",
+      "1",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2</span><span style='border-top:1px solid; display:block;'>√3</span></span>",
+      "2"
+    ],
+    correct: 1
+  },
+  {
+    question: "|x| ≥ 1, tan[<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2</span><span style='border-top:1px solid; display:block;'>3</span></span>(tan⁻¹x + cot⁻¹x)] =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>√3</span></span>",
+      "√3",
+      "0",
+      "1"
+    ],
+    correct: 1
+  },
+  {
+    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(eˣ + cos 5x) =",
+    options: [
+      "eˣ + cos 5x",
+      "eˣ + 5 sin 5x",
+      "eˣ - 5 sin 5x",
+      "eˣ - 5 cos 5x"
+    ],
+    correct: 2
+  },
+  {
+    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(sin 2x + eˣ - cos x) =",
+    options: [
+      "cos 2x + eˣ - sin x",
+      "2 cos 2x + eˣ + sin x",
+      "2 cos 2x + eˣ - sin x",
+      "-2 cos 2x + eˣ + sin x"
+    ],
+    correct: 1
+  },
+  {
+    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span> sec 4x) =",
+    options: [
+      "sec 4x · tan 4x",
+      "sec² 4x",
+      "tan² 4x",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>16</span></span> sec 4x · tan 4x"
+    ],
+    correct: 0
+  },
+  {
+    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(logₑ 10x) =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>10x</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>10</span><span style='border-top:1px solid; display:block;'>x</span></span>",
+      "10x",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>x</span></span>"
+    ],
+    correct: 3
+  },
+  {
+    question: "तल 3x - 4y + 6z = 11 की मूल बिन्दु से दूरी है :",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3</span><span style='border-top:1px solid; display:block;'>√61</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>11</span><span style='border-top:1px solid; display:block;'>√61</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6</span><span style='border-top:1px solid; display:block;'>√61</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6</span><span style='border-top:1px solid; display:block;'>√61</span></span>"
+    ],
+    correct: 1
+  },
+  {
+    question: "तल x - 8y - 9z = 12 के समांतर एक तल का समीकरण है :",
+    options: [
+      "x + 8y + 9z = 12",
+      "x - 8y - 9z = 2023",
+      "8x - y - 9z = 12",
+      "x - 9y - 8z = 12"
+    ],
+    correct: 1
+  },
+  {
+    question: "(3i⃗ - 4k⃗)² =",
+    options: [
+      "1",
+      "25",
+      "7",
+      "49"
+    ],
+    correct: 1
+  },
+  {
+    question: "सदिश 3i⃗ - 9j⃗ की दिशा में इकाई सदिश है",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>-6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>√90</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>√70</span></span>"
+    ],
+    correct: 2
+  }
+];
