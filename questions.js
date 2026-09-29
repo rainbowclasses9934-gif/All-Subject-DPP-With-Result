@@ -660,7 +660,7 @@ window.quizDatabase[1].ch_1.dpp_1 = [
     correct: 1
   },
   {
-    question: "(3i⃗ - 4k⃗)² =",
+    question: "(3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 4<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>k</span>)² =",
     options: [
       "1",
       "25",
@@ -670,12 +670,12 @@ window.quizDatabase[1].ch_1.dpp_1 = [
     correct: 1
   },
   {
-    question: "सदिश 3i⃗ - 9j⃗ की दिशा में इकाई सदिश है",
+    question: "सदिश 3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span> की दिशा में इकाई सदिश है",
     options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>-6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>√90</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3i⃗ - 9j⃗</span><span style='border-top:1px solid; display:block;'>√70</span></span>"
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>-6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>√90</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>√70</span></span>"
     ],
     correct: 2
   }
