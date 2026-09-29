@@ -547,136 +547,256 @@ window.quizDatabase[5].ch_3.dpp_2 = [
     correct: 1
   }
 ];
-window.quizDatabase[1].ch_1 = window.quizDatabase[1].ch_1 || {};
-window.quizDatabase[1].ch_1.dpp_1 = [
+window.quizDatabase[1].ch_2 = window.quizDatabase[1].ch_2 || {};
+window.quizDatabase[1].ch_2.dpp_1 = [
   {
-    question: "sin(sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>) =",
+    question: "P(A) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>3</span></span>, P(B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span>, P(A ∩ B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>5</span></span> ⇒ P(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>B</span><span style='border-top:1px solid; display:block;'>A</span></span>) =",
     options: [
-      "1",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>√3</span><span style='border-top:1px solid; display:block;'>2</span></span>",
-      "0"
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2</span><span style='border-top:1px solid; display:block;'>5</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3</span><span style='border-top:1px solid; display:block;'>5</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>5</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>4</span><span style='border-top:1px solid; display:block;'>5</span></span>"
     ],
     correct: 1
   },
   {
-    question: "sin⁻¹x + sin⁻¹y =",
+    question: "एक सिक्के को 10 बार उछाला जाता है। ठीक छह चित आने की प्रायिकता है:",
     options: [
-      "sin⁻¹{x√(1 - y²) - y√(1 - x²)}",
-      "sin⁻¹{x√(1 - y²) + y√(1 - x²)}",
-      "sin⁻¹{x√(1 + y²) + y√(1 + x²)}",
-      "sin⁻¹{x√(1 + y²) - y√(1 + x²)}"
+      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)⁶",
+      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)⁷",
+      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)⁸",
+      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)¹⁰"
     ],
-    correct: 1
+    correct: 3
   },
   {
-    question: "x ∈ [-1, 1], sin[2(sin⁻¹x + cos⁻¹x)] =",
+    question: "P(A) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6</span><span style='border-top:1px solid; display:block;'>11</span></span>, P(B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>11</span></span>, P(A ∪ B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7</span><span style='border-top:1px solid; display:block;'>11</span></span> ⇒ P(A ∩ B) =",
     options: [
-      "0",
-      "1",
-      "-1",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>"
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>4</span><span style='border-top:1px solid; display:block;'>11</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>11</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7</span><span style='border-top:1px solid; display:block;'>11</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>9</span><span style='border-top:1px solid; display:block;'>11</span></span>"
     ],
     correct: 0
   },
   {
-    question: "x ∈ R, cosec(tan⁻¹x + cot⁻¹x) =",
+    question: "xy-तल का समीकरण है:",
     options: [
+      "x = 0",
+      "y = 0",
+      "z = 0",
+      "इनमें से कोई नहीं"
+    ],
+    correct: 2
+  },
+  {
+    question: "z-अक्ष की दिक-कोज्याएँ हैं:",
+    options: [
+      "(1, 0, 1)",
+      "(0, 0, 1)",
+      "(0, 1, 0)",
+      "(0, 0, 0)"
+    ],
+    correct: 1
+  },
+  {
+    question: "बिंदुओं (4, 3, 7) और (1, -1, -5) के बीच की दूरी है:",
+    options: [
+      "13",
+      "15",
+      "12",
+      "5"
+    ],
+    correct: 0
+  },
+  {
+    question: "∫ (x + cos 2x) dx =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>x sin 2x + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span>cos 2x + c",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>x sin 2x - <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span>cos 2x + c",
+      "2x sin 2x + 4cos 2x + c",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x²</span><span style='border-top:1px solid; display:block;'>2</span></span> + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>sin 2x</span><span style='border-top:1px solid; display:block;'>2</span></span> + c"
+    ],
+    correct: 3
+  },
+  {
+    question: "∫ eˣ {sin⁻¹x + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 - x²</span></span></span></span>} dx =",
+    options: [
+      "eˣ · <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 - x²</span></span></span></span> + c",
+      "eˣ · sin⁻¹x + c",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>e²</span><span style='border-top:1px solid; display:block;'>2</span></span> + c",
+      "eˣ · cos⁻¹x + c"
+    ],
+    correct: 1
+  },
+  {
+    question: "∫ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>dx</span><span style='border-top:1px solid; display:block;'>x(x + 2)</span></span> =",
+    options: [
+      "log|<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>x + 2</span></span>| + c",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span> log|<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>x + 2</span></span>| + c",
+      "log|x| + c",
+      "log|x + 2| + c"
+    ],
+    correct: 1
+  },
+  {
+    question: "∫ <span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a² - x²</span></span> dx =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>2</span></span><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a² - x²</span></span> dx",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a²</span><span style='border-top:1px solid; display:block;'>2</span></span>sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>a</span></span> + c",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>2</span></span><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a² - x²</span></span> + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a²</span><span style='border-top:1px solid; display:block;'>2</span></span>sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>a</span></span> + c",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>2</span></span><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x² - a²</span></span> - <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a²</span><span style='border-top:1px solid; display:block;'>2</span></span>sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>a</span></span> + c"
+    ],
+    correct: 2
+  },
+  {
+    question: "∫₋<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>⁺<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> sin⁷x dx =",
+    options: [
+      "-1",
       "0",
       "1",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2</span><span style='border-top:1px solid; display:block;'>√3</span></span>",
       "2"
     ],
     correct: 1
   },
   {
-    question: "|x| ≥ 1, tan[<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2</span><span style='border-top:1px solid; display:block;'>3</span></span>(tan⁻¹x + cot⁻¹x)] =",
+    question: "∫₀ᵃ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x</span></span></span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x</span></span> + <span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a - x</span></span></span></span> dx =",
     options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>√3</span></span>",
-      "√3",
+      "a",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a</span><span style='border-top:1px solid; display:block;'>2</span></span>",
+      "2a",
+      "3a"
+    ],
+    correct: 1
+  },
+  {
+    question: "∫₀⁺<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> cos 2x dx =",
+    options: [
       "0",
-      "1"
-    ],
-    correct: 1
-  },
-  {
-    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(eˣ + cos 5x) =",
-    options: [
-      "eˣ + cos 5x",
-      "eˣ + 5 sin 5x",
-      "eˣ - 5 sin 5x",
-      "eˣ - 5 cos 5x"
-    ],
-    correct: 2
-  },
-  {
-    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(sin 2x + eˣ - cos x) =",
-    options: [
-      "cos 2x + eˣ - sin x",
-      "2 cos 2x + eˣ + sin x",
-      "2 cos 2x + eˣ - sin x",
-      "-2 cos 2x + eˣ + sin x"
-    ],
-    correct: 1
-  },
-  {
-    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span> sec 4x) =",
-    options: [
-      "sec 4x · tan 4x",
-      "sec² 4x",
-      "tan² 4x",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>16</span></span> sec 4x · tan 4x"
+      "1",
+      "-1",
+      "2"
     ],
     correct: 0
   },
   {
-    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>d</span><span style='border-top:1px solid; display:block;'>dx</span></span>(logₑ 10x) =",
+    question: "∫₀⁺<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span> cos x · cos 2x dx =",
     options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>10x</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>10</span><span style='border-top:1px solid; display:block;'>x</span></span>",
-      "10x",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>x</span></span>"
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>12</span></span>",
+      "-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>12</span></span>"
+    ],
+    correct: 2
+  },
+  {
+    question: "∫₋π⁺π tan x dx =",
+    options: [
+      "-1",
+      "0",
+      "2",
+      "-2"
+    ],
+    correct: 1
+  },
+  {
+    question: "∫₁⁴ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x</span></span></span></span> dx =",
+    options: [
+      "2",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>4</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>"
+    ],
+    correct: 0
+  },
+  {
+    question: "cos⁻¹(-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>) =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>"
+    ],
+    correct: 0
+  },
+  {
+    question: "x ∈ [-1, 1], cos⁻¹x =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - cot⁻¹x",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - sin⁻¹x",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - tan⁻¹x",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - sec⁻¹x"
+    ],
+    correct: 1
+  },
+  {
+    question: "x ∈ [-1, 1], sin⁻¹(-x) =",
+    options: [
+      "-sin⁻¹x",
+      "sin⁻¹x",
+      "-cos⁻¹x",
+      "cos⁻¹x"
+    ],
+    correct: 0
+  },
+  {
+    question: "cosec⁻¹x = ........ ; x ≥ 1 or ≤ -1",
+    options: [
+      "sin⁻¹x",
+      "sin⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>x</span></span>)",
+      "cos⁻¹x",
+      "cos⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>x</span></span>)"
+    ],
+    correct: 1
+  },
+  {
+    question: "tan[tan⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>3</span></span>) + tan⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)] =",
+    options: [
+      "1",
+      "0",
+      "2",
+      "3"
+    ],
+    correct: 0
+  },
+  {
+    question: "sin(cot⁻¹x) =",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 + x²</span></span>",
+      "x",
+      "(1 + x²)<sup style='font-size:0.8em;'>-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3</span><span style='border-top:1px solid; display:block;'>2</span></span></sup>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 + x²</span></span></span></span>"
     ],
     correct: 3
   },
   {
-    question: "तल 3x - 4y + 6z = 11 की मूल बिन्दु से दूरी है :",
+    question: "cos⁻¹(cos <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7π</span><span style='border-top:1px solid; display:block;'>6</span></span>) =",
     options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3</span><span style='border-top:1px solid; display:block;'>√61</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>11</span><span style='border-top:1px solid; display:block;'>√61</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6</span><span style='border-top:1px solid; display:block;'>√61</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6</span><span style='border-top:1px solid; display:block;'>√61</span></span>"
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span>"
     ],
     correct: 1
   },
   {
-    question: "तल x - 8y - 9z = 12 के समांतर एक तल का समीकरण है :",
+    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span> - sin⁻¹(-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>) =",
     options: [
-      "x + 8y + 9z = 12",
-      "x - 8y - 9z = 2023",
-      "8x - y - 9z = 12",
-      "x - 9y - 8z = 12"
-    ],
-    correct: 1
-  },
-  {
-    question: "(3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 4<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>k</span>)² =",
-    options: [
-      "1",
-      "25",
-      "7",
-      "49"
-    ],
-    correct: 1
-  },
-  {
-    question: "सदिश 3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span> की दिशा में इकाई सदिश है",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>-6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>√90</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>i</span> - 9<span style='display:inline-block; text-align:center;'><span style='display:block; font-size:0.6em; line-height:0.4;'>→</span>j</span></span><span style='border-top:1px solid; display:block;'>√70</span></span>"
+      "0",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>",
+      "π"
     ],
     correct: 2
+  },
+  {
+    question: "tan⁻¹<span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>3</span></span> - sec⁻¹(-2) =",
+    options: [
+      "-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
+      "π"
+    ],
+    correct: 0
   }
 ];
