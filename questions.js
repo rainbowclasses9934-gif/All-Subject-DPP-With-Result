@@ -42,761 +42,409 @@ window.quizDatabase = {
 
 // =====================================================================================================================================================================
 // 👇👇👇👇👇 यहाँ से नीचे अपना AI द्वारा जनरेट किया गया क्वेश्चन कोड पेस्ट करते जाएँ 👇👇👇👇👇
-// =====================================================================================================================================================================
-window.quizDatabase[5] = window.quizDatabase[5] || {};
-window.quizDatabase[5].ch_3 = window.quizDatabase[5].ch_3 || {};
-window.quizDatabase[5].ch_3.dpp_2 = [
+// ====================================================================================================================================================================
+window.quizDatabase[2] = window.quizDatabase[2] || {};
+window.quizDatabase[2].ch_3 = window.quizDatabase[2].ch_3 || {};
+window.quizDatabase[2].ch_3.dpp_1 = [
   {
-    question: "अमेरिका में पढ़ाई करने के कारण जेपी के विरोधी उन्हें कटुता में क्या कहकर पुकारते थे?",
+    question: "वैद्युत रसायन के अंतर्गत मुख्य रूप से किन दो ऊर्जाओं के पारस्परिक संबंधों का अध्ययन किया जाता है?",
     options: [
-      "'रूसी एजेंट'",
-      "'अमेरिका का दलाल'",
-      "'पूँजीपति का चमचा'",
-      "'ब्रिटिश समर्थक'"
+      "यांत्रिक ऊर्जा और ऊष्मीय ऊर्जा",
+      "विद्युत ऊर्जा और रासायनिक ऊर्जा",
+      "प्रकाश ऊर्जा और ध्वनि ऊर्जा",
+      "नाभिकीय ऊर्जा और सौर ऊर्जा"
     ],
     correct: 1
   },
   {
-    question: "जेपी के अमेरिका से लौटने पर उनके विरोधियों ने कौन-सा नारा लगाया था?",
+    question: "वे यौगिक जो द्रवित अवस्था या जलीय विलयन की अवस्था में विद्युत के सुचालक होते हैं, क्या कहलाते हैं?",
     options: [
-      "\"जयप्रकाश वापस जाओ\"",
-      "\"निक्सन को दो तार, जयप्रकाश की हो गई हार\"",
-      "\"अमेरिका मुर्दाबाद\"",
-      "\"जयप्रकाश मुर्दाबाद\""
+      "वैद्युत अनअपघट्य",
+      "कुचालक",
+      "अक्रिय पदार्थ",
+      "वैद्युत अपघट्य"
     ],
-    correct: 1
+    correct: 3
   },
   {
-    question: "'फ्री प्रेस' के मालिक सदानंद जी ने उमाशंकर दीक्षित को क्या उपाधि दी थी?",
+    question: "निम्नलिखित में से कौन-सा दुर्बल वैद्युत अपघट्य का उदाहरण है?",
     options: [
-      "'बॉम्बे का राजा'",
-      "'ब्रेन ऑफ बॉम्बे' (Brain of Bombay)",
-      "'गुजरात का रत्न'",
-      "'कांग्रेस का शेर'"
-    ],
-    correct: 1
-  },
-  {
-    question: "1932-33 के आंदोलन के दौरान बंबई (मुंबई) में 'अंडरग्राउंड' रहकर आंदोलन चलाने वाले नेता कौन थे?",
-    options: [
-      "उमाशंकर दीक्षित",
-      "गंगा बाबू",
-      "दिनकर जी",
-      "रामनाथ गोयनका"
+      "CH₃COOH",
+      "NaCl",
+      "HCl",
+      "NaOH"
     ],
     correct: 0
   },
   {
-    question: "जेपी ने सर्वोदय आंदोलन में किस वर्ष और किस स्थान पर अपनी निष्ठा समर्पित की?",
+    question: "द्रवित सोडियम क्लोराइड के वैद्युत अपघटन में कैथोड पर कौन-सी प्रक्रिया संपन्न होती है?",
     options: [
-      "1950 में पटना में",
-      "1954 में गया (बिहार) में",
-      "1974 में मुजफ्फरपुर में",
-      "1962 में दिल्ली में"
+      "ऑक्सीकरण",
+      "अवकरण (अपचयन)",
+      "अपघटन",
+      "उदासीनीकरण"
     ],
     correct: 1
   },
   {
-    question: "जयप्रकाश नारायण पूर्व प्रधानमंत्री जवाहरलाल नेहरू को किस संबोधन से बुलाते थे?",
+    question: "सोडियम क्लोराइड के जलीय विलयन के वैद्युत अपघटन में कैथोड तथा ऐनोड पर क्रमशः कौन-सी गैसें मुक्त होती हैं?",
     options: [
-      "'पंडित जी'",
-      "'नेहरू जी'",
-      "'भाई'",
-      "'नेता जी'"
+      "Cl₂ तथा H₂",
+      "O₂ तथा H₂",
+      "H₂ तथा Cl₂",
+      "H₂ तथा O₂"
     ],
     correct: 2
   },
   {
-    question: "जेपी और जवाहरलाल नेहरू के बीच किन विदेश नीति के मामलों पर गंभीर मतभेद थे?",
+    question: "सल्फ्यूरिक अम्ल (H₂SO₄) के जलीय विलयन के वैद्युत अपघटन में कैथोड तथा ऐनोड पर क्रमशः कौन-सी गैसें मुक्त होती हैं?",
     options: [
-      "तिब्बत, चीन और हंगरी के मामलों पर",
-      "अमेरिका और रूस के मामलों पर",
-      "पाकिस्तान और कश्मीर के मामलों पर",
-      "इंगलैंड और फ्रांस के मामलों पर"
+      "H₂ तथा O₂",
+      "O₂ तथा H₂",
+      "H₂ तथा Cl₂",
+      "Cl₂ तथा O₂"
     ],
     correct: 0
   },
   {
-    question: "\"व्यक्ति से नहीं हमें तो नीतियों से झगड़ा है, सिद्धांतों से झगड़ा है, कार्यों से झगड़ा है।\" - यह प्रसिद्ध कथन जेपी के भाषण में किसके संदर्भ में है?",
+    question: "सिल्वर नाइट्रेट (AgNO₃) के जलीय विलयन का वैद्युत अपघटन करने पर कैथोड और ऐनोड पर क्रमशः क्या मुक्त होते हैं?",
     options: [
-      "इंदिरा गांधी एवं सरकार की गलत नीतियों के संदर्भ में",
-      "अंग्रेजों के संदर्भ में",
-      "छात्रों के संदर्भ में",
-      "पुलिस अधिकारियों के संदर्भ में"
+      "H₂ तथा O₂",
+      "O₂ तथा Ag",
+      "H₂ तथा Ag",
+      "Ag तथा O₂"
+    ],
+    correct: 3
+  },
+  {
+    question: "1 फैराडे (F) का मान निम्नलिखित में से कितने कूलॉम के लगभग बराबर होता है?",
+    options: [
+      "96500 C",
+      "96494 F",
+      "1.6 × 10⁻¹⁹ C",
+      "6.022 × 10²³ C"
     ],
     correct: 0
   },
   {
-    question: "जेपी के अनुसार महात्मा गाँधी की सबसे बड़ी महत्ता क्या थी?",
+    question: "फैराडे के प्रथम नियमानुसार, वैद्युत अपघटन के दौरान इलेक्ट्रोड पर मुक्त होने वाले पदार्थ की मात्रा किसके समानुपाती होती है?",
     options: [
-      "वे कभी भाषण नहीं देते थे",
-      "वे कटु आलोचना का भी बुरा नहीं मानते थे और प्रेम से समझाते थे",
-      "वे किसी को जेल नहीं जाने देते थे",
-      "वे कभी किसी से बहस नहीं करते थे"
+      "विलयन के आयतन के",
+      "प्रवाहित विद्युत आवेश की मात्रा के",
+      "इलेक्ट्रोड के क्षेत्रफल के",
+      "विलयन के ताप के"
     ],
     correct: 1
   },
   {
-    question: "जेपी के अनुसार वर्तमान राजनीति में भ्रष्टाचार की सबसे प्रमुख और मुख्य जड़ क्या है?",
+    question: "फैराडे के प्रथम नियम को व्यक्त करने वाला मुख्य सूत्र कौन-सा है?",
     options: [
-      "बेरोजगारी",
-      "चुनाव का बेहद खर्चीला होना (इलेक्शन का खर्च)",
-      "शिक्षा की कमी",
-      "विदेशी कर्ज"
+      "W = Z × <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I</span><span style='border-top:1px solid; display:block;'>t</span></span>",
+      "W = Z × I × t",
+      "W = Z × <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>t</span><span style='border-top:1px solid; display:block;'>I</span></span>",
+      "W = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>I × t</span><span style='border-top:1px solid; display:block;'>Z</span></span>"
     ],
     correct: 1
   },
   {
-    question: "'दलविहीन लोकतंत्र' (Partyless Democracy) किस विचार का मुख्य राजनीतिक सिद्धांत है?",
+    question: "फैराडे के द्वितीय नियम के अनुसार, विभिन्न वैद्युत अपघट्य के विलयनों को किस क्रम में जोड़ा जाता है?",
     options: [
-      "मार्क्सवाद का",
-      "सर्वोदय विचार का",
-      "पूँजीवाद का",
-      "फासीवाद का"
+      "समानांतर क्रम में",
+      "श्रेणीक्रम में",
+      "मिश्रित क्रम में",
+      "किसी भी क्रम में"
     ],
     correct: 1
   },
   {
-    question: "मार्क्सवाद और लेनिनवाद के अनुसार जैसे-जैसे समाज साम्यवाद की ओर बढ़ता है, वैसे-वैसे राज्य (State) का क्या होता है?",
+    question: "वह सेल जो रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलता है, क्या कहलाता है?",
     options: [
-      "राज्य बहुत मजबूत हो जाता है",
-      "राज्य का क्षय (विघटन) होता जाता है और शासन-मुक्त समाज बनता है",
-      "राज्य में तानाशाही आती है",
-      "राज्य का आकार बढ़ता है"
+      "विद्युत अपघटनी सेल",
+      "विद्युत रासायनिक सेल",
+      "प्राथमिक सेल",
+      "द्वितीयक सेल"
     ],
     correct: 1
   },
   {
-    question: "जेपी के अनुसार लोकतंत्र में जनता का अपने प्रतिनिधियों पर चुनाव जीतने के बाद क्या होना चाहिए?",
+    question: "लवण सेतु (Salt Bridge) किस प्रकार की नलिका होती है?",
     options: [
-      "कोई अंकुश नहीं होना चाहिए",
-      "कड़ा अंकुश और नियंत्रण होना चाहिए",
-      "केवल 5 साल बाद ही बात होनी चाहिए",
-      "पूर्ण समर्पण होना चाहिए"
+      "V-आकार की",
+      "U-आकार की",
+      "L-आकार की",
+      "सीधी नलिका"
     ],
     correct: 1
   },
   {
-    question: "जनप्रतिनिधियों के आचरण पर नियंत्रण रखने और चुनाव में सही उम्मीदवार खड़ा करने के लिए जेपी ने किन समितियों के गठन पर बल दिया?",
+    question: "लवण सेतु बनाने के लिए निम्नलिखित में से किस लवण का उपयोग किया जाता है?",
     options: [
-      "छात्र-संघर्ष और जन-संघर्ष समितियाँ",
-      "सतर्कता समितियाँ",
-      "राजनीतिक दल समितियाँ",
-      "पुलिस समितियाँ"
+      "KNO₃",
+      "ZnSO₄",
+      "CuSO₄",
+      "H₂SO₄"
     ],
     correct: 0
   },
   {
-    question: "जेपी की कल्पना के अनुसार जन-संघर्ष समितियों का कार्य केवल सरकार से लड़ना ही नहीं, बल्कि और क्या है?",
+    question: "डेनियल सेल (Zn-Cu सेल) की कुल या पूर्ण सेल अभिक्रिया का सही समीकरण कौन-सा है?",
     options: [
-      "चुनाव लड़कर मंत्री बनना",
-      "समाज के हर अन्याय, घूसखोरी, अनीति और बेनामी बंदोबस्तियों के खिलाफ लड़ना",
-      "केवल कर (Tax) वसूलना",
-      "हड़ताल कराना"
+      "Zn(s) + Cu(s) → Zn²⁺(aq) + Cu²⁺(aq)",
+      "Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)",
+      "Zn²⁺(aq) + Cu(s) → Zn(s) + Cu²⁺(aq)",
+      "Zn²⁺(aq) + Cu²⁺(aq) → Zn(s) + Cu(s)"
     ],
     correct: 1
   },
   {
-    question: "\"अगर कोई डिमॉक्रेसी का दुश्मन है, तो वे लोग दुश्मन हैं, जो जनता के शांतिमय कार्यक्रमों में बाधा डालते हैं...\" यह कथन जेपी ने किसके लिए कहा?",
+    question: "लवण सेतु का महत्वपूर्ण कार्य दोनों विलयनों में निम्नलिखित में से किसे बनाए रखना है?",
     options: [
-      "शांतिपूर्ण प्रदर्शनकारियों को रोकने वाली सरकार और पुलिस अधिकारियों के लिए",
-      "छात्रों के लिए",
-      "विदेशी ताकतों के लिए",
-      "अपने सहयोगियों के लिए"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी के भाषण के अनुसार किस शहर से पटना आ रही जनता और छात्रों की गाड़ियों व ट्रेनों को रोककर लाठियाँ चलाई गई थीं?",
-    options: [
-      "मुजफ्फरपुर और अन्य क्षेत्रों की रिपोर्ट के अनुसार",
-      "केवल दिल्ली से",
-      "केवल कोलकाता से",
-      "केवल रांची से"
-    ],
-    correct: 0
-  },
-  {
-    question: "\"जयप्रकाश नारायण नहीं होते तो बिहार जल गया होता।\" - यह बात जेपी ने किसके मुँह से सुनने का उल्लेख किया?",
-    options: [
-      "जवाहरलाल नेहरू",
-      "उमाशंकर दीक्षित",
-      "इंदिरा गांधी",
-      "रामनाथ गोयनका"
+      "रासायनिक साम्य",
+      "विद्युत उदासीनता",
+      "तापीय साम्य",
+      "आयतन समानता"
     ],
     correct: 1
   },
   {
-    question: "जेपी के अनुसार संपूर्ण क्रांति का प्रारंभिक चरण क्या था?",
+    question: "किसी इलेक्ट्रोड द्वारा इलेक्ट्रॉन ग्रहण करने या त्याग करने की क्षमता को क्या कहा जाता है?",
     options: [
-      "आर्थिक क्रांति",
-      "सत्ता परिवर्तन",
-      "सामाजिक सुधार",
-      "शैक्षणिक सुधार"
-    ],
-    correct: 1
-  },
-  {
-    question: "1974 के बिहार छात्र आंदोलन के समय जेपी ने युवाओं को क्या नारा दिया था?",
-    options: [
-      "\"इंकलाब जिंदाबाद\"",
-      "\"संपूर्ण क्रांति\"",
-      "\"करो या मरो\"",
-      "\"जय हिंद\""
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी ने अमेरिका में रविवार और छुट्टियों के दिन किस प्रकार के काम करके पैसे बचाए?",
-    options: [
-      "होटलों में कमोड (टॉयलेट) साफ करके और 'ऑड टाइम्स' में काम करके",
-      "गाड़ी चलाकर",
-      "किताबें बेचकर",
-      "खेती करके"
-    ],
-    correct: 0
-  },
-  {
-    question: "अमेरिका में गरीबी के दिनों में जेपी अपने दोस्तों के साथ कमरे में किस तरह रहते थे?",
-    options: [
-      "एक ही चारपाई/कमरे में कई लड़के मिलकर रहते थे",
-      "बड़े आलिशान बंगले में",
-      "हॉस्टल के अलग-अलग कमरों में",
-      "होटल के सुइट में"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी के अनुसार आजादी के बाद 'गरीबी हटाओ' के नारों के बावजूद देश में क्या स्थिति हुई?",
-    options: [
-      "गरीबी पूरी तरह मिट गई",
-      "गरीबी और बेरोजगारी पिछले वर्षों में और बढ़ी है",
-      "सभी को नौकरी मिल गई",
-      "महँगाई खत्म हो गई"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी ने अपने भाषण में किस अस्पताल की दुर्दशा का जिक्र करते हुए कहा कि वहाँ 3 घंटे में भी तैयारी न हो पाती?",
-    options: [
-      "विलिंगडन अस्पताल",
-      "पटना का अस्पताल",
-      "दिल्ली का अस्पताल",
-      "वेल्लोर का अस्पताल"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के अनुसार यदि आज रामवृक्ष बेनीपुरी जी जीवित होते तो उनके लेखन की क्या विशेषता होती?",
-    options: [
-      "उनके एक-एक शब्द में अंगार होते और वे जुलूस का ओजस्वी वर्णन करते",
-      "वे शांत रहते",
-      "वे सरकार का समर्थन करते",
-      "वे राजनीति पर नहीं लिखते"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी के अनुसार यदि दिनकर जी जीवित होते तो वे क्या करते?",
-    options: [
-      "नए भारत के नवनिर्माण के लिए अमर कविता रचते",
-      "आंदोलन का विरोध करते",
-      "विदेश चले जाते",
-      "मौन व्रत धारण करते"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी ने अपने भाषण में किस बात पर बल दिया कि वे नाम के लिए क्या नहीं बनना चाहते?",
-    options: [
-      "प्रधानमंत्री",
-      "केवल नाम के नेता (डिक्टेट होने वाला नेता)",
-      "मुख्यमंत्री",
-      "राज्यपाल"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के अनुसार जब देश में आपातकाल (Emergency) की आशंका और जनतांत्रिक अधिकारों का दमन होने लगा, तब कहाँ के छात्रों का आक्रोश फूटा?",
-    options: [
-      "केवल दिल्ली के",
-      "बिहार, गुजरात सहित समूचे देश के",
-      "केवल पंजाब के",
-      "केवल तमिलनाडु के"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी ने अपने भाषण में 'आई.एससी.' (I.Sc.) में किस संकाय/विषय के छात्र होने का उल्लेख किया है?",
-    options: [
-      "कला (Arts)",
-      "विज्ञान (Science)",
-      "वाणिज्य (Commerce)",
-      "कृषि (Agriculture)"
-    ],
-    correct: 1
-  },
-  {
-    question: "राजेंद्र बाबू के सचिव या मंत्री जो जेपी के निकट साथी थे, वे कौन थे?",
-    options: [
-      "मथुरा बाबू और फूलदेव सहाय वर्मा",
-      "रामनाथ गोयनका",
-      "उमाशंकर दीक्षित",
-      "ईश्वर अय्यर"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी के मन में किस महामना नेता के लिए बनारस हिंदू विश्वविद्यालय (BHU) के संदर्भ में श्रद्धा व पूज्य भाव था?",
-    options: [
-      "मदन मोहन मालवीय जी",
-      "बाल गंगाधर तिलक",
-      "लाला लाजपत राय",
-      "गोपाल कृष्ण गोखले"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी सरकारी मदद से चलने वाले विश्वविद्यालय में दाखिला क्यों नहीं लेना चाहते थे?",
-    options: [
-      "क्योंकि वह दूर था",
-      "क्योंकि वह पूर्ण रूप से राष्ट्रीय या स्वतंत्र विद्यालय नहीं था और सरकारी रुपयों से चलता था",
-      "क्योंकि फीस बहुत अधिक थी",
-      "क्योंकि वहाँ विज्ञान की पढ़ाई नहीं थी"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के पिता जी बाद में किस विभाग में जिलदार और रेवेन्यू असिस्टेंट बने थे?",
-    options: [
-      "नहर विभाग में",
-      "शिक्षा विभाग में",
-      "पुलिस विभाग में",
-      "डाक विभाग में"
-    ],
-    correct: 0
-  },
-  {
-    question: "अमेरिका में जेपी ने किस शहर के लोहा कारखाने में काम किया था?",
-    options: [
-      "न्यूयॉर्क",
-      "शिकागो",
-      "सैन फ्रांसिस्को",
-      "वाशिंगटन"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी ने विस्कंसिन और मेडिसन में पढ़ाई के दौरान किस विचारधारा के ग्रंथों को अंग्रेजी में पढ़ डाला था?",
-    options: [
-      "पूँजीवाद",
-      "मार्क्सवाद",
-      "साम्राज्यवाद",
-      "धर्मशास्त्र"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के अनुसार लोकतंत्र में चुनाव के बाद यदि कोई प्रतिनिधि गलत रास्ता पकड़ता है, तो जन-संघर्ष समितियों को क्या करना चाहिए?",
-    options: [
-      "उसे 5 साल तक सहना चाहिए",
-      "उसे इस्तीफा देने के लिए बाध्य करना चाहिए",
-      "उसे पुरस्कार देना चाहिए",
-      "चुप रहना चाहिए"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के अनुसार गाँव में छोटे अफसरों और पुलिस कर्मचारियों में फैली किस बुराई के खिलाफ संघर्ष समितियों को लड़ना होगा?",
-    options: [
-      "घूसखोरी / भ्रष्टाचार",
-      "कामचोरी",
-      "अशिक्षा",
-      "गरीबी"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी की कल्पना के अनुसार गाँव में बड़े किसानों द्वारा की गई किस गलत प्रथा का विरोध संघर्ष समितियाँ करेंगी?",
-    options: [
-      "बेनामी या फर्जी बंदोबस्तियाँ",
-      "अधिक अनाज उगाना",
-      "नई तकनीक का उपयोग",
-      "खाद की खरीद"
-    ],
-    correct: 0
-  },
-  {
-    question: "जेपी के भाषण के अनुसार 'संपूर्ण क्रांति' का अंतिम लक्ष्य कैसा परिवर्तन है?",
-    options: [
-      "केवल सत्ता बदलना",
-      "व्यापक सामाजिक, आर्थिक और नैतिक परिवर्तन",
-      "केवल चुनाव प्रणाली बदलना",
-      "केवल कर घटाना"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी ने अपने भाषण में देश के नवनिर्माण के लिए किनकी भागीदारी को मुख्य माना?",
-    options: [
-      "केवल नेताओं की",
-      "देश के युवकों, छात्रों, साधारण नर-नारियों की",
-      "केवल पुलिस अधिकारियों की",
-      "केवल उद्योगपतियों की"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के अनुसार बापू (महात्मा गाँधी) से मतभेद होने पर भी बापू उन्हें क्या करते थे?",
-    options: [
-      "डाँटकर भगा देते थे",
-      "बुलाकर प्रेम से समझाते थे",
-      "जेल भेज देते थे",
-      "पार्टी से निकाल देते थे"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी के अनुसार भारत में तत्कालीन शिक्षा व्यवस्था युवाओं को क्या बना रही थी?",
-    options: [
-      "आत्मनिर्भर और ज्ञानी",
-      "नौकरियों के लिए दर-दर की ठोकरें खाने वाला बेरोजगार",
-      "महान वैज्ञानिक",
-      "सफल उद्योगपति"
-    ],
-    correct: 1
-  },
-  {
-    question: "जेपी ने अपने भाषण में किस बात पर गहरा दुख जताया कि सभा में तालियाँ बजाने से ज्यादा जरूरी क्या है?",
-    options: [
-      "नारे लगाना",
-      "बात को ध्यान से सुनना और समझना",
-      "शोर मचाना",
-      "झंडे फहराना"
-    ],
-    correct: 1
-  },
-  {
-    question: "पटना के गाँधी मैदान में जेपी का भाषण सुनने के लिए कितनी संख्या में लोग एकत्र हुए थे?",
-    options: [
-      "कुछ सौ लोग",
-      "कुछ हजार लोग",
-      "लाखों-लाख की संख्या में (ऐतिहासिक जन-सम्मर्द)",
-      "केवल छात्र"
+      "विद्युत वाहक बल",
+      "धारा घनत्व",
+      "इलेक्ट्रोड विभव",
+      "विभवांतर"
     ],
     correct: 2
   },
   {
-    question: "जेपी के अनुसार लोकतंत्र का वास्तविक मालिक कौन है?",
+    question: "1 मोल सांद्रण, 298 K ताप तथा 1 atm दाब की स्थिति में किसी इलेक्ट्रोड का निर्धारित विभव क्या कहलाता है?",
     options: [
-      "पुलिस",
-      "नेता और मंत्री",
-      "देश की जनता",
-      "सरकारी कर्मचारी"
-    ],
-    correct: 2
-  },
-  {
-    question: "'इंफ्रास्ट्रक्चर' (Infrastructure) शब्द का क्या अर्थ है?",
-    options: [
-      "आधारभूत ढाँचा",
-      "ऊपरी सजावट",
-      "बड़ी इमारत",
-      "सरकारी तंत्र"
+      "मानक इलेक्ट्रोड विभव",
+      "ऑक्सीकरण विभव",
+      "अवकरण विभव",
+      "सेल विभव"
     ],
     correct: 0
   },
   {
-    question: "'हृदयग्राही' शब्द का क्या अर्थ होता है?",
+    question: "इलेक्ट्रोड विभव के निर्धारण हेतु मानक इलेक्ट्रोड के रूप में प्रायः किसका उपयोग किया जाता है?",
     options: [
-      "हृदय को आकर्षित या प्रभावित करने वाला",
-      "कठोर दिल वाला",
-      "दुखी करने वाला",
-      "डराने वाला"
+      "मानक हाइड्रोजन इलेक्ट्रोड",
+      "मानक जिंक इलेक्ट्रोड",
+      "मानक कॉपर इलेक्ट्रोड",
+      "मानक सिल्वर इलेक्ट्रोड"
     ],
     correct: 0
   },
   {
-    question: "'बुर्जुआ क्लास' (Bourgeois Class) का क्या अर्थ है?",
+    question: "विद्युत रासायनिक श्रेणी में हाइड्रोजन से ऊपर स्थित अर्थात ऋणात्मक विभव वाले धातु किसी अम्ल के जलीय विलयन से क्या मुक्त करते हैं?",
     options: [
-      "मजदूर वर्ग",
-      "पूँजीपति वर्ग और उसमें निष्ठा रखने वाला",
-      "किसान वर्ग",
-      "छात्र वर्ग"
+      "O₂ गैस",
+      "H₂ गैस",
+      "N₂ गैस",
+      "Cl₂ गैस"
     ],
     correct: 1
   },
   {
-    question: "'उच्छृंखल' शब्द का क्या अर्थ होता है?",
+    question: "हैलोजनों की ऑक्सीकारक क्षमता का घटता हुआ सही क्रम निम्नलिखित में से कौन-सा है?",
     options: [
-      "नियम-कायदा तोड़ने वाला, असंयत",
-      "शांत रहने वाला",
-      "नियम का पालन करने वाला",
-      "दयालु प्रवृत्ति का"
+      "I₂ > Br₂ > Cl₂ > F₂",
+      "Cl₂ > F₂ > Br₂ > I₂",
+      "F₂ > Cl₂ > Br₂ > I₂",
+      "Br₂ > Cl₂ > F₂ > I₂"
+    ],
+    correct: 2
+  },
+  {
+    question: "वैद्युत अपघट्य विलयन के अवरोध या प्रतिरोध (Resistance) की इकाई क्या होती है?",
+    options: [
+      "ओम (Ω)",
+      "महो (mho)",
+      "सीमेंस (S)",
+      "ओम मीटर (Ω-m)"
     ],
     correct: 0
   },
   {
-    question: "'स्वच्छंद' शब्द का क्या अर्थ होता है?",
+    question: "इनमें से कौन चालकत्व (Conductance) की इकाई है?",
     options: [
-      "गुलाम",
-      "स्वतंत्र, अपने मन मुताबिक चलने वाला",
-      "नियमों में बँधा हुआ",
-      "दूसरों पर आश्रित"
+      "Ω",
+      "Ω m",
+      "Ω⁻¹",
+      "Ω cm"
+    ],
+    correct: 2
+  },
+  {
+    question: "विशिष्ट चालकत्व (K) और विशिष्ट प्रतिरोध (ρ) के बीच सही संबंध दर्शाने वाला सूत्र कौन-सा है?",
+    options: [
+      "K = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>ρ</span></span>",
+      "K = ρ",
+      "K = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>ρ²</span></span>",
+      "K = ρ²"
+    ],
+    correct: 0
+  },
+  {
+    question: "किसी चालक सेल की लंबाई (l) तथा उसके अनुप्रस्थ काट के क्षेत्रफल (A) के अनुपात (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>l</span><span style='border-top:1px solid; display:block;'>A</span></span>) को क्या कहा जाता है?",
+    options: [
+      "चालकत्व",
+      "मोलर चालकत्व",
+      "सेल स्थिरांक",
+      "प्रतिरोधकता"
+    ],
+    correct: 2
+  },
+  {
+    question: "किसी वैद्युत अपघट्य विलयन के V cm³ आयतन में घुले 1 मोल विद्युत अपघट्य के चालकत्व को क्या कहा जाता है?",
+    options: [
+      "तुल्यांकी चालकत्व",
+      "विशिष्ट चालकत्व",
+      "सेल स्थिरांक",
+      "मोलर चालकत्व"
+    ],
+    correct: 3
+  },
+  {
+    question: "किसी वैद्युत अपघट्य के अनंत तनुता पर मोलर चालकत्व, उसके धनायन और ऋणायन के मोलर चालकताओं के योग के बराबर होता है। यह कथन किस नियम को निरूपित करता है?",
+    options: [
+      "फैराडे का नियम",
+      "हेनरी का नियम",
+      "कोलराउश का नियम",
+      "ओम का नियम"
+    ],
+    correct: 2
+  },
+  {
+    question: "वैसा सेल जो एक बार निष्क्रिय हो जाने के बाद पुनः सक्रिय नहीं किया जा सकता है, उसे क्या कहा जाता है?",
+    options: [
+      "द्वितीयक सेल",
+      "प्राथमिक सेल",
+      "संचायक सेल",
+      "उत्क्रमणीय सेल"
+    ],
+    correct: 1
+  },
+  {
+    question: "शुष्क सेल (Dry Cell) या लेक्लांशी सेल में ऐनोड का कार्य निम्नलिखित में से कौन करता है?",
+    options: [
+      "तांबे का पात्र",
+      "जस्ते (Zn) का बर्तन",
+      "ग्रेफाइट की छड़",
+      "लोहे का बर्तन"
+    ],
+    correct: 1
+  },
+  {
+    question: "निम्नलिखित में से कौन-सा द्वितीयक सेल (Secondary Cell) का उदाहरण है?",
+    options: [
+      "शुष्क सेल",
+      "मर्करी सेल",
+      "लेड संचायक सेल",
+      "वोल्टीय सेल"
+    ],
+    correct: 2
+  },
+  {
+    question: "यदि दो भिन्न विद्युत अपघट्यों के विलयन से समान विद्युत धारा प्रवाहित की जाए तथा मुक्त पदार्थों की मात्राएँ W₁ और W₂ एवं उनके तुल्यांकी भार E₁ और E₂ हों, तो सही अनुपात कौन-सा है?",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>E₁</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₂</span><span style='border-top:1px solid; display:block;'>W₂</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₂</span><span style='border-top:1px solid; display:block;'>E₁</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>W₁</span><span style='border-top:1px solid; display:block;'>W₂</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>E₁</span><span style='border-top:1px solid; display:block;'>E₂</span></span>",
+      "W₁ × W₂ = E₁ × E₂"
+    ],
+    correct: 2
+  },
+  {
+    question: "कॉपर और जिंक के छड़ों के द्रव्यमान में परिवर्तन तथा उनके तुल्यांकी भारों के बीच सही संबंध दर्शाने वाला सूत्र कौन-सा है?",
+    options: [
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>कॉपर के छड़ के द्रव्यमान में वृद्धि</span><span style='border-top:1px solid; display:block;'>जिंक के छड़ के द्रव्यमान में कमी</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>कॉपर का तुल्यांकी भार</span><span style='border-top:1px solid; display:block;'>जिंक का तुल्यांकी भार</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>कॉपर के छड़ के द्रव्यमान में वृद्धि</span><span style='border-top:1px solid; display:block;'>जिंक के छड़ के द्रव्यमान में कमी</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>जिंक का तुल्यांकी भार</span><span style='border-top:1px solid; display:block;'>कॉपर का तुल्यांकी भार</span></span>",
+      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>जिंक के छड़ के द्रव्यमान में कमी</span><span style='border-top:1px solid; display:block;'>कॉपर के छड़ के द्रव्यमान में वृद्धि</span></span> = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>कॉपर का तुल्यांकी भार</span><span style='border-top:1px solid; display:block;'>जिंक का तुल्यांकी भार</span></span>",
+      "कॉपर के छड़ के द्रव्यमान में वृद्धि × जिंक के छड़ के द्रव्यमान में कमी = कॉपर का तुल्यांकी भार × जिंक का तुल्यांकी भार"
+    ],
+    correct: 0
+  },
+  {
+    question: "विद्युत रासायनिक श्रेणी में धातुओं का विद्युतधनात्मक गुण बढ़ने पर उनके ऑक्साइडों के ऊष्मीय स्थायित्व पर क्या प्रभाव पड़ता है?",
+    options: [
+      "स्थायित्व घटता है",
+      "स्थायित्व बढ़ता है",
+      "स्थायित्व अपरिवर्तित रहता है",
+      "स्थायित्व शून्य हो जाता है"
+    ],
+    correct: 1
+  },
+  {
+    question: "वैद्युत अपघटन के समय दो या दो से अधिक धन आयनों की उपस्थिति में कैथोड पर सबसे पहले कौन-सा धन आयन मुक्त होता है?",
+    options: [
+      "जिसकी अपचायक शक्ति अधिक हो",
+      "जिसकी ऑक्सीकारक शक्ति (अपचयन विभव) प्रबल हो",
+      "जिसका द्रव्यमान सबसे अधिक हो",
+      "जो उदासीन अणु हो"
+    ],
+    correct: 1
+  },
+  {
+    question: "मर्करी सेल की मुख्य विशेषता यह है कि इसके संपूर्ण जीवनकाल में इसका विद्युत वाहक बल (EMF) नियत (1.35 V) रहता है, इसका मुख्य कारण क्या है?",
+    options: [
+      "इसमें कोई गैसीय उत्पाद भाग नहीं लेता",
+      "इसके समग्र सेल अभिक्रिया में ऐसा कोई आयन शामिल नहीं है जिसकी सांद्रता विलयन में बदलती हो",
+      "यह एक प्राथमिक सेल है",
+      "इसमें जिंक-अमलगम का प्रयोग होता है"
+    ],
+    correct: 1
+  },
+  {
+    question: "तनुता (Dilution) बढ़ाने पर किसी वैद्युत अपघट्य विलयन की विशिष्ट चालकता (Specific Conductance) और मोलर चालकता (Molar Conductance) पर क्या प्रभाव पड़ता है?",
+    options: [
+      "दोनों बढ़ती हैं",
+      "विशिष्ट चालकता घटती है तथा मोलर चालकता बढ़ती है",
+      "दोनों घटती हैं",
+      "विशिष्ट चालकता बढ़ती है तथा मोलर चालकता घटती है"
+    ],
+    correct: 1
+  },
+  {
+    question: "लोहे में जंग लगने से बचाने के लिए संक्षारण-रोधी प्रक्रिया (Galvanization) के अंतर्गत लोहे की सतह पर किस धातु की परत चढ़ाई जाती है?",
+    options: [
+      "तांबा (Cu)",
+      "जस्ता (Zn)",
+      "टीन (Sn)",
+      "निकेल (Ni)"
+    ],
+    correct: 1
+  },
+  {
+    question: "निम्नलिखित में से कौन-सा सेल सीधे रासायनिक ऊर्जा को उच्च दक्षता (~70%) के साथ विद्युत ऊर्जा में परिवर्तित करता है?",
+    options: [
+      "शुष्क सेल",
+      "लेड संचायक सेल",
+      "ईंधन सेल (Fuel Cell - H₂-O₂ Cell)",
+      "मर्करी सेल"
+    ],
+    correct: 2
+  },
+  {
+    question: "मानक हाइड्रोजन इलेक्ट्रोड (SHE) का मानक इलेक्ट्रोड विभव (E°) सभी तापों पर कितना माना गया है?",
+    options: [
+      "0.00 V",
+      "1.00 V",
+      "1.23 V",
+      "2.00 V"
+    ],
+    correct: 0
+  },
+  {
+    question: "कॉपर सल्फेट (CuSO₄) के जलीय विलयन का कॉपर (Cu) इलेक्ट्रोड की उपस्थिति में वैद्युत अपघटन करने पर ऐनोड पर क्या प्रक्रिया होती है?",
+    options: [
+      "O₂ गैस मुक्त होती है",
+      "कॉपर ऐनोड से Cu²⁺ आयन बनकर विलयन में घुलता है",
+      "H₂ गैस मुक्त होती है",
+      "SO₄²⁻ आयन डिस्चार्ज होता है"
     ],
     correct: 1
   }
 ];
-window.quizDatabase[1].ch_2 = window.quizDatabase[1].ch_2 || {};
-window.quizDatabase[1].ch_2.dpp_1 = [
-  {
-    question: "P(A) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>3</span></span>, P(B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span>, P(A ∩ B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>5</span></span> ⇒ P(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>B</span><span style='border-top:1px solid; display:block;'>A</span></span>) =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2</span><span style='border-top:1px solid; display:block;'>5</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3</span><span style='border-top:1px solid; display:block;'>5</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>5</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>4</span><span style='border-top:1px solid; display:block;'>5</span></span>"
-    ],
-    correct: 1
-  },
-  {
-    question: "एक सिक्के को 10 बार उछाला जाता है। ठीक छह चित आने की प्रायिकता है:",
-    options: [
-      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)⁶",
-      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)⁷",
-      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)⁸",
-      "¹⁰C₆ (<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)¹⁰"
-    ],
-    correct: 3
-  },
-  {
-    question: "P(A) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>6</span><span style='border-top:1px solid; display:block;'>11</span></span>, P(B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>11</span></span>, P(A ∪ B) = <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7</span><span style='border-top:1px solid; display:block;'>11</span></span> ⇒ P(A ∩ B) =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>4</span><span style='border-top:1px solid; display:block;'>11</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>11</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7</span><span style='border-top:1px solid; display:block;'>11</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>9</span><span style='border-top:1px solid; display:block;'>11</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "xy-तल का समीकरण है:",
-    options: [
-      "x = 0",
-      "y = 0",
-      "z = 0",
-      "इनमें से कोई नहीं"
-    ],
-    correct: 2
-  },
-  {
-    question: "z-अक्ष की दिक-कोज्याएँ हैं:",
-    options: [
-      "(1, 0, 1)",
-      "(0, 0, 1)",
-      "(0, 1, 0)",
-      "(0, 0, 0)"
-    ],
-    correct: 1
-  },
-  {
-    question: "बिंदुओं (4, 3, 7) और (1, -1, -5) के बीच की दूरी है:",
-    options: [
-      "13",
-      "15",
-      "12",
-      "5"
-    ],
-    correct: 0
-  },
-  {
-    question: "∫ (x + cos 2x) dx =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>x sin 2x + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span>cos 2x + c",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>x sin 2x - <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>4</span></span>cos 2x + c",
-      "2x sin 2x + 4cos 2x + c",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x²</span><span style='border-top:1px solid; display:block;'>2</span></span> + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>sin 2x</span><span style='border-top:1px solid; display:block;'>2</span></span> + c"
-    ],
-    correct: 3
-  },
-  {
-    question: "∫ eˣ {sin⁻¹x + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 - x²</span></span></span></span>} dx =",
-    options: [
-      "eˣ · <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 - x²</span></span></span></span> + c",
-      "eˣ · sin⁻¹x + c",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>e²</span><span style='border-top:1px solid; display:block;'>2</span></span> + c",
-      "eˣ · cos⁻¹x + c"
-    ],
-    correct: 1
-  },
-  {
-    question: "∫ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>dx</span><span style='border-top:1px solid; display:block;'>x(x + 2)</span></span> =",
-    options: [
-      "log|<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>x + 2</span></span>| + c",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span> log|<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>x + 2</span></span>| + c",
-      "log|x| + c",
-      "log|x + 2| + c"
-    ],
-    correct: 1
-  },
-  {
-    question: "∫ <span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a² - x²</span></span> dx =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>2</span></span><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a² - x²</span></span> dx",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a²</span><span style='border-top:1px solid; display:block;'>2</span></span>sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>a</span></span> + c",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>2</span></span><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a² - x²</span></span> + <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a²</span><span style='border-top:1px solid; display:block;'>2</span></span>sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>a</span></span> + c",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>2</span></span><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x² - a²</span></span> - <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a²</span><span style='border-top:1px solid; display:block;'>2</span></span>sin⁻¹<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>x</span><span style='border-top:1px solid; display:block;'>a</span></span> + c"
-    ],
-    correct: 2
-  },
-  {
-    question: "∫₋<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>⁺<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> sin⁷x dx =",
-    options: [
-      "-1",
-      "0",
-      "1",
-      "2"
-    ],
-    correct: 1
-  },
-  {
-    question: "∫₀ᵃ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x</span></span></span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x</span></span> + <span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>a - x</span></span></span></span> dx =",
-    options: [
-      "a",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>a</span><span style='border-top:1px solid; display:block;'>2</span></span>",
-      "2a",
-      "3a"
-    ],
-    correct: 1
-  },
-  {
-    question: "∫₀⁺<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> cos 2x dx =",
-    options: [
-      "0",
-      "1",
-      "-1",
-      "2"
-    ],
-    correct: 0
-  },
-  {
-    question: "∫₀⁺<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span> cos x · cos 2x dx =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>12</span></span>",
-      "-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5</span><span style='border-top:1px solid; display:block;'>12</span></span>"
-    ],
-    correct: 2
-  },
-  {
-    question: "∫₋π⁺π tan x dx =",
-    options: [
-      "-1",
-      "0",
-      "2",
-      "-2"
-    ],
-    correct: 1
-  },
-  {
-    question: "∫₁⁴ <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>x</span></span></span></span> dx =",
-    options: [
-      "2",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>4</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "cos⁻¹(-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>) =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>"
-    ],
-    correct: 0
-  },
-  {
-    question: "x ∈ [-1, 1], cos⁻¹x =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - cot⁻¹x",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - sin⁻¹x",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - tan⁻¹x",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span> - sec⁻¹x"
-    ],
-    correct: 1
-  },
-  {
-    question: "x ∈ [-1, 1], sin⁻¹(-x) =",
-    options: [
-      "-sin⁻¹x",
-      "sin⁻¹x",
-      "-cos⁻¹x",
-      "cos⁻¹x"
-    ],
-    correct: 0
-  },
-  {
-    question: "cosec⁻¹x = ........ ; x ≥ 1 or ≤ -1",
-    options: [
-      "sin⁻¹x",
-      "sin⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>x</span></span>)",
-      "cos⁻¹x",
-      "cos⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>x</span></span>)"
-    ],
-    correct: 1
-  },
-  {
-    question: "tan[tan⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>3</span></span>) + tan⁻¹(<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>)] =",
-    options: [
-      "1",
-      "0",
-      "2",
-      "3"
-    ],
-    correct: 0
-  },
-  {
-    question: "sin(cot⁻¹x) =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 + x²</span></span>",
-      "x",
-      "(1 + x²)<sup style='font-size:0.8em;'>-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>3</span><span style='border-top:1px solid; display:block;'>2</span></span></sup>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'><span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>1 + x²</span></span></span></span>"
-    ],
-    correct: 3
-  },
-  {
-    question: "cos⁻¹(cos <span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7π</span><span style='border-top:1px solid; display:block;'>6</span></span>) =",
-    options: [
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>7π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>5π</span><span style='border-top:1px solid; display:block;'>6</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>6</span></span>"
-    ],
-    correct: 1
-  },
-  {
-    question: "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span> - sin⁻¹(-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>1</span><span style='border-top:1px solid; display:block;'>2</span></span>) =",
-    options: [
-      "0",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>2</span></span>",
-      "π"
-    ],
-    correct: 2
-  },
-  {
-    question: "tan⁻¹<span style='display:inline-block; vertical-align:middle;'><span style='font-size:1.1em;'>√</span><span style='border-top:1px solid; padding-top:1px; display:inline-block; margin-left:-1px;'>3</span></span> - sec⁻¹(-2) =",
-    options: [
-      "-<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "<span style='display:inline-block; vertical-align:middle; text-align:center; font-size:0.9em;'><span style='display:block;'>2π</span><span style='border-top:1px solid; display:block;'>3</span></span>",
-      "π"
-    ],
-    correct: 0
-  }
-];
+      
